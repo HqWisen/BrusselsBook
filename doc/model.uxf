@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="11.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>690</x>
+      <y>300</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Restaurant</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>900</x>
+      <y>300</y>
+      <w>140</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Hotel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>570</x>
+      <y>310</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Bar</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>680</x>
+      <y>60</y>
+      <w>120</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>Establishment
+--
+_Name_
+Address
+  Street
+  Number
+  Locality
+  Postal Code
+Coordinates
+  Latitude
+  Longitude
+WebSite (0, 1)
+  </panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
