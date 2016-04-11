@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+
+\title{BrusselsBook}
+\author{Hakim Boulahya & Youcef Bouharaoua}
+\date{April 2016}
+
+\begin{document}
+
+\maketitle
+
+\section{Modèle entité-association}
+
+\section{Contraintes d'intégrité}
+
+\begin{itemize}
+\item L'\textit{UID} Et L'\textit{EID}  sont respectivement  uniques à chaque \textsl{User} et \textsl{Establishement}  .
+
+\item L'\textit{EmailAdress} est spécifique à chaque \textsl{User}.
+
+\item Le \textsl{User} doit impérativement être connecté pour pouvoir effectuer un des \textsl{Comment}.
+
+\item Le \textit{Score} d'un \textsl{Comment} varie entre zéro et cinq .
+
+\item La taille maximale  du \textit{Text} du \textsl{Comment} est fixé à deux-cents  caractères .
+
+\item La taille du \textit{Password} du \textsl{User} varie entre quatre et seize caractères.
+
+\item Le \textsl{User} a le droit d'écrire un \textsl{Comment} par jour par \textsl{Establishement}.
+
+\item Le \textsl{User} ne peut apposer qu'une seule fois le même \textsl{Tag} sur un même \textsl{Establishement} .
+
+\end{itemize}
+
+\section{Remarques}
+Pour la question des demi-jours deux solutions sont envisagées , soit utiliser ce qui a été proposé dans le modèle entité association ,
+c'est à dire utiliser un attribut appartenant à l'entité \textsl{Etablishement} et le type de cet attribut est un tableau ,
+soit utiliser une entité \textsl{DaysOff} qui sera en relation avec l'\textsl{Etablishement} . 
+
+\section{Modèle relationnel}
+\noindent
+\paragraph{}
+Etablissement(EID, Name, Latitude, Longitude, PhoneNumber)
+\paragraph{}
+Restaurant(EID, PriceMinimum, PriceMaximum, BanquetPlaces, HasTakeaway, MakeDelivery, \textsl{WebSite})
+\paragraph{}
+Bar(EID, CanSmoke, MakeRestoration)
+\paragraph{}
+Hotel(EID, NoStars, NoRooms, PriceForTwo)
+\paragraph{}
+Address(EID, Street, No, Locality, PostalCode)
+
+\begin{itemize}
+    \item Restaurant, Bar.EID, Cafe.EID et Address.EID reference Etablissment.EID.
+\end{itemize}
+\paragraph{}
+User(UID, EmailAddress, Username, Password, RegistrationDate) 
+\paragraph{}
+Administrator(UID) 
+
+\begin{itemize}
+    \item Administrator.UID fait référence a User.UID
+\end{itemize}
+\paragraph{}
+Comment(EID, UID, Date, Score, Text) 
+\paragraph{}
+Tag(Name, CreationDate)
+
+
+
+\end{document}
+
