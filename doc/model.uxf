@@ -78,9 +78,9 @@ Cle(Latitude, Longitude)</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>920</x>
-      <y>470</y>
+      <y>440</y>
       <w>130</w>
-      <h>130</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>User
 --
@@ -248,10 +248,10 @@ Cle(Name)</panel_attributes>
       <x>940</x>
       <y>270</y>
       <w>70</w>
-      <h>220</h>
+      <h>190</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>30;30;50;30;50;200</additional_attributes>
+    <additional_attributes>30;30;50;30;50;170</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -523,10 +523,10 @@ Cle(Name)</panel_attributes>
       <x>890</x>
       <y>380</y>
       <w>70</w>
-      <h>110</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>30;30;50;30;50;90</additional_attributes>
+    <additional_attributes>30;30;50;30;50;60</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -643,12 +643,12 @@ Cle(Name)</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1020</x>
-      <y>500</y>
+      <y>520</y>
       <w>160</w>
-      <h>90</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>30;30;140;30;140;70</additional_attributes>
+    <additional_attributes>30;30;140;30;140;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.Text</type>
@@ -665,9 +665,9 @@ Cle(Name)</panel_attributes>
     <type>com.umlet.element.custom.Text</type>
     <coordinates>
       <x>1050</x>
-      <y>500</y>
+      <y>530</y>
       <w>50</w>
-      <h>30</h>
+      <h>20</h>
     </coordinates>
     <panel_attributes>(1, 1)</panel_attributes>
     <additional_attributes/>
@@ -737,11 +737,11 @@ Cle(DID)</panel_attributes>
     <coordinates>
       <x>990</x>
       <y>100</y>
-      <w>250</w>
-      <h>410</h>
+      <w>150</w>
+      <h>390</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>50;390;230;390;230;30;30;30</additional_attributes>
+    <additional_attributes>60;370;130;370;130;30;30;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.UseCase</type>
@@ -783,10 +783,10 @@ Cle(DID)</panel_attributes>
       <x>970</x>
       <y>170</y>
       <w>90</w>
-      <h>320</h>
+      <h>290</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>30;30;70;30;70;300</additional_attributes>
+    <additional_attributes>30;30;70;30;70;270</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -835,8 +835,8 @@ Cle(DID)</panel_attributes>
   <element>
     <type>com.umlet.element.custom.Text</type>
     <coordinates>
-      <x>1070</x>
-      <y>460</y>
+      <x>1060</x>
+      <y>450</y>
       <w>50</w>
       <h>20</h>
     </coordinates>
@@ -868,8 +868,8 @@ Cle(DID)</panel_attributes>
   <element>
     <type>com.umlet.element.UseCase</type>
     <coordinates>
-      <x>710</x>
-      <y>490</y>
+      <x>1110</x>
+      <y>70</y>
       <w>130</w>
       <h>40</h>
     </coordinates>
@@ -879,32 +879,32 @@ Cle(DID)</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>810</x>
-      <y>480</y>
-      <w>130</w>
+      <x>700</x>
+      <y>60</y>
+      <w>430</w>
       <h>50</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>30;30;110;30</additional_attributes>
+    <additional_attributes>410;30;30;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>610</x>
-      <y>430</y>
-      <w>120</w>
-      <h>100</h>
+      <x>1020</x>
+      <y>80</y>
+      <w>170</w>
+      <h>460</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>30;30;30;80;100;80</additional_attributes>
+    <additional_attributes>30;440;150;440;150;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.Text</type>
     <coordinates>
-      <x>870</x>
-      <y>510</y>
+      <x>1050</x>
+      <y>490</y>
       <w>50</w>
-      <h>20</h>
+      <h>30</h>
     </coordinates>
     <panel_attributes>(0, n)</panel_attributes>
     <additional_attributes/>
@@ -912,10 +912,10 @@ Cle(DID)</panel_attributes>
   <element>
     <type>com.umlet.element.custom.Text</type>
     <coordinates>
-      <x>640</x>
-      <y>460</y>
+      <x>730</x>
+      <y>60</y>
       <w>50</w>
-      <h>20</h>
+      <h>30</h>
     </coordinates>
     <panel_attributes>(0, n)</panel_attributes>
     <additional_attributes/>
