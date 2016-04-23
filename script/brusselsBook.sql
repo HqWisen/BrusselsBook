@@ -1,13 +1,14 @@
 use brusselsbook;
 
 create table Establishment(
-	EID int() PRIMARY KEY,
+	EID int(),
 	EName varchar(),
 	Latitude double(),
 	Longitude double(),
 	PhoneNumber varchar(),
 	Modified bool(),
-	Website varchar()
+	Website varchar(),
+    primary key(EID)
 )
 
 create table Restaurant(
@@ -17,9 +18,7 @@ create table Restaurant(
 	HasTakeaway bool(),
 	MakeDelivry bool(),
 	HalfDaysOff array(),
-	constraint fk_restauranteid           
-        foreign key (EID)              
-        references Establishment(EID)         
+	foreign key (EID) references Establishment(EID)         
 )
 
 	
@@ -29,9 +28,7 @@ create table Bar(
 	EID int(),
 	CanSmoke bool(),
 	MakeRestoration bool(),
-	constraint fk_bareid           
-        foreign key (EID)              
-        references Establishment(EID)         
+	foreign key (EID) references Establishment(EID)         
 
 )
 
@@ -39,39 +36,35 @@ create table Hotel(
 	EID int(),
 	NoStars int(),
 	NoRooms int(),
-	PriceForTwo int()
-	constraint fk_hoteleid           
-        foreign key (EID)              
-        references Establishment(EID)         
+	PriceForTwo int(),
+	foreign key (EID) references Establishment(EID)         
 
 )
 
-create table Adress(
+create table Address(
 	EID int(),
 	Street varchar(),
-	Number int (), 
+	StreetNumber int (), 
 	Locality varchar (),
-	PostalCode double()
-	constraint fk_adresseid           
-        foreign key (EID)              
-        references Establishment(EID)         
+	PostalCode double()          
+	foreign key (EID) references Establishment(EID)         
 
 )
 
 create table BookUser(
-	UID int() primary key,
+	UID int(),
 	EmailAdress varchar() unique,
 	Username varchar() unique,
-	Pwd varchar() ,#Password
-	RegistrationDate varchar()
+	Pwd varchar(),
+	RegistrationDate varchar(),
+    primary key(UID)
 )
 
 create table Administrator(
-	AID int() primary key,
+	AID int(),
 	UID int(),
-	constraint fk_adminsitratorid           
-        foreign key (UID)              
-        references BookUser(EID)         
+    primary key(AID),
+	foreign key (UID) references BookUser(UID)         
 
 )
 
@@ -79,37 +72,35 @@ create table EstablishmentModification(
 	OldEID int(),
 	NewEID int(),
 	AID int(),
-	ModificationDate varchar()
-	constraint fk_establishmentModificationOld           
-        foreign key (oldEID)              
-        references Establishment(EID)         
-	constraint fk_establishmentModificationNew           
-        foreign key (newEID)              
-        references Establishment(EID)
-	constraint fk_establishmentModificationAid           
-        foreign key (AID)              
-        references Administrator(AID)         
-		
-
-
+	ModificationDate varchar(),
+	foreign key (OldEID) references Establishment(EID),        
+	foreign key (NewEID) references Establishment(EID),
+	foreign key (AID) references Administrator(AID)         
 )
 
 create table EstablishmentDeletion(
 	EID int(),
 	AID int(),
-	DeletionDate varchar()
+	DeletionDate varchar(),
+	foreign key (EID) references Establishment(EID),
+	foreign key (AID) references Administrator(AID)         
+
 )
 
 create table UserDeletion(
 	EID int(),
 	AID int(),
-	DeletionDate varchar()
+	DeletionDate varchar()	
+    foreign key (EID) references Establishment(EID),
+	foreign key (AID) references Administrator(AID)     
 )
 
 create table DescriberDeletion(
 	DID int(),
 	UID int(),
-	DeletionDate varchar()
+	DeletionDate varchar(),
+    foreign key (DID) references Establishment(EID),
+	foreign key (AID) references Administrator(AID)   
 )
 
 create table DescriberModification(
@@ -117,6 +108,8 @@ create table DescriberModification(
 	NewDID int(),
 	UID int(),
 	ModificationDate varchar()
+	foreign key (EID) references Establishment(EID),       
+	foreign key (AID) references Administrator(AID)    
 )
 
 create table BookComment(
@@ -126,26 +119,35 @@ create table BookComment(
 	CreationDate varchar(),
 	Score int(),
 	BookText string(),
-	Modified bool()
+	Modified bool(),
+    primary key(DID),
+	foreign key (UID) references BookUser(UID),      
+	foreign key (EID) references Establishment(EID)    
 )
 
 create table Tag(
 	DID int(),
-	TagName varchar(),
+	TagName varchar() unique,
 	UID int(),
 	CreationDate varchar(),
-	Modified bool()
+	Modified bool(),
+    primary key(DID),
+	foreign key (UID) references BookUser(UID)     
 )
 
 create table UserSignal(
 	DID int(),
 	SignalerUID int()
+ 	foreign key (DID) references BookComment(DID),    
+	foreign key (SignalerUID) references Administrator(AID)       
 )
 
 create table TagDescribe(
 	TagName varchar(),
 	EID int(),
 	UID int()
+	foreign key (EID) references Establishment(EID),     
+	foreign key (AID) references Administrator(AID)    
 )
 
 
