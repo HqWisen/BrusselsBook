@@ -135,5 +135,10 @@ hs_err_pid*
 *.xdy
 *.tdo
 
+### Sass ###
+.sass-cache/
+*.css.map
+
+
 
 
