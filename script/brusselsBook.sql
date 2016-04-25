@@ -7,7 +7,7 @@ create table Establishment(
 	Longitude double(),
 	PhoneNumber varchar(),
 	Modified bool(),
-	Website varchar(),
+	Website varchar(), #NULL
     primary key(EID)
 )
 
@@ -56,7 +56,7 @@ create table BookUser(
 	EmailAdress varchar() unique,
 	Username varchar() unique,
 	Pwd varchar(),
-	RegistrationDate varchar(),
+	RegistrationDate date(), #varchar  , peut importe son heure d'enrigstration 
     primary key(UID)
 )
 
@@ -72,7 +72,7 @@ create table EstablishmentModification(
 	OldEID int(),
 	NewEID int(),
 	AID int(),
-	ModificationDate varchar(),
+	ModificationDate datetime(),# varchar  , le temps est important ; on peut éviter les secondes 
 	foreign key (OldEID) references Establishment(EID),        
 	foreign key (NewEID) references Establishment(EID),
 	foreign key (AID) references Administrator(AID)         
@@ -81,7 +81,7 @@ create table EstablishmentModification(
 create table EstablishmentDeletion(
 	EID int(),
 	AID int(),
-	DeletionDate varchar(),
+	DeletionDate datetime(),#varchar, on pourrait éviter un jeu ou un suprrime et l'autre ajoute , laisser un laps de temps ....
 	foreign key (EID) references Establishment(EID),
 	foreign key (AID) references Administrator(AID)         
 
@@ -90,7 +90,7 @@ create table EstablishmentDeletion(
 create table UserDeletion(
 	EID int(),
 	AID int(),
-	DeletionDate varchar()	
+	DeletionDate datetime()	#varchar
     foreign key (EID) references Establishment(EID),
 	foreign key (AID) references Administrator(AID)     
 )
@@ -98,7 +98,7 @@ create table UserDeletion(
 create table DescriberDeletion(
 	DID int(),
 	UID int(),
-	DeletionDate varchar(),
+	DeletionDate datetime(),
     foreign key (DID) references Establishment(EID),
 	foreign key (AID) references Administrator(AID)   
 )
@@ -107,7 +107,7 @@ create table DescriberModification(
 	OldDID int(),
 	NewDID int(),
 	UID int(),
-	ModificationDate varchar()
+	ModificationDate datetime()
 	foreign key (EID) references Establishment(EID),       
 	foreign key (AID) references Administrator(AID)    
 )
@@ -116,9 +116,9 @@ create table BookComment(
 	DID int(),
 	UID int(),
 	EID int(),
-	CreationDate varchar(),
+	CreationDate datetime(),
 	Score int(),
-	BookText string(),
+	BookText text(), #string , ne pas limiter la taille du text .
 	Modified bool(),
     primary key(DID),
 	foreign key (UID) references BookUser(UID),      
@@ -129,7 +129,7 @@ create table Tag(
 	DID int(),
 	TagName varchar() unique,
 	UID int(),
-	CreationDate varchar(),
+	CreationDate date(),#pas besoin du time 
 	Modified bool(),
     primary key(DID),
 	foreign key (UID) references BookUser(UID)     
