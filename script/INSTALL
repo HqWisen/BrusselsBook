@@ -1,0 +1,7 @@
+output in WEB-INF/classes (for javabean)
+dl glassfish4
+glassfish4 admin: user: admin pwd: blank
+dl bonecp (for bdd pooling)
+put bonecp jar in domain1/lib/ext
+get boncp-resource.xml (that configure the pooling in glassfish)
+put it in in glassfish/bin

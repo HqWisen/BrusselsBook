@@ -4,13 +4,4 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 	<display-name>BrusselsBook</display-name>
-	<servlet>
-		<servlet-name>Home</servlet-name>
-		<servlet-class>be.brusselsbook.servs.Home</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Home</servlet-name>
-		<url-pattern>/home</url-pattern>
-	</servlet-mapping>
 </web-app>
