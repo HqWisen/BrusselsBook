@@ -37,11 +37,11 @@ public class BrusselsBookUtils {
 		}
 	}
 
-	public static Object unmarshal(final String xml, final Class<?> clazz) {
+	public static <T> T unmarshal(final String xml, final Class<T> clazz) {
 		try {
 			final JAXBContext context = JAXBContext.newInstance(clazz);
 			final Unmarshaller unmarshaller = context.createUnmarshaller();
-			return unmarshaller.unmarshal(new StringReader(xml));
+			return clazz.cast(unmarshaller.unmarshal(new StringReader(xml)));
 		} catch (JAXBException e) {
 			e.printStackTrace();
 			return null;
