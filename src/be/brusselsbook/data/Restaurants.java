@@ -8,19 +8,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "Restaurants")
 public class Restaurants {
 	
+	@XmlElement(name = "Restaurant")
 	List<Restaurant> restaurantList;
 	
 	private Restaurants(){	
 	}
-
-	@XmlElement(name = "Restaurant")
+	
 	public List<Restaurant> getRestaurantList() {
 		return restaurantList;
 	}
 
-	public void setRestaurantList(List<Restaurant> restauranList) {
-		this.restaurantList = restauranList;
-	}
-	
-	
 }
