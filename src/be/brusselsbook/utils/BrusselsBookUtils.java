@@ -17,7 +17,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-public class BrusselsBookUtils {
+public final class BrusselsBookUtils {
 
 	public static ArrayList<String> createListFrom(String... array) {
 		return new ArrayList<>(Arrays.asList(array));

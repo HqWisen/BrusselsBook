@@ -8,7 +8,6 @@ import be.brusselsbook.sql.exception.DatabaseAccessException;
 public class AccessFactory {
 
 	private static AccessFactory accessFactory;
-
 	private DatabaseAccess databaseAccess;
 
 	private AccessFactory(DatabaseAccess databaseAccess) {
@@ -27,7 +26,7 @@ public class AccessFactory {
 		return accessFactory;
 	}
 
-	private Connection getConnection() throws SQLException {
+	public Connection getConnection() throws SQLException {
 		return databaseAccess.getConnection();
 	}
 
