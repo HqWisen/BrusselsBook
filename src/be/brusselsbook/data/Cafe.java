@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
-public class Restaurant {
+public class Cafe {
 
 	@XmlAttribute
 	private String creationDate;
@@ -14,7 +14,7 @@ public class Restaurant {
 	private String nickname;
 	
 	@XmlElement(name = "Informations")
-	private RestaurantInfos restoInfos;
+	private CafesInfos cafeInfos;
 	
 	@XmlElementWrapper(name = "Comments")
 	@XmlElement(name = "Comment")
@@ -32,8 +32,8 @@ public class Restaurant {
 		return nickname;
 	}
 
-	public RestaurantInfos getRestoInfos() {
-		return restoInfos;
+	public CafesInfos getCafeInfos() {
+		return cafeInfos;
 	}
 
 	public List<Comment> getCommentList() {
@@ -43,5 +43,14 @@ public class Restaurant {
 	public List<Tag> getTagList() {
 		return tagList;
 	}
+
+	@Override
+	public String toString() {
+		String string = "Name: ";
+		string += this.getCommentList().get(0);
+		return string;
+	}
+
+
 
 }
