@@ -13,7 +13,7 @@ public class BrusselsBook {
 		System.out.println("Running ...");
 		Restaurants rs = BrusselsBookUtils.unmarshal(fileContent, Restaurants.class);
 		for(Restaurant restaurant : rs.getRestaurantList()){
-			System.out.println(restaurant.getCommentList());
+			System.out.println(restaurant.getInformations());
 		}
 	}
 }

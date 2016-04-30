@@ -10,13 +10,22 @@ public class Restaurant {
 	
 	@XmlAttribute
 	private String creationDate;
+	
 	@XmlAttribute
 	private String nickname;
+	
 	@XmlElement(name = "Informations")
 	private Informations informations;
+	
 	@XmlElementWrapper(name = "Comments")
 	@XmlElement(name = "Comment")
 	private List<Comment> commentList;
+	
+	@XmlElementWrapper(name = "Tags")
+	@XmlElement (name = "Tag")
+	private List<Tag> tagList;
+	
+	
 	
 	private Restaurant(){		
 	}
