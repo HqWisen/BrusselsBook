@@ -1,6 +1,7 @@
 package be.brusselsbook.main;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import be.brusselsbook.data.BookUser;
 import be.brusselsbook.sql.AccessFactory;

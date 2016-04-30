@@ -21,6 +21,14 @@ public class BookUser {
 		this.registrationDate = registrationDate;
 	}
 
+	public BookUser(BookUser other){
+		this.uid = other.uid;
+		this.emailAddress = other.emailAddress;
+		this.username = other.username;
+		this.password = other.password;
+		this.registrationDate = (Timestamp)other.registrationDate.clone();
+	}
+	
 	public Long getUid() {
 		return uid;
 	}
@@ -66,7 +74,7 @@ public class BookUser {
 		String string = "";
 		string += username + " | ";
 		string += emailAddress + " on ";
-		string += registrationDate + "\n";
+		string += registrationDate;
 		return string;
 	}
 
