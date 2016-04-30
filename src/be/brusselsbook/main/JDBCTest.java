@@ -13,8 +13,10 @@ public class JDBCTest {
 		System.out.println("Running jdbc testing...");
 		AccessFactory factory = AccessFactory.getInstance();
 		BookUserAccess bookUserAccess = factory.getBookUserAccess();
-		BookUser user = bookUserAccess.userWithEmail("kevinspacey@brusselsbook.be");
-		System.out.println(user);
+		System.out.println(bookUserAccess.userWithEmail("kevinspacey@brusselsbook.be"));
+		System.out.println(bookUserAccess.userWithUsername("jordan"));
+		System.out.println(bookUserAccess.userWithUid("f1sL"));
 	}
 
+	
 }
