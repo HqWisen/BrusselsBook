@@ -1,12 +1,9 @@
 package be.brusselsbook.data;
 
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 
 public class CafesInfos extends Informations {
+	
 	@XmlElement(name = "Smoking")
 	private String smoking; // null if none, empty string if has.
 	
@@ -33,10 +30,10 @@ public class CafesInfos extends Informations {
 	
 	@Override
 	public String toString() {
-		String string = "Name: ";
+		String string = "Nam: ";
 		string += super.getName() ;
-		string += "; ";
-		string+= canSnack();
+		/*string += "; ";
+		string+= canSnack();*/
 		return string;
 	}
 

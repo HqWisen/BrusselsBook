@@ -47,7 +47,7 @@ public class Cafe {
 	@Override
 	public String toString() {
 		String string = "Name: ";
-		string += this.getCommentList().get(0);
+		string += cafeInfos;
 		return string;
 	}
 

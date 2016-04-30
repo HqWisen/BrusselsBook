@@ -8,14 +8,14 @@ import java.util.Properties;
 import com.jolbox.bonecp.BoneCP;
 import com.jolbox.bonecp.BoneCPConfig;
 
-import be.brusselsbook.sql.exception.AccessException;
+import be.brusselsbook.sql.exception.DatabaseAccessException;
 
 public class DatabaseAccess extends BoneCP {
 
 	private static final long serialVersionUID = 1373811783278087243L;
 	private static final String PROPRETIESFILE = "access.properties";
 	private static final DatabaseProperties DATABASEPROPERTIES;
-	
+
 	private static class DatabaseProperties {
 		private final String driverClass;
 		private final String url;
@@ -70,11 +70,11 @@ public class DatabaseAccess extends BoneCP {
 		loadDriver(DATABASEPROPERTIES);
 	}
 
-	public static void loadDriver(DatabaseProperties properties) {
+	public static void loadDriver(DatabaseProperties properties) throws DatabaseAccessException {
 		try {
 			Class.forName(properties.getDriverClass());
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			throw new DatabaseAccessException("Cannot load driver class '" + properties.getDriverClass() + "'.");
 		}
 	}
 
@@ -83,12 +83,12 @@ public class DatabaseAccess extends BoneCP {
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		InputStream fichierProperties = classLoader.getResourceAsStream(PROPRETIESFILE);
 		if (fichierProperties == null) {
-			throw new AccessException("the properties file '" + PROPRETIESFILE + "' cannot be found.");
+			throw new DatabaseAccessException("the properties file '" + PROPRETIESFILE + "' cannot be found.");
 		}
 		try {
 			properties.load(fichierProperties);
 		} catch (IOException e) {
-			throw new AccessException("Unable to load the properties file '" + PROPRETIESFILE + "'.");
+			throw new DatabaseAccessException("Unable to load the properties file '" + PROPRETIESFILE + "'.");
 		}
 		return new DatabaseProperties(properties);
 	}
