@@ -2,18 +2,18 @@ package be.brusselsbook.data;
 
 import javax.xml.bind.annotation.XmlAttribute;
 
-public class Tagger {
+public class Banquet {
 
 	@XmlAttribute
-	private String nickname;
-
-	public String getNickname() {
-		return nickname;
+	private int capacity;
+	
+	public int getCapacity(){
+		return capacity;
 	}
-
+	
 	@Override
 	public String toString() {
-		return nickname;
+		return Integer.toString(capacity);
 	}
 	
 }

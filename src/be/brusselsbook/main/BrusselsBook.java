@@ -2,6 +2,7 @@ package be.brusselsbook.main;
 
 import java.io.IOException;
 
+import be.brusselsbook.data.Informations;
 import be.brusselsbook.data.Restaurant;
 import be.brusselsbook.data.Restaurants;
 import be.brusselsbook.utils.BrusselsBookUtils;
@@ -13,7 +14,8 @@ public class BrusselsBook {
 		System.out.println("Running ...");
 		Restaurants rs = BrusselsBookUtils.unmarshal(fileContent, Restaurants.class);
 		for(Restaurant restaurant : rs.getRestaurantList()){
-			System.out.println(restaurant.getInformations());
+			Informations informations = restaurant.getInformations();
+			System.out.println(informations.getBanquet());
 		}
 	}
 }

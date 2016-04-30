@@ -11,9 +11,6 @@ public class Restaurants {
 	@XmlElement(name = "Restaurant")
 	List<Restaurant> restaurantList;
 	
-	private Restaurants(){	
-	}
-	
 	public List<Restaurant> getRestaurantList() {
 		return restaurantList;
 	}
