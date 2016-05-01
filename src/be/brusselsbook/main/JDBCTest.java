@@ -17,6 +17,7 @@ public class JDBCTest {
 		AdministratorAccess administratorAccess = factory.getAdminstratorAccess();
 		BookUserAccess<BookUser> bookUserAccess = factory.getBookUserAccess();
 		EstablishmentAccess<Establishment> establishmentAccess = factory.getEstablishmentAccess();
+		System.out.println(bookUserAccess.SELECTBY("UID"));
 		System.out.println(administratorAccess.withUsername("jordan"));
 		System.out.println(administratorAccess.withUsername("kevin"));
 		System.out.println(administratorAccess.withEmail("jimmyjam@brusselsbook.be"));
@@ -25,10 +26,10 @@ public class JDBCTest {
 		System.out.println(bookUserAccess.withEmail("kevinspacey@brusselsbook.be"));
 		System.out.println(bookUserAccess.withUsername("kevin"));
 		System.out.println(bookUserAccess.withUid(1L));
-		establishmentAccess.create("Jimmy Burger", "02222222", "http://jimmyburger.be");
+		establishmentAccess.create("Jimmy Burger Burger", "02322222", "http://jimmyburger.com");
 		System.out.println(establishmentAccess.getObjects());
-		BookUser bookUser = administratorAccess.create("hakimaa@brusselsbook.be", "hakimaa", "nous");
-		System.out.println(bookUser);
+		//BookUser bookUser = administratorAccess.create("hakimaa@brusselsbook.be", "hakimaa", "nous");
+		//System.out.println(bookUser);
 	}
 	
 }

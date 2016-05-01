@@ -23,6 +23,12 @@ public final class BrusselsBookUtils {
 		return new ArrayList<>(Arrays.asList(array));
 	}
 
+	public static String[] createArrayFrom(String... array) {
+		String[] strings = new String[array.length];
+		System.arraycopy(array, 0, strings, 0, array.length);
+		return strings;
+	}
+
 	public static String marshal(final Object object) {
 		try {
 			final JAXBContext context = JAXBContext.newInstance(object.getClass());
