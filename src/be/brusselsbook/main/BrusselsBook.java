@@ -4,11 +4,6 @@ import java.io.IOException;
 
 import be.brusselsbook.data.Cafe;
 import be.brusselsbook.data.Cafes;
-import be.brusselsbook.data.CafesInfos;
-import be.brusselsbook.data.Informations;
-import be.brusselsbook.data.Restaurant;
-import be.brusselsbook.data.RestaurantInfos;
-import be.brusselsbook.data.Restaurants;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class BrusselsBook {

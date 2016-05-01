@@ -13,22 +13,14 @@ public class BookUser {
 	public BookUser() {
 	}
 
-	public BookUser(Long uid, String emailAddress, String username, String password, Timestamp registrationDate) {
-		this.uid = uid;
-		this.emailAddress = emailAddress;
-		this.username = username;
-		this.password = password;
-		this.registrationDate = registrationDate;
-	}
-
-	public BookUser(BookUser other){
+	public BookUser(BookUser other) {
 		this.uid = other.uid;
 		this.emailAddress = other.emailAddress;
 		this.username = other.username;
 		this.password = other.password;
-		this.registrationDate = (Timestamp)other.registrationDate.clone();
+		this.registrationDate = (Timestamp) other.registrationDate.clone();
 	}
-	
+
 	public Long getUid() {
 		return uid;
 	}
@@ -68,11 +60,11 @@ public class BookUser {
 	public void setRegistrationDate(Timestamp registrationDate) {
 		this.registrationDate = registrationDate;
 	}
-	
+
 	@Override
 	public String toString() {
 		String string = "";
-		string += username + " | ";
+		string += "(" + uid + ")" + username + ":" + password + " > ";
 		string += emailAddress + " on ";
 		string += registrationDate;
 		return string;

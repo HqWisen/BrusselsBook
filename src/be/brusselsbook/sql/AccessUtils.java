@@ -10,6 +10,42 @@ import be.brusselsbook.sql.exception.DatabaseAccessException;
 
 public final class AccessUtils {
 
+	public static ResultSet executeQuery(AccessFactory accessFactory, String sqlQuery, Object... objects)
+			throws DatabaseAccessException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = accessFactory.getConnection();
+			preparedStatement = AccessUtils.createPreparedStatement(connection, sqlQuery, objects);
+			resultSet = preparedStatement.executeQuery();
+			AccessUtils.close(connection);
+		} catch (SQLException e) {
+			throw new DatabaseAccessException(e);
+		}
+		return resultSet;
+	}
+
+	public static ResultSet executeInsert(AccessFactory accessFactory, String sqlQuery, Object... objects)
+			throws DatabaseAccessException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = accessFactory.getConnection();
+			preparedStatement = AccessUtils.createPreparedStatement(true, connection, sqlQuery, objects);
+			int statut = preparedStatement.executeUpdate();
+			if (statut == 0) {
+				throw new DatabaseAccessException("Failed to create entity in database. Nothing added.");
+			}
+			resultSet = preparedStatement.getGeneratedKeys();
+			AccessUtils.close(connection);
+		} catch (SQLException e) {
+			throw new DatabaseAccessException(e);
+		}
+		return resultSet;
+	}
+
 	public static PreparedStatement createPreparedStatement(Connection connection, String sqlQuery, Object... objects)
 			throws SQLException {
 		return createPreparedStatement(false, connection, sqlQuery, objects);

@@ -8,11 +8,15 @@ public interface BookUserAccess {
 	public static final String USERNAME = "Username";
 	public static final String UID = "UID";
 
-	public static String SELECTBY(String by){
-		return "SELECT UID, EmailAddress, Username, Pwd, RegistrationDate FROM BookUser WHERE " + by + " = ?";
+	public static String SELECTBY(String by) {
+		return "SELECT * FROM BookUser WHERE " + by + " = ?";
 	}
-	
-	void create(BookUser bookUser);
+
+	public static String INSERT() {
+		return "INSERT INTO BookUser (EmailAddress, Username, Pwd) VALUES (?, ?, ?)";
+	}
+
+	BookUser create(String email, String username, String password);
 
 	BookUser userWithEmail(String email);
 
