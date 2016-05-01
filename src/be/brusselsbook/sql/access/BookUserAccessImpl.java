@@ -1,11 +1,9 @@
-package be.brusselsbook.sql.access.impl;
+package be.brusselsbook.sql.access;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import be.brusselsbook.data.BookUser;
-import be.brusselsbook.sql.access.AccessFactory;
-import be.brusselsbook.sql.access.BookUserAccess;
 import be.brusselsbook.sql.exception.DatabaseAccessException;
 import be.brusselsbook.utils.BrusselsBookUtils;
 

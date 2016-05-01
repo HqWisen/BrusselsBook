@@ -7,11 +7,6 @@ import be.brusselsbook.data.BookUser;
 import be.brusselsbook.data.Establishment;
 import be.brusselsbook.main.CafeAccess;
 import be.brusselsbook.sql.DatabaseAccess;
-import be.brusselsbook.sql.access.impl.AddressAccessImpl;
-import be.brusselsbook.sql.access.impl.AdministratorAccessImpl;
-import be.brusselsbook.sql.access.impl.BookUserAccessImpl;
-import be.brusselsbook.sql.access.impl.EstablishementAccessImpl;
-import be.brusselsbook.sql.access.impl.RestaurantAccessImpl;
 import be.brusselsbook.sql.exception.DatabaseAccessException;
 
 public class AccessFactory {
@@ -48,7 +43,7 @@ public class AccessFactory {
 	}
 
 	public EstablishmentAccess<Establishment> getEstablishmentAccess(){
-		return new EstablishementAccessImpl(this);
+		return new EstablishmentAccessImpl(this);
 	}
 	
 	public AddressAccess getAddressAccess(){
