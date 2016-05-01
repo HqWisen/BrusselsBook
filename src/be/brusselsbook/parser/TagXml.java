@@ -5,7 +5,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
-public class Tag {
+public class TagXml {
 
 	@XmlAttribute
 	private String name;

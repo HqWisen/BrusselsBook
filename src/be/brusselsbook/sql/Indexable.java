@@ -6,5 +6,5 @@ public interface Indexable<T> {
 
 	T create(Object... objects);
 	
-	T create(Long id, Object... objects);
+	T createNoGeneratedId(Long id, Object... objects);
 }

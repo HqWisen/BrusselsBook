@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name ="Cafes")
 public class Cafes {
 	@XmlElement(name = "Cafe")
-	List<Cafe> cafeList;
+	List<CafeXml> cafeList;
 
-	public List<Cafe> getCafeList() {
+	public List<CafeXml> getCafeList() {
 		return cafeList;
 	}
 

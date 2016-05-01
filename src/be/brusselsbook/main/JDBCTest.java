@@ -1,21 +1,29 @@
 package be.brusselsbook.main;
 
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
-import be.brusselsbook.data.BookUser;
 import be.brusselsbook.data.Establishment;
+import be.brusselsbook.parser.RestaurantXml;
+import be.brusselsbook.parser.Restaurants;
 import be.brusselsbook.sql.access.AccessFactory;
-import be.brusselsbook.sql.access.AddressAccess;
-import be.brusselsbook.sql.access.AdministratorAccess;
-import be.brusselsbook.sql.access.BookUserAccess;
 import be.brusselsbook.sql.access.EstablishmentAccess;
+import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class JDBCTest {
 
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
 		System.out.println("Running jdbc testing...");
+		String fileContent = BrusselsBookUtils.readFileFromResource("Restaurants.xml");
+		Restaurants restaurants = BrusselsBookUtils.unmarshal(fileContent, Restaurants.class);
+		List<RestaurantXml> restaurantList = restaurants.getRestaurantList();
 		AccessFactory factory = AccessFactory.getInstance();
-		AdministratorAccess administratorAccess = factory.getAdminstratorAccess();
+		EstablishmentAccess<Establishment> establishmentAccess = factory.getEstablishmentAccess();
+		for(RestaurantXml rx : restaurantList){
+			establishmentAccess.createEstablishement(rx.getRestoInfos());	
+		}
+		/*AdministratorAccess administratorAccess = factory.getAdminstratorAccess();
 		BookUserAccess<BookUser> bookUserAccess = factory.getBookUserAccess();
 		EstablishmentAccess<Establishment> establishmentAccess = factory.getEstablishmentAccess();
 		AddressAccess addressAccess = factory.getAddressAccess();
@@ -34,11 +42,9 @@ public class JDBCTest {
 		establishmentAccess.create("Jimmy Burger Burger", "02322222", "http://jimmyburger.com");
 		System.out.println(establishmentAccess.getObjects());
 		BookUser bookUser = administratorAccess.create("hakimaa@brusselsbook.be", "hakimaa", "nous");
-		System.out.println(bookUser);
+		System.out.println(bookUser);*/
+		
 	}
-	
-
-
 	
 	
 }

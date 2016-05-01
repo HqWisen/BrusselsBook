@@ -51,7 +51,7 @@ public class EstablishementAccessImpl extends EstablishmentAccess<Establishment>
 
 	@Override
 	public Establishment withEid(String eid) {
-		return with(SELECTBY(EID), eid);
+		return withQuery(SELECTBY(EID), eid);
 	}
 
 	@Override

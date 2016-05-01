@@ -47,12 +47,12 @@ public class BookUserAccessImpl extends BookUserAccess<BookUser> {
 	
 	@Override
 	public BookUser withEmail(String email) throws DatabaseAccessException {
-		return with(SELECTBY(EMAILADDRESS), email);
+		return withQuery(SELECTBY(EMAILADDRESS), email);
 	}
 
 	@Override
 	public BookUser withUsername(String username) {
-		return with(SELECTBY(USERNAME), username);
+		return withQuery(SELECTBY(USERNAME), username);
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class BookUserAccessImpl extends BookUserAccess<BookUser> {
 
 	@Override
 	public BookUser withUid(String uid) {
-		return with(SELECTBY(UID), uid);
+		return withQuery(SELECTBY(UID), uid);
 	}
 
 	@Override

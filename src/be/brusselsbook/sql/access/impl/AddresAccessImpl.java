@@ -66,7 +66,7 @@ public class AddresAccessImpl extends AddressAccess {
 
 	@Override
 	public Address withEid(String eid) {
-		return with(SELECTBY(EID), eid);
+		return withQuery(SELECTBY(EID), eid);
 	}
 
 }

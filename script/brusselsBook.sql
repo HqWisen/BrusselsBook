@@ -16,10 +16,10 @@ USE brusselsbook;
 # Latitude and Longitude has been put in Address (indentation problem in the model)
 CREATE TABLE Establishment(
 	EID INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	EName VARCHAR(20) NOT NULL,
+	EName VARCHAR(50) NOT NULL,
 	PhoneNumber VARCHAR(20) NOT NULL,
 	Modified TINYINT(1) DEFAULT 0,
-	Website VARCHAR(50),
+	Website VARCHAR(200),
 	PRIMARY KEY(EID)
 );
 

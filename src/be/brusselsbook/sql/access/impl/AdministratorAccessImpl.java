@@ -45,8 +45,7 @@ public class AdministratorAccessImpl extends AdministratorAccess {
 	public Administrator create(Object... values) {
 		BookUser bookUser = bookUserAccess.create(values);
 		Long uid = bookUser.getUid();
-		// FIXME issue with both create method in parent
-		return super.create(null, uid);
+		return super.create(uid);
 	}
 
 	@Override
@@ -73,7 +72,7 @@ public class AdministratorAccessImpl extends AdministratorAccess {
 
 	@Override
 	public Administrator withUid(String uid) {
-		return with(SELECTBY(UID), uid);
+		return withQuery(SELECTBY(UID), uid);
 	}
 
 	@Override
@@ -83,7 +82,7 @@ public class AdministratorAccessImpl extends AdministratorAccess {
 
 	@Override
 	public Administrator withAid(String aid) {
-		return with(SELECTBY(AID), aid);
+		return withQuery(SELECTBY(AID), aid);
 	}
 
 	@Override

@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Restaurants {
 	
 	@XmlElement(name = "Restaurant")
-	List<Restaurant> restaurantList;
+	List<RestaurantXml> restaurantList;
 	
-	public List<Restaurant> getRestaurantList() {
+	public List<RestaurantXml> getRestaurantList() {
 		return restaurantList;
 	}
 

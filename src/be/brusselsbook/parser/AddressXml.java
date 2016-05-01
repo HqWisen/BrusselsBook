@@ -2,7 +2,7 @@ package be.brusselsbook.parser;
 
 import javax.xml.bind.annotation.XmlElement;
 
-public class Address {
+public class AddressXml {
 	
 	@XmlElement(name = "Street")
 	private String street;

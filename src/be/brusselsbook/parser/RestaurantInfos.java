@@ -5,7 +5,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
-public class RestaurantInfos extends Informations {
+public class RestaurantInfos extends EstablishmentInfos {
 
 	@XmlElementWrapper(name = "Closed")
 	@XmlElement(name = "On")
