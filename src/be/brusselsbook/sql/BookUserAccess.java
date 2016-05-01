@@ -1,29 +1,65 @@
 package be.brusselsbook.sql;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import be.brusselsbook.data.BookUser;
+import be.brusselsbook.sql.exception.DatabaseAccessException;
+import be.brusselsbook.utils.AccessUtils;
 
-public interface BookUserAccess {
+public abstract class BookUserAccess<T extends BookUser> {
 
-	public static final String EMAILADDRESS = "EmailAddress";
-	public static final String USERNAME = "Username";
-	public static final String UID = "UID";
+	protected final AccessFactory accessFactory;
 
-	public static String SELECTBY(String by) {
-		return "SELECT * FROM BookUser WHERE " + by + " = ?";
+	protected BookUserAccess(AccessFactory accessFactory) {
+		this.accessFactory = accessFactory;
 	}
 
-	public static String INSERT() {
-		return "INSERT INTO BookUser (EmailAddress, Username, Pwd) VALUES (?, ?, ?)";
+	protected abstract String SELECTBY(String by);
+	
+	protected abstract String SELECTALL();
+	
+	protected abstract String INSERT();	
+	
+	public abstract T create(String email, String username, String password);
+	
+	public abstract T withEmail(String email);
+
+	public abstract T withUsername(String username);
+
+	public abstract T withUid(Long uid);
+
+	public abstract T withUid(String uid);
+
+	protected abstract T map(ResultSet resultSet) throws SQLException;
+
+	public List<T> getObjects() throws DatabaseAccessException{
+		List<T> objects = new ArrayList<T>();
+		ResultSet resultSet = AccessUtils.executeQuery(accessFactory, SELECTALL());
+		try {
+			while(resultSet.next()){
+				objects.add(map(resultSet));
+			}
+		} catch (SQLException e) {
+			throw new DatabaseAccessException(e);
+		}
+		return objects;
 	}
-
-	BookUser create(String email, String username, String password);
-
-	BookUser userWithEmail(String email);
-
-	BookUser userWithUsername(String username);
-
-	BookUser userWithUid(Long uid);
-
-	BookUser userWithUid(String uid);
+	
+	protected T with(String sqlQuery, Object... objects) throws DatabaseAccessException {
+		T user = null;
+		ResultSet resultSet = AccessUtils.executeQuery(accessFactory, sqlQuery, objects);
+		try {
+			if (resultSet.next()) {
+				user = map(resultSet);
+			}
+		} catch (SQLException e) {
+			throw new DatabaseAccessException(e);
+		}
+		AccessUtils.close(resultSet);
+		return user;
+	}
 
 }

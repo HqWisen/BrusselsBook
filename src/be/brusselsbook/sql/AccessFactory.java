@@ -3,6 +3,8 @@ package be.brusselsbook.sql;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import be.brusselsbook.data.BookUser;
+import be.brusselsbook.servs.AdministratorAccess;
 import be.brusselsbook.sql.exception.DatabaseAccessException;
 
 public class AccessFactory {
@@ -30,8 +32,12 @@ public class AccessFactory {
 		return databaseAccess.getConnection();
 	}
 
-	public BookUserAccess getBookUserAccess() {
+	public BookUserAccess<BookUser> getBookUserAccess() {
 		return new BookUserAccessImpl(this);
+	}
+
+	public AdministratorAccess getAdminstratorAccess() {
+		return new AdministratorAccessImpl(this);
 	}
 
 }

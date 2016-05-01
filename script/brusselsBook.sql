@@ -11,6 +11,8 @@ GRANT ALL PRIVILEGES ON `brusselsbook`.* TO 'bbadmin'@'localhost';
 # Use the new created database
 USE brusselsbook;
 
+# FIXME make cascade delete (example: delete Adminstrator should delete also the BookUser)
+
 CREATE TABLE Establishment(
 	EID INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	EName VARCHAR(20) NOT NULL,
