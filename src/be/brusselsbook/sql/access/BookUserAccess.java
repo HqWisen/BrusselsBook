@@ -1,4 +1,4 @@
-package be.brusselsbook.sql;
+package be.brusselsbook.sql.access;
 
 import be.brusselsbook.data.BookUser;
 

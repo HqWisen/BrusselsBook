@@ -1,9 +1,11 @@
-package be.brusselsbook.sql;
+package be.brusselsbook.sql.access.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import be.brusselsbook.data.Address;
+import be.brusselsbook.sql.access.AccessFactory;
+import be.brusselsbook.sql.access.AddressAccess;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class AddresAccessImpl extends AddressAccess {
@@ -20,7 +22,7 @@ public class AddresAccessImpl extends AddressAccess {
 			POSTALCODE, LATITUDE, LONGITUDE);
 	private static final String TABLE = "Address";
 
-	protected AddresAccessImpl(AccessFactory accessFactory) {
+	public AddresAccessImpl(AccessFactory accessFactory) {
 		super(accessFactory);
 	}
 

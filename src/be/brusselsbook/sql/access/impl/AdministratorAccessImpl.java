@@ -1,10 +1,13 @@
-package be.brusselsbook.sql;
+package be.brusselsbook.sql.access.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import be.brusselsbook.data.Administrator;
 import be.brusselsbook.data.BookUser;
+import be.brusselsbook.sql.access.AccessFactory;
+import be.brusselsbook.sql.access.AdministratorAccess;
+import be.brusselsbook.sql.access.BookUserAccess;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class AdministratorAccessImpl extends AdministratorAccess {

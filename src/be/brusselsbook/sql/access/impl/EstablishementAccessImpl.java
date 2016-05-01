@@ -1,9 +1,11 @@
-package be.brusselsbook.sql;
+package be.brusselsbook.sql.access.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import be.brusselsbook.data.Establishment;
+import be.brusselsbook.sql.access.AccessFactory;
+import be.brusselsbook.sql.access.EstablishmentAccess;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class EstablishementAccessImpl extends EstablishmentAccess<Establishment> {
@@ -18,7 +20,7 @@ public class EstablishementAccessImpl extends EstablishmentAccess<Establishment>
 	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom(NAME, PHONENUMBER, WEBSITE);
 	private static final String TABLE = "Establishment";
 	
-	protected EstablishementAccessImpl(AccessFactory accessFactory) {
+	public EstablishementAccessImpl(AccessFactory accessFactory) {
 		super(accessFactory);
 	}
 

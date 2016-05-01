@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import be.brusselsbook.sql.AccessFactory;
+import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.exception.DatabaseAccessException;
 
 public final class AccessUtils {

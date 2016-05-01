@@ -1,10 +1,11 @@
-package be.brusselsbook.sql;
+package be.brusselsbook.sql.access;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import be.brusselsbook.sql.Indexable;
 import be.brusselsbook.sql.exception.DatabaseAccessException;
 import be.brusselsbook.utils.AccessUtils;
 
