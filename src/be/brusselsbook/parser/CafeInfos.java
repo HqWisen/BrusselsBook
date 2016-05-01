@@ -10,19 +10,19 @@ public class CafeInfos extends EstablishmentInfos {
 	@XmlElement(name = "Snack")
 	private String snack;
 
-	public String getSmoking() {
+	private String getSmoking() {
 		return smoking;
 	}
 
-	public String getSnack() {
+	private String getSnack() {
 		return snack;
 	}
 
-	public boolean canSmoke() {
+	public Boolean canSmoke() {
 		return getSmoking() != null;
 	}
 
-	public boolean canSnack() {
+	public Boolean canSnack() {
 		return getSnack() != null;
 	}
 
