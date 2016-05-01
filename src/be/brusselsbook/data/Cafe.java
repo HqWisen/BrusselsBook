@@ -1,6 +1,4 @@
-package be.brusselsbook.main;
-
-import be.brusselsbook.data.Establishment;
+package be.brusselsbook.data;
 
 public class Cafe extends Establishment {
 

@@ -9,6 +9,7 @@ import be.brusselsbook.parser.Cafes;
 import be.brusselsbook.parser.RestaurantXml;
 import be.brusselsbook.parser.Restaurants;
 import be.brusselsbook.sql.access.AccessFactory;
+import be.brusselsbook.sql.access.CafeAccess;
 import be.brusselsbook.sql.access.RestaurantAccess;
 import be.brusselsbook.utils.BrusselsBookUtils;
 

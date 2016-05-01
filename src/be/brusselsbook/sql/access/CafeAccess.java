@@ -1,12 +1,11 @@
-package be.brusselsbook.main;
+package be.brusselsbook.sql.access;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import be.brusselsbook.data.Cafe;
 import be.brusselsbook.data.Establishment;
 import be.brusselsbook.parser.CafeInfos;
-import be.brusselsbook.sql.access.AccessFactory;
-import be.brusselsbook.sql.access.EstablishmentAccess;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class CafeAccess extends EstablishmentAccess<Cafe> {

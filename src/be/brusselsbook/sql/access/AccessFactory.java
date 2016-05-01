@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 import be.brusselsbook.data.BookUser;
 import be.brusselsbook.data.Establishment;
-import be.brusselsbook.main.CafeAccess;
 import be.brusselsbook.sql.DatabaseAccess;
 import be.brusselsbook.sql.exception.DatabaseAccessException;
 
