@@ -26,10 +26,14 @@ public class JDBCTest {
 		System.out.println(bookUserAccess.withEmail("kevinspacey@brusselsbook.be"));
 		System.out.println(bookUserAccess.withUsername("kevin"));
 		System.out.println(bookUserAccess.withUid(1L));
-		establishmentAccess.create("Jimmy Burger Burger", "02322222", "http://jimmyburger.com");
-		System.out.println(establishmentAccess.getObjects());
+		//establishmentAccess.create("Jimmy Burger Burger", "02322222", "http://jimmyburger.com");
+		//System.out.println(establishmentAccess.getObjects());
 		//BookUser bookUser = administratorAccess.create("hakimaa@brusselsbook.be", "hakimaa", "nous");
 		//System.out.println(bookUser);
 	}
+	
+
+
+	
 	
 }
