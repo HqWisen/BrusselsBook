@@ -2,8 +2,8 @@ package be.brusselsbook.data;
 
 public class Restaurant extends Establishment {
 
-	private Integer priceMinimum;
-	private Integer priceMaximum;
+	private Integer priceRange;
+	private Integer banquetPlaces;
 	private Boolean takeaway;
 	private Boolean delivery;
 	private String halfDaysOff;
@@ -12,20 +12,20 @@ public class Restaurant extends Establishment {
 		super(establishment);
 	}
 
-	public Integer getPriceMinimum() {
-		return priceMinimum;
+	public Integer getPriceRange() {
+		return priceRange;
 	}
 
-	public void setPriceMinimum(Integer priceMinimum) {
-		this.priceMinimum = priceMinimum;
+	public void setPriceRange(Integer priceRange) {
+		this.priceRange = priceRange;
 	}
 
-	public Integer getPriceMaximum() {
-		return priceMaximum;
+	public Integer getBanquetPlaces() {
+		return banquetPlaces;
 	}
 
-	public void setPriceMaximum(Integer priceMaximum) {
-		this.priceMaximum = priceMaximum;
+	public void setBanquetPlaces(Integer banquetPlaces) {
+		this.banquetPlaces = banquetPlaces;
 	}
 
 	public Boolean getTakeaway() {

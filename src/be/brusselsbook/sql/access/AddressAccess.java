@@ -9,13 +9,13 @@ public abstract class AddressAccess extends DataAccess<Address> {
 		super(accessFactory);
 	}
 
-	public Address createAddress(Long EID, String street, String number, String locality, String postalCode,
+	public Address createAddress(Long eid, String street, String number, String locality, String postalCode,
 			Float latitude, Float longitude) {
 		// the first EID if for getting the created Address because it does not
 		// generate
 		// an id, the only way to get the address is with the EID.
 		// The second EID will be passed as a value in the SQL query.
-		return createNoGeneratedId(EID, EID, street, number, locality, postalCode, latitude, longitude);
+		return createNoGeneratedId(eid, eid, street, number, locality, postalCode, latitude, longitude);
 	}
 
 	public Address createAddress(Long eid, AddressXml addressXml) {

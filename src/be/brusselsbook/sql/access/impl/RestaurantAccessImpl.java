@@ -13,13 +13,13 @@ import be.brusselsbook.utils.BrusselsBookUtils;
 public class RestaurantAccessImpl extends RestaurantAccess {
 
 	private static final String EID = "EID";
-	private static final String PRICEMINIMUM = "PriceMinimum";
-	private static final String PRICEMAXIMUM = "PriceMaximum";
+	private static final String PRICERANGE = "PriceRange";
+	private static final String BANQUETPLACES = "BanquetPlaces";
 	private static final String TAKEAWAY = "HasTakeaway";
 	private static final String DELIVERY = "MakeDelivery";
 	private static final String HALFDAYSOFF = "HalfDaysOff";
 
-	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom(EID, PRICEMINIMUM, PRICEMAXIMUM,
+	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom(EID, PRICERANGE, BANQUETPLACES,
 			TAKEAWAY, DELIVERY, HALFDAYSOFF);
 	private static final String TABLE = "Restaurant";
 
@@ -50,8 +50,8 @@ public class RestaurantAccessImpl extends RestaurantAccess {
 		Long eid = resultSet.getLong(EID);
 		Establishment establishment = establishmentAccess.withEid(eid);
 		Restaurant restaurant = new Restaurant(establishment);
-		restaurant.setPriceMinimum(resultSet.getInt(PRICEMINIMUM));
-		restaurant.setPriceMaximum(resultSet.getInt(PRICEMAXIMUM));
+		restaurant.setPriceRange(resultSet.getInt(PRICERANGE));
+		restaurant.setBanquetPlaces(resultSet.getInt(BANQUETPLACES));
 		restaurant.setTakeaway(resultSet.getBoolean(TAKEAWAY));
 		restaurant.setDelivery(resultSet.getBoolean(DELIVERY));
 		restaurant.setHalfDaysOff(resultSet.getString(HALFDAYSOFF));

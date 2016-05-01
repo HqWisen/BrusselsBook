@@ -23,12 +23,13 @@ CREATE TABLE Establishment(
 	PRIMARY KEY(EID)
 );
 
+# NOTE: Remove of PriceMinimum and PriceMaximum to avoid using useless space on the database (always the same)
 CREATE TABLE Restaurant(
 	EID INT UNSIGNED NOT NULL,
-	PriceMinimum INT UNSIGNED NOT NULL,
-	PriceMaximum INT UNSIGNED NOT NULL,
+	PriceRange INT UNSIGNED NOT NULL,
+	BanquetPlaces INT UNSIGNED NOT NULL,
 	HasTakeaway TINYINT(1) NOT NULL,
-	MakeDelivry TINYINT(1) NOT NULL,
+	MakeDelivery TINYINT(1) NOT NULL,
 	# String format : XXXXXXXXXXXXXX where X can be F(alse) or T(rue)
     # To know if the restau. is open in the half day
     HalfDaysOff VARCHAR(14) NOT NULL,

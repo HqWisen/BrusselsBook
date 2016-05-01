@@ -4,11 +4,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import be.brusselsbook.data.Establishment;
 import be.brusselsbook.parser.RestaurantXml;
 import be.brusselsbook.parser.Restaurants;
 import be.brusselsbook.sql.access.AccessFactory;
-import be.brusselsbook.sql.access.EstablishmentAccess;
+import be.brusselsbook.sql.access.RestaurantAccess;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class JDBCTest {
@@ -19,9 +18,9 @@ public class JDBCTest {
 		Restaurants restaurants = BrusselsBookUtils.unmarshal(fileContent, Restaurants.class);
 		List<RestaurantXml> restaurantList = restaurants.getRestaurantList();
 		AccessFactory factory = AccessFactory.getInstance();
-		EstablishmentAccess<Establishment> establishmentAccess = factory.getEstablishmentAccess();
+		RestaurantAccess restaurantAccess = factory.getRestaurantAccess();
 		for(RestaurantXml rx : restaurantList){
-			establishmentAccess.createEstablishement(rx.getRestoInfos());	
+			restaurantAccess.createRestaurant(rx.getRestoInfos());	
 		}
 		/*AdministratorAccess administratorAccess = factory.getAdminstratorAccess();
 		BookUserAccess<BookUser> bookUserAccess = factory.getBookUserAccess();

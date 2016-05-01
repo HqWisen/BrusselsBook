@@ -8,7 +8,7 @@ import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.AddressAccess;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
-public class AddresAccessImpl extends AddressAccess {
+public class AddressAccessImpl extends AddressAccess {
 
 	private static final String EID = "EID";
 	private static final String STREET = "Street";
@@ -22,7 +22,7 @@ public class AddresAccessImpl extends AddressAccess {
 			POSTALCODE, LATITUDE, LONGITUDE);
 	private static final String TABLE = "Address";
 
-	public AddresAccessImpl(AccessFactory accessFactory) {
+	public AddressAccessImpl(AccessFactory accessFactory) {
 		super(accessFactory);
 	}
 
