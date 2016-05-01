@@ -44,7 +44,7 @@ public class AccessFactory {
 	}
 
 	public AdministratorAccess getAdminstratorAccess() {
-		return new AdministratorAccessImpl(this);
+		return new AdministratorAccess(this);
 	}
 
 	public EstablishmentAccess<Establishment> getEstablishmentAccess(){
@@ -52,11 +52,11 @@ public class AccessFactory {
 	}
 	
 	public AddressAccess getAddressAccess(){
-		return new AddressAccessImpl(this);
+		return new AddressAccess(this);
 	}
 	
 	public RestaurantAccess getRestaurantAccess(){
-		return new RestaurantAccessImpl(this);
+		return new RestaurantAccess(this);
 	}
 
 	public CafeAccess getCafeAccess() {
