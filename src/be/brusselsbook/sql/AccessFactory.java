@@ -44,4 +44,8 @@ public class AccessFactory {
 		return new EstablishementAccessImpl(this);
 	}
 	
+	public AddressAccess getAddressAccess(){
+		return new AddresAccessImpl(this);
+	}
+	
 }

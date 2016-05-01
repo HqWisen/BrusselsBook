@@ -8,6 +8,10 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 		super(accessFactory);
 	}
 
+	public T createEstablishment(String name, String phoneNumber, String website){
+		return create(name, phoneNumber, website);
+	}
+	
 	public abstract T withEid(Long eid);
 
 	public abstract T withEid(String eid);
