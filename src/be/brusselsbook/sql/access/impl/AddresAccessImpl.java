@@ -50,12 +50,12 @@ public class AddresAccessImpl extends AddressAccess {
 	}
 
 	@Override
-	protected String[] getParameters() {
+	protected String[] getCreationParameters() {
 		return PARAMETERS;
 	}
 
 	@Override
-	protected int getNumberOfParameters() {
+	protected int getNumberOfCreationParameters() {
 		return PARAMETERS.length;
 	}
 

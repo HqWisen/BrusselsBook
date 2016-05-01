@@ -39,9 +39,13 @@ public abstract class DataAccess<T> implements Indexable<T>{
 
 	protected abstract String getTable();
 	
-	protected abstract String[] getParameters();
+	/**
+	 * 
+	 * @return An array of the parameters that should be added in the table
+	 */
+	protected abstract String[] getCreationParameters();
 	
-	protected abstract int getNumberOfParameters();
+	protected abstract int getNumberOfCreationParameters();
 	
 	public String SELECTBY(String by) {
 		return "SELECT * FROM " + getTable() + " WHERE " + by + " = ?";
@@ -52,8 +56,8 @@ public abstract class DataAccess<T> implements Indexable<T>{
 	}
 	
 	public String INSERT() {
-		String wildCards = wildCards(getNumberOfParameters());
-		String parameters = parameters(getParameters());
+		String wildCards = wildCards(getNumberOfCreationParameters());
+		String parameters = parameters(getCreationParameters());
 		return "INSERT INTO " + getTable() + " (" + parameters + ") VALUES (" + wildCards + ")";
 	}
 	

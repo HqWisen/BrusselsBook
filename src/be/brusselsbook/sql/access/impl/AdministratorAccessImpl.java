@@ -32,12 +32,12 @@ public class AdministratorAccessImpl extends AdministratorAccess {
 	}
 
 	@Override
-	protected String[] getParameters() {
+	protected String[] getCreationParameters() {
 		return PARAMETERS;
 	}
 
 	@Override
-	protected int getNumberOfParameters() {
+	protected int getNumberOfCreationParameters() {
 		return PARAMETERS.length;
 	}
 
@@ -45,7 +45,8 @@ public class AdministratorAccessImpl extends AdministratorAccess {
 	public Administrator create(Object... values) {
 		BookUser bookUser = bookUserAccess.create(values);
 		Long uid = bookUser.getUid();
-		return super.create(uid);
+		// FIXME issue with both create method in parent
+		return super.create(null, uid);
 	}
 
 	@Override

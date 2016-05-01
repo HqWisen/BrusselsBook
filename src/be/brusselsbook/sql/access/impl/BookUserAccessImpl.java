@@ -31,12 +31,12 @@ public class BookUserAccessImpl extends BookUserAccess<BookUser> {
 	}
 	
 	@Override
-	protected String[] getParameters() {
+	protected String[] getCreationParameters() {
 		return PARAMETERS;
 	}
 	
 	@Override
-	protected int getNumberOfParameters() {
+	protected int getNumberOfCreationParameters() {
 		return PARAMETERS.length;
 	}
 	

@@ -30,12 +30,12 @@ public class EstablishementAccessImpl extends EstablishmentAccess<Establishment>
 	}
 	
 	@Override
-	protected String[] getParameters() {
+	protected String[] getCreationParameters() {
 		return PARAMETERS;
 	}
 	
 	@Override
-	protected int getNumberOfParameters() {
+	protected int getNumberOfCreationParameters() {
 		return PARAMETERS.length;
 	}
 	
