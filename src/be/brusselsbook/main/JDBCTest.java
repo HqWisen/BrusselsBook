@@ -4,8 +4,8 @@ import java.sql.SQLException;
 
 import be.brusselsbook.data.BookUser;
 import be.brusselsbook.data.Establishment;
-import be.brusselsbook.servs.AdministratorAccess;
 import be.brusselsbook.sql.AccessFactory;
+import be.brusselsbook.sql.AdministratorAccess;
 import be.brusselsbook.sql.BookUserAccess;
 import be.brusselsbook.sql.EstablishmentAccess;
 

@@ -1,8 +1,6 @@
-package be.brusselsbook.servs;
+package be.brusselsbook.sql;
 
 import be.brusselsbook.data.Administrator;
-import be.brusselsbook.sql.AccessFactory;
-import be.brusselsbook.sql.BookUserAccess;
 
 public abstract class AdministratorAccess extends BookUserAccess<Administrator> {
 	
