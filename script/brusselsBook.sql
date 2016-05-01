@@ -13,6 +13,7 @@ USE brusselsbook;
 
 # FIXME make cascade delete (example: delete Adminstrator should delete also the BookUser)
 
+# Latitude and Longitude has been put in Address (indentation problem in the model)
 CREATE TABLE Establishment(
 	EID INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	EName VARCHAR(20) NOT NULL,

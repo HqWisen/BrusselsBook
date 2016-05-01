@@ -1,4 +1,4 @@
-package be.brusselsbook.data;
+package be.brusselsbook.parser;
 
 import java.util.List;
 

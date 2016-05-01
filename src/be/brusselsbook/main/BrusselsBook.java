@@ -2,8 +2,8 @@ package be.brusselsbook.main;
 
 import java.io.IOException;
 
-import be.brusselsbook.data.Cafe;
-import be.brusselsbook.data.Cafes;
+import be.brusselsbook.parser.Cafe;
+import be.brusselsbook.parser.Cafes;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class BrusselsBook {

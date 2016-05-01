@@ -1,4 +1,4 @@
-package be.brusselsbook.data;
+package be.brusselsbook.parser;
 
 import javax.xml.bind.annotation.XmlElement;
 

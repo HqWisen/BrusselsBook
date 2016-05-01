@@ -8,7 +8,11 @@ import be.brusselsbook.sql.exception.DatabaseAccessException;
 import be.brusselsbook.utils.AccessUtils;
 
 public class EstablishementAccessImpl extends EstablishmentAccess<Establishment> {
-
+	
+	// FIXME see if SQL variable cannot be put in constant
+	// FIXME see if SELECT() INSERT() ... cannot be implement in abstact
+	// FIXME see if create cannot be generic
+	
 	protected static final String EID = "EID";
 	
 	protected EstablishementAccessImpl(AccessFactory accessFactory) {
