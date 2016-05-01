@@ -36,15 +36,15 @@ public final class AccessUtils {
 		}
 	}
 
-	public static ResultSet executeQuery(AccessFactory accessFactory, String sqlQuery, Object... objects)
+	public static ResultSet executeQuery(AccessFactory accessFactory, String sqlQuery, Object... values)
 			throws DatabaseAccessException {
-		LOGGER.info("executing query " + sqlQuery + " with " + Arrays.asList(objects));
+		LOGGER.info("executing query " + sqlQuery + " with " + Arrays.asList(values));
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
 			connection = accessFactory.getConnection();
-			preparedStatement = AccessUtils.createPreparedStatement(connection, sqlQuery, objects);
+			preparedStatement = AccessUtils.createPreparedStatement(connection, sqlQuery, values);
 			resultSet = preparedStatement.executeQuery();
 			AccessUtils.close(connection);
 		} catch (SQLException e) {
@@ -53,15 +53,15 @@ public final class AccessUtils {
 		return resultSet;
 	}
 
-	public static ResultSet executeInsert(AccessFactory accessFactory, String sqlQuery, Object... objects)
+	public static ResultSet executeInsert(AccessFactory accessFactory, String sqlQuery, Object... values)
 			throws DatabaseAccessException {
-		LOGGER.info("executing insert " + sqlQuery + " with " + Arrays.asList(objects));
+		LOGGER.info("executing insert " + sqlQuery + " with " + Arrays.asList(values));
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
 			connection = accessFactory.getConnection();
-			preparedStatement = AccessUtils.createPreparedStatement(true, connection, sqlQuery, objects);
+			preparedStatement = AccessUtils.createPreparedStatement(true, connection, sqlQuery, values);
 			int statut = preparedStatement.executeUpdate();
 			if (statut == 0) {
 				throw new DatabaseAccessException("Failed to create entity in database. Nothing added.");
@@ -74,17 +74,17 @@ public final class AccessUtils {
 		return resultSet;
 	}
 
-	public static PreparedStatement createPreparedStatement(Connection connection, String sqlQuery, Object... objects)
+	public static PreparedStatement createPreparedStatement(Connection connection, String sqlQuery, Object... values)
 			throws SQLException {
-		return createPreparedStatement(false, connection, sqlQuery, objects);
+		return createPreparedStatement(false, connection, sqlQuery, values);
 	}
 
 	public static PreparedStatement createPreparedStatement(boolean returnGeneratedKeys, Connection connection,
-			String sqlQuery, Object... objects) throws SQLException {
+			String sqlQuery, Object... values) throws SQLException {
 		PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery,
 				returnGeneratedKeys ? Statement.RETURN_GENERATED_KEYS : Statement.NO_GENERATED_KEYS);
-		for (int i = 0; i < objects.length; i++) {
-			preparedStatement.setObject(i + 1, objects[i]);
+		for (int i = 0; i < values.length; i++) {
+			preparedStatement.setObject(i + 1, values[i]);
 		}
 		return preparedStatement;
 	}

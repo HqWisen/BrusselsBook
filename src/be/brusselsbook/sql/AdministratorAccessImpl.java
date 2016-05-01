@@ -39,8 +39,8 @@ public class AdministratorAccessImpl extends AdministratorAccess {
 	}
 
 	@Override
-	public Administrator create(Object... objects) {
-		BookUser bookUser = bookUserAccess.create(objects);
+	public Administrator create(Object... values) {
+		BookUser bookUser = bookUserAccess.create(values);
 		Long uid = bookUser.getUid();
 		return super.create(uid);
 	}
