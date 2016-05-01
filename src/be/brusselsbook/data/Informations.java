@@ -1,7 +1,5 @@
 package be.brusselsbook.data;
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlElement;
 
 

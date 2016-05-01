@@ -11,6 +11,7 @@ public class BookUser {
 	private Timestamp registrationDate;
 
 	public BookUser() {
+		super();
 	}
 
 	public BookUser(BookUser other) {

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import be.brusselsbook.data.BookUser;
+import be.brusselsbook.data.Establishment;
 import be.brusselsbook.servs.AdministratorAccess;
 import be.brusselsbook.sql.exception.DatabaseAccessException;
 
@@ -40,4 +41,8 @@ public class AccessFactory {
 		return new AdministratorAccessImpl(this);
 	}
 
+	public EstablishmentAccess<Establishment> getEstablishmentAccess(){
+		return new EstablishementAccessImpl(this);
+	}
+	
 }

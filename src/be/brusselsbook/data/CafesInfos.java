@@ -3,15 +3,13 @@ package be.brusselsbook.data;
 import javax.xml.bind.annotation.XmlElement;
 
 public class CafesInfos extends Informations {
-	
+
 	@XmlElement(name = "Smoking")
 	private String smoking; // null if none, empty string if has.
-	
+
 	@XmlElement(name = "Snack")
 	private String snack;
 
-	
-	
 	public String getSmoking() {
 		return smoking;
 	}
@@ -20,23 +18,22 @@ public class CafesInfos extends Informations {
 		return snack;
 	}
 
-	public boolean canSmoke(){
+	public boolean canSmoke() {
 		return getSmoking() != null;
 	}
 
-	public boolean canSnack(){
+	public boolean canSnack() {
 		return getSnack() != null;
 	}
-	
+
 	@Override
 	public String toString() {
 		String string = "Nam: ";
-		string += super.getName() ;
-		/*string += "; ";
-		string+= canSnack();*/
+		string += super.getName();
+		/*
+		 * string += "; "; string+= canSnack();
+		 */
 		return string;
 	}
-
-
 
 }

@@ -3,9 +3,11 @@ package be.brusselsbook.main;
 import java.sql.SQLException;
 
 import be.brusselsbook.data.BookUser;
+import be.brusselsbook.data.Establishment;
 import be.brusselsbook.servs.AdministratorAccess;
 import be.brusselsbook.sql.AccessFactory;
 import be.brusselsbook.sql.BookUserAccess;
+import be.brusselsbook.sql.EstablishmentAccess;
 
 public class JDBCTest {
 
@@ -14,6 +16,7 @@ public class JDBCTest {
 		AccessFactory factory = AccessFactory.getInstance();
 		AdministratorAccess administratorAccess = factory.getAdminstratorAccess();
 		BookUserAccess<BookUser> bookUserAccess = factory.getBookUserAccess();
+		EstablishmentAccess<Establishment> establishmentAccess = factory.getEstablishmentAccess();
 		/*System.out.println(administratorAccess.withUsername("jordan"));
 		System.out.println(administratorAccess.withUsername("kevin"));
 		System.out.println(administratorAccess.withEmail("jimmyjam@brusselsbook.be"));
@@ -22,7 +25,8 @@ public class JDBCTest {
 		System.out.println(bookUserAccess.withEmail("kevinspacey@brusselsbook.be"));
 		System.out.println(bookUserAccess.withUsername("kevin"));
 		System.out.println(bookUserAccess.withUid(1L));*/
-		System.out.println(administratorAccess.getObjects());
+		establishmentAccess.create("Jimmy Burger", "02222222", "http://jimmyburger.be");
+		System.out.println(establishmentAccess.getObjects());
 		//BookUser bookUser = administratorAccess.create("hakim@brusselsbook.be", "hakim", "nous");
 		//System.out.println(bookUser);
 	}
