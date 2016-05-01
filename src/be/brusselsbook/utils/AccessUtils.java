@@ -15,11 +15,27 @@ import be.brusselsbook.sql.exception.DatabaseAccessException;
 public final class AccessUtils {
 
 	private static final Logger LOGGER = Logger.getLogger(AccessUtils.class.getName());
-	
-	static{
+
+	static {
 		LOGGER.setLevel(Level.OFF);
 	}
-	
+
+	public static boolean next(ResultSet resultSet) throws DatabaseAccessException {
+		try {
+			return resultSet.next();
+		} catch (SQLException e) {
+			throw new DatabaseAccessException(e);
+		}
+	}
+
+	public static Long getLongFirstColumn(ResultSet resultSet) throws DatabaseAccessException {
+		try {
+			return resultSet.getLong(1);
+		} catch (SQLException e) {
+			throw new DatabaseAccessException(e);
+		}
+	}
+
 	public static ResultSet executeQuery(AccessFactory accessFactory, String sqlQuery, Object... objects)
 			throws DatabaseAccessException {
 		LOGGER.info("executing query " + sqlQuery + " with " + Arrays.asList(objects));

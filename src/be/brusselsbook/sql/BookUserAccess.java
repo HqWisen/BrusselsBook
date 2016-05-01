@@ -8,8 +8,6 @@ public abstract class BookUserAccess<T extends BookUser> extends DataAccess<T>{
 		super(accessFactory);
 	}
 	
-	public abstract T create(String email, String username, String password);
-	
 	public abstract T withEmail(String email);
 
 	public abstract T withUsername(String username);
