@@ -1,14 +1,12 @@
-package be.brusselsbook.sql.access.impl;
+package be.brusselsbook.sql.access;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import be.brusselsbook.data.Establishment;
-import be.brusselsbook.sql.access.AccessFactory;
-import be.brusselsbook.sql.access.EstablishmentAccess;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
-public class EstablishementAccessImpl extends EstablishmentAccess<Establishment> {
+public class EstablishmentAccessImpl extends EstablishmentAccess<Establishment> {
 	
 	private static final String NAME = "EName";
 	private static final String PHONENUMBER = "PhoneNumber";
@@ -20,7 +18,7 @@ public class EstablishementAccessImpl extends EstablishmentAccess<Establishment>
 	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom(NAME, PHONENUMBER, WEBSITE);
 	private static final String TABLE = "Establishment";
 	
-	public EstablishementAccessImpl(AccessFactory accessFactory) {
+	public EstablishmentAccessImpl(AccessFactory accessFactory) {
 		super(accessFactory);
 	}
 
@@ -30,12 +28,12 @@ public class EstablishementAccessImpl extends EstablishmentAccess<Establishment>
 	}
 	
 	@Override
-	protected String[] getParameters() {
+	protected String[] getCreationParameters() {
 		return PARAMETERS;
 	}
 	
 	@Override
-	protected int getNumberOfParameters() {
+	protected int getNumberOfCreationParameters() {
 		return PARAMETERS.length;
 	}
 	
@@ -51,7 +49,7 @@ public class EstablishementAccessImpl extends EstablishmentAccess<Establishment>
 
 	@Override
 	public Establishment withEid(String eid) {
-		return with(SELECTBY(EID), eid);
+		return withQuery(SELECTBY(EID), eid);
 	}
 
 	@Override

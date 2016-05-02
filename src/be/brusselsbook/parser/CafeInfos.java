@@ -2,7 +2,7 @@ package be.brusselsbook.parser;
 
 import javax.xml.bind.annotation.XmlElement;
 
-public class CafesInfos extends Informations {
+public class CafeInfos extends EstablishmentInfos {
 
 	@XmlElement(name = "Smoking")
 	private String smoking; // null if none, empty string if has.
@@ -10,19 +10,19 @@ public class CafesInfos extends Informations {
 	@XmlElement(name = "Snack")
 	private String snack;
 
-	public String getSmoking() {
+	private String getSmoking() {
 		return smoking;
 	}
 
-	public String getSnack() {
+	private String getSnack() {
 		return snack;
 	}
 
-	public boolean canSmoke() {
+	public Boolean canSmoke() {
 		return getSmoking() != null;
 	}
 
-	public boolean canSnack() {
+	public Boolean canSnack() {
 		return getSnack() != null;
 	}
 

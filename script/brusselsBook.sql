@@ -16,19 +16,20 @@ USE brusselsbook;
 # Latitude and Longitude has been put in Address (indentation problem in the model)
 CREATE TABLE Establishment(
 	EID INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	EName VARCHAR(20) NOT NULL,
+	EName VARCHAR(50) NOT NULL,
 	PhoneNumber VARCHAR(20) NOT NULL,
 	Modified TINYINT(1) DEFAULT 0,
-	Website VARCHAR(50),
+	Website VARCHAR(200),
 	PRIMARY KEY(EID)
 );
 
+# NOTE: Remove of PriceMinimum and PriceMaximum to avoid using useless space on the database (always the same)
 CREATE TABLE Restaurant(
 	EID INT UNSIGNED NOT NULL,
-	PriceMinimum INT UNSIGNED NOT NULL,
-	PriceMaximum INT UNSIGNED NOT NULL,
+	PriceRange INT UNSIGNED NOT NULL,
+	BanquetPlaces INT UNSIGNED NOT NULL,
 	HasTakeaway TINYINT(1) NOT NULL,
-	MakeDelivry TINYINT(1) NOT NULL,
+	MakeDelivery TINYINT(1) NOT NULL,
 	# String format : XXXXXXXXXXXXXX where X can be F(alse) or T(rue)
     # To know if the restau. is open in the half day
     HalfDaysOff VARCHAR(14) NOT NULL,

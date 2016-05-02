@@ -5,7 +5,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
-public class RestaurantInfos extends Informations {
+public class RestaurantInfos extends EstablishmentInfos {
 
 	@XmlElementWrapper(name = "Closed")
 	@XmlElement(name = "On")
@@ -27,7 +27,7 @@ public class RestaurantInfos extends Informations {
 		return takeAway;
 	}
 	
-	public boolean hasTakeAway(){
+	public Boolean hasTakeAway(){
 		return getTakeAway() != null;
 	}
 
@@ -35,11 +35,11 @@ public class RestaurantInfos extends Informations {
 		return delivery;
 	}
 
-	public boolean makeDelivery(){
+	public Boolean makeDelivery(){
 		return getDelivery() != null;
 	}
 	
-	public int getPriceRange() {
+	public Integer getPriceRange() {
 		return priceRange;
 	}
 
@@ -51,6 +51,15 @@ public class RestaurantInfos extends Informations {
 		return closedDayList;
 	}
 
+	public Integer getBanquetPlaces(){
+		return banquet.getCapacity();
+	}
+	
+	public String getClosedDays(){
+		// TODO find a way to modelize the closed day in the db
+		return "NOT IMPLEMENT";
+	}
+	
 	@Override
 	public String toString() {
 		String string = "Name: ";

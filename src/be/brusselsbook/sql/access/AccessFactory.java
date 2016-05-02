@@ -6,10 +6,6 @@ import java.sql.SQLException;
 import be.brusselsbook.data.BookUser;
 import be.brusselsbook.data.Establishment;
 import be.brusselsbook.sql.DatabaseAccess;
-import be.brusselsbook.sql.access.impl.AddresAccessImpl;
-import be.brusselsbook.sql.access.impl.AdministratorAccessImpl;
-import be.brusselsbook.sql.access.impl.BookUserAccessImpl;
-import be.brusselsbook.sql.access.impl.EstablishementAccessImpl;
 import be.brusselsbook.sql.exception.DatabaseAccessException;
 
 public class AccessFactory {
@@ -42,15 +38,23 @@ public class AccessFactory {
 	}
 
 	public AdministratorAccess getAdminstratorAccess() {
-		return new AdministratorAccessImpl(this);
+		return new AdministratorAccess(this);
 	}
 
 	public EstablishmentAccess<Establishment> getEstablishmentAccess(){
-		return new EstablishementAccessImpl(this);
+		return new EstablishmentAccessImpl(this);
 	}
 	
 	public AddressAccess getAddressAccess(){
-		return new AddresAccessImpl(this);
+		return new AddressAccess(this);
+	}
+	
+	public RestaurantAccess getRestaurantAccess(){
+		return new RestaurantAccess(this);
+	}
+
+	public CafeAccess getCafeAccess() {
+		return new CafeAccess(this);
 	}
 	
 }

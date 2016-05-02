@@ -3,13 +3,13 @@ package be.brusselsbook.parser;
 import javax.xml.bind.annotation.XmlElement;
 
 
-public class Informations {
+public class EstablishmentInfos {
 
 	@XmlElement(name = "Name")
 	private String name;
 	
 	@XmlElement(name = "Address")
-	private Address address;
+	private AddressXml address;
 	
 	@XmlElement(name = "Tel")
 	private String tel;
@@ -22,7 +22,7 @@ public class Informations {
 		return name;
 	}
 
-	public Address getAddress() {
+	public AddressXml getAddress() {
 		return address;
 	}
 
@@ -33,8 +33,11 @@ public class Informations {
 	public Site getSite() {
 		return site;
 	}
-
-
-
 	
+	public String getSiteLink(){
+		if(site != null){
+			return site.getLink();	
+		}
+		return null;
+	}	
 }

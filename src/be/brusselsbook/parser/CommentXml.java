@@ -3,7 +3,7 @@ package be.brusselsbook.parser;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlValue;
 
-public class Comment {
+public class CommentXml {
 
 	@XmlAttribute
 	private String nickname;

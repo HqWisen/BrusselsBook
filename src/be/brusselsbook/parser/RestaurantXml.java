@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
-public class Restaurant {
+public class RestaurantXml {
 
 	@XmlAttribute
 	private String creationDate;
@@ -18,11 +18,11 @@ public class Restaurant {
 	
 	@XmlElementWrapper(name = "Comments")
 	@XmlElement(name = "Comment")
-	private List<Comment> commentList;
+	private List<CommentXml> commentList;
 	
 	@XmlElementWrapper(name = "Tags")
 	@XmlElement(name = "Tag")
-	private List<Tag> tagList;
+	private List<TagXml> tagList;
 
 	public String getCreationDate() {
 		return creationDate;
@@ -36,11 +36,11 @@ public class Restaurant {
 		return restoInfos;
 	}
 
-	public List<Comment> getCommentList() {
+	public List<CommentXml> getCommentList() {
 		return commentList;
 	}
 
-	public List<Tag> getTagList() {
+	public List<TagXml> getTagList() {
 		return tagList;
 	}
 

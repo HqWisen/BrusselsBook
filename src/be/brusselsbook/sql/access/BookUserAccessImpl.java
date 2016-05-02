@@ -1,11 +1,9 @@
-package be.brusselsbook.sql.access.impl;
+package be.brusselsbook.sql.access;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import be.brusselsbook.data.BookUser;
-import be.brusselsbook.sql.access.AccessFactory;
-import be.brusselsbook.sql.access.BookUserAccess;
 import be.brusselsbook.sql.exception.DatabaseAccessException;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
@@ -31,12 +29,12 @@ public class BookUserAccessImpl extends BookUserAccess<BookUser> {
 	}
 	
 	@Override
-	protected String[] getParameters() {
+	protected String[] getCreationParameters() {
 		return PARAMETERS;
 	}
 	
 	@Override
-	protected int getNumberOfParameters() {
+	protected int getNumberOfCreationParameters() {
 		return PARAMETERS.length;
 	}
 	
@@ -47,12 +45,12 @@ public class BookUserAccessImpl extends BookUserAccess<BookUser> {
 	
 	@Override
 	public BookUser withEmail(String email) throws DatabaseAccessException {
-		return with(SELECTBY(EMAILADDRESS), email);
+		return withQuery(SELECTBY(EMAILADDRESS), email);
 	}
 
 	@Override
 	public BookUser withUsername(String username) {
-		return with(SELECTBY(USERNAME), username);
+		return withQuery(SELECTBY(USERNAME), username);
 	}
 
 	@Override
@@ -62,7 +60,7 @@ public class BookUserAccessImpl extends BookUserAccess<BookUser> {
 
 	@Override
 	public BookUser withUid(String uid) {
-		return with(SELECTBY(UID), uid);
+		return withQuery(SELECTBY(UID), uid);
 	}
 
 	@Override
