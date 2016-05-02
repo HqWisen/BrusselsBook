@@ -29,7 +29,7 @@ public class CafeAccess extends EstablishmentAccess<Cafe> {
 		return createCafe(establishment.getEid(), infos);
 	}
 
-	public Cafe createCafe(Long eid, CafeInfos infos) {
+	private Cafe createCafe(Long eid, CafeInfos infos) {
 		return createCafe(eid, infos.canSmoke(), infos.canSnack());
 	}
 

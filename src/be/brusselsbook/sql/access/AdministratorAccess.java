@@ -23,6 +23,10 @@ public class AdministratorAccess extends BookUserAccess<Administrator> {
 		this.bookUserAccess = accessFactory.getBookUserAccess();
 	}
 
+	public Administrator createAdministrator(String email, String username, String password){
+		return create(email, username, password);
+	}
+	
 	@Override
 	protected String getTable() {
 		return TABLE;

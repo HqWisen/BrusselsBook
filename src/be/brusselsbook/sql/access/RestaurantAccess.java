@@ -33,7 +33,7 @@ public class RestaurantAccess extends EstablishmentAccess<Restaurant> {
 		return createRestaurant(establishment.getEid(), infos);
 	}
 
-	public Restaurant createRestaurant(Long eid, RestaurantInfos infos) {
+	private Restaurant createRestaurant(Long eid, RestaurantInfos infos) {
 		return createRestaurant(eid, infos.getPriceRange(), infos.getBanquetPlaces(), infos.hasTakeAway(),
 				infos.makeDelivery(), infos.getClosedDays());
 	}

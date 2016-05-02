@@ -82,4 +82,8 @@ public final class BrusselsBookUtils {
 		return code;
 	}
 
+	public static String generateEmail(String nickname) {
+		return nickname.toLowerCase()+"@brusselsbook.be";
+	}
+
 }
