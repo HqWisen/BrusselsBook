@@ -1,8 +1,8 @@
 package be.brusselsbook.sql.access;
 
-import be.brusselsbook.data.Establishment;
 import be.brusselsbook.parser.AddressXml;
 import be.brusselsbook.parser.EstablishmentInfos;
+import be.brusselsbook.sql.data.Establishment;
 
 public abstract class EstablishmentAccess<T extends Establishment> extends DataAccess<T> {
 
@@ -10,7 +10,14 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 		super(accessFactory);
 	}
 
-	public T createEstablishement(EstablishmentInfos infos){
+	public T createEstablishment(Long aid, EstablishmentInfos infos){
+		EstablishmentCreationAccess creationAccess = accessFactory.getEstablishmentCreationAccess();
+		T establishment = createEstablishment(infos);
+		creationAccess.createEstablishmentCreation(establishment.getEid(), aid);
+		return establishment;
+	}
+	
+	public T createEstablishment(EstablishmentInfos infos){
 		return createEstablishment(infos.getName(), infos.getTel(), infos.getSiteLink(), infos.getAddress());
 	}
 	

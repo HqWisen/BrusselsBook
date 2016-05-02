@@ -1,6 +1,6 @@
 package be.brusselsbook.sql.access;
 
-import be.brusselsbook.data.BookUser;
+import be.brusselsbook.sql.data.BookUser;
 
 public abstract class BookUserAccess<T extends BookUser> extends DataAccess<T>{
 

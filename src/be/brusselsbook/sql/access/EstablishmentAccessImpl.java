@@ -3,7 +3,7 @@ package be.brusselsbook.sql.access;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import be.brusselsbook.data.Establishment;
+import be.brusselsbook.sql.data.Establishment;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class EstablishmentAccessImpl extends EstablishmentAccess<Establishment> {

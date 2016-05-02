@@ -3,9 +3,11 @@ package be.brusselsbook.sql.access;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import be.brusselsbook.data.Establishment;
-import be.brusselsbook.data.Restaurant;
+import be.brusselsbook.parser.CafeInfos;
 import be.brusselsbook.parser.RestaurantInfos;
+import be.brusselsbook.sql.data.Cafe;
+import be.brusselsbook.sql.data.Establishment;
+import be.brusselsbook.sql.data.Restaurant;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class RestaurantAccess extends EstablishmentAccess<Restaurant> {
@@ -28,8 +30,13 @@ public class RestaurantAccess extends EstablishmentAccess<Restaurant> {
 		this.establishmentAccess = accessFactory.getEstablishmentAccess();
 	}
 
+	public Restaurant createRestaurantFromAdmin(Long aid, RestaurantInfos infos) {
+		Establishment establishment = establishmentAccess.createEstablishment(aid, infos);
+		return createRestaurant(establishment.getEid(), infos);
+	}
+	
 	public Restaurant createRestaurant(RestaurantInfos infos) {
-		Establishment establishment = establishmentAccess.createEstablishement(infos);
+		Establishment establishment = establishmentAccess.createEstablishment(infos);
 		return createRestaurant(establishment.getEid(), infos);
 	}
 

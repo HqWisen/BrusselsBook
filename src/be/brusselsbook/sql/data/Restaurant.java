@@ -1,4 +1,4 @@
-package be.brusselsbook.data;
+package be.brusselsbook.sql.data;
 
 public class Restaurant extends Establishment {
 

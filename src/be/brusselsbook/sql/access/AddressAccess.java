@@ -3,8 +3,8 @@ package be.brusselsbook.sql.access;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import be.brusselsbook.data.Address;
 import be.brusselsbook.parser.AddressXml;
+import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class AddressAccess extends DataAccess<Address> {

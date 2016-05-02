@@ -3,8 +3,8 @@ package be.brusselsbook.sql.access;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import be.brusselsbook.data.Administrator;
-import be.brusselsbook.data.BookUser;
+import be.brusselsbook.sql.data.Administrator;
+import be.brusselsbook.sql.data.BookUser;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class AdministratorAccess extends BookUserAccess<Administrator> {
