@@ -12,6 +12,7 @@ import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.AdministratorAccess;
 import be.brusselsbook.sql.access.CafeAccess;
 import be.brusselsbook.sql.access.RestaurantAccess;
+import be.brusselsbook.sql.data.Administrator;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class XmlDataCreator {
@@ -32,12 +33,14 @@ public class XmlDataCreator {
 		this.cafeAccess = factory.getCafeAccess();
 	}
 
-	private void createAdministrator(String nickname) {
+	private Administrator createAdministrator(String nickname) {
 		LOGGER.info("xml creator: create admin: " + nickname);
 		String email = BrusselsBookUtils.generateEmail(nickname);
-		if (administratorAccess.withEmail(email) == null) {
-			administratorAccess.createAdministrator(email, nickname, "azerty");
+		Administrator admin = administratorAccess.withEmail(email);
+		if(admin == null){
+			return administratorAccess.createAdministrator(email, nickname, "azerty");	
 		}
+		return admin;
 	}
 
 	private void parseCafes() throws IOException{
@@ -45,8 +48,8 @@ public class XmlDataCreator {
 		Cafes cafes = BrusselsBookUtils.unmarshal(fileContent, Cafes.class);
 		List<CafeXml> cafeList = cafes.getCafeList();		
 		for (CafeXml cx : cafeList) {
-			cafeAccess.createCafe(cx.getCafeInfos());
-			createAdministrator(cx.getNickname());
+			Administrator admin = createAdministrator(cx.getNickname());
+			cafeAccess.createCafeFromAdmin(admin.getAid(), cx.getCafeInfos());
 		}
 	}
 	
@@ -55,8 +58,8 @@ public class XmlDataCreator {
 		Restaurants restaurants = BrusselsBookUtils.unmarshal(fileContent, Restaurants.class);
 		List<RestaurantXml> restaurantList = restaurants.getRestaurantList();		
 		for (RestaurantXml rx : restaurantList) {
-			restaurantAccess.createRestaurant(rx.getRestoInfos());
-			createAdministrator(rx.getNickname());
+			Administrator admin = createAdministrator(rx.getNickname());
+			restaurantAccess.createRestaurantFromAdmin(admin.getAid(), rx.getRestoInfos());
 		}
 		
 	}
