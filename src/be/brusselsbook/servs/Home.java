@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import be.brusselsbook.sql.data.BookUser;
+
 @WebServlet("/home")
 public class Home extends HttpServlet {
 
@@ -15,7 +17,13 @@ public class Home extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		BookUser bookUser = new BookUser();
+		bookUser.setEmailAddress("hakim@brusselsbook.be");
+		req.setAttribute("user", bookUser);
 		getServletContext().getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(req, resp);
 	}
 
+	
+	
 }
+

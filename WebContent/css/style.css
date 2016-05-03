@@ -1,0 +1,143 @@
+button::-moz-focus-inner {
+  border: 0;
+}
+
+div::-moz-focus-inner {
+  border: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  font-family: Ubuntu, Verdana, Geneva, Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  background: #eaeaea;
+}
+
+
+/* Toolbar */
+
+#toolbar-section {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+#toolbar {
+  position: static;
+  width: 100%;
+  height: 70px;
+  margin: 0;
+  padding: 0;
+  padding-left: 40px;
+  background: #005dbf;
+  /*box-shadow: 0 0 1px 1px #000;*/
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.tabs {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.tab {
+  display: flex;
+  height: 100%;
+  width: auto;
+  padding: 0;
+  margin-left: 5px;
+  margin-right: 5px;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.error {
+  color: red;
+}
+
+.tab a {
+  display: flex;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 5px;
+  color: white;
+  font-size: 22px;
+  font-variant: normal;
+  text-decoration: none;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.tab a:hover {
+  background: #0068d6;
+  border-radius: 7px;
+}
+
+.tab a.active {
+  background: white;
+  color: #005dbf;
+  border-radius: 7px;
+}
+
+#tabbar {
+  width: 100%;
+  height: 0%;
+  margin: 0;
+  padding: 0;
+  background: green;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#bar {
+  position: relative;
+  width: 0;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  height: 100%;
+  background: white;
+}
+
+
+/* Notifications */
+
+.notification {
+  position: fixed;
+  margin-bottom: 20px;
+  bottom: 0;
+  left: 50%;
+}
+
+.notif-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding: 20px;
+  font-size: 15px;
+  position: relative;
+  left: -50%;
+  background: rgba(80, 80, 80, 0.86);
+  color: white;
+  box-shadow: rgba(80, 80, 80, 0.67) 0px 0px 5px 2px;
+  border-radius: 20px;
+}
