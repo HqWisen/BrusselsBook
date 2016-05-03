@@ -3,14 +3,15 @@ package be.brusselsbook.sql.access;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import be.brusselsbook.sql.data.BookUser;
 import be.brusselsbook.sql.data.Describer;
+import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class DescriberAccessImpl extends DescriberAccess<Describer> {
 
 	protected static final String DID = "DID";
 	private static final String CREATIONDATE = "RegistrationDate";
 	
+	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom();
 	private static final String TABLE = "Describer";
 	
 	protected DescriberAccessImpl(AccessFactory accessFactory) {
@@ -46,15 +47,14 @@ public class DescriberAccessImpl extends DescriberAccess<Describer> {
 		return TABLE;
 	}
 
-	//TODO return 0 parameters .
 	@Override
 	protected String[] getCreationParameters() {
-		return null;
+		return PARAMETERS;
 	}
 
 	@Override
 	protected int getNumberOfCreationParameters() {
-		return 0;
+		return PARAMETERS.length;
 	}
 
 }
