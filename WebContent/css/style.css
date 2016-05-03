@@ -85,7 +85,7 @@ body {
 }
 
 .error {
-  /*color: red;*/
+  color: red;
 }
 
 .tab a {
@@ -114,3 +114,4 @@ body {
   color: #005dbf;
   border-radius: 7px;
 }
+

@@ -92,4 +92,8 @@ public class AdministratorAccess extends BookUserAccess<Administrator> {
 		administrator.setAid(resultSet.getLong(AID));
 		return administrator;
 	}
+
+	public boolean isAdmin(Long uid) {
+		return withUid(uid) != null;
+	}
 }

@@ -68,7 +68,7 @@ public class BookUserAccessImpl extends BookUserAccess<BookUser> {
 		BookUser bookUser = new BookUser();
 		bookUser.setUid(resultSet.getLong(UID));
 		bookUser.setEmailAddress(resultSet.getString(EMAILADDRESS));
-		bookUser.setUsername(resultSet.getString(UID));
+		bookUser.setUsername(resultSet.getString(USERNAME));
 		bookUser.setPassword(resultSet.getString(PASSWORD));
 		bookUser.setRegistrationDate(resultSet.getTimestamp(REGISTRATIONDATE));
 		return bookUser;

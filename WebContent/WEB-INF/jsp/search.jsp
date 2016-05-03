@@ -15,7 +15,7 @@
 
 <body>
 	<c:import url="tabs.jsp">
-		<c:param name="home" value="true"/>
+		<c:param name="search" value="true"/>
 	</c:import>
 	
 </body>

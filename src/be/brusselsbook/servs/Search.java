@@ -10,19 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import be.brusselsbook.utils.ServerUtils;
 
-@WebServlet("/home")
-public class Home extends HttpServlet {
+@WebServlet("/search")
+public class Search extends HttpServlet {
 
+	private static final String SEARCHJSPFILE = ServerUtils.getJspPath("search.jsp");
 	private static final long serialVersionUID = 1L;
-	private static final String HOMEJSPFILE = ServerUtils.getJspPath("home.jsp");
-	
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher(HOMEJSPFILE).forward(req, resp);
+		getServletContext().getRequestDispatcher(SEARCHJSPFILE).forward(req, resp);
 	}
 
-	
-	
 }
-
