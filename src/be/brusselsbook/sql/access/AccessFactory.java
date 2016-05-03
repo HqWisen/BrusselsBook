@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import be.brusselsbook.sql.DatabaseAccess;
 import be.brusselsbook.sql.data.BookUser;
+import be.brusselsbook.sql.data.Describer;
 import be.brusselsbook.sql.data.Establishment;
 import be.brusselsbook.sql.data.EstablishmentCreation;
 import be.brusselsbook.sql.exception.DatabaseAccessException;
@@ -61,4 +62,10 @@ public class AccessFactory {
 	public EstablishmentCreationAccess getEstablishmentCreationAccess(){
 		return new EstablishmentCreationAccess(this);
 	}
+
+	public DescriberAccess<Describer> getDescriberAccess(){
+		return new DescriberAccessImpl(this);
+	}
+
+
 }

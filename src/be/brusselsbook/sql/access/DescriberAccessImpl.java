@@ -9,6 +9,8 @@ import be.brusselsbook.sql.data.Describer;
 public class DescriberAccessImpl extends DescriberAccess<Describer> {
 
 	protected static final String DID = "DID";
+	private static final String CREATIONDATE = "RegistrationDate";
+	
 	private static final String TABLE = "Describer";
 	
 	protected DescriberAccessImpl(AccessFactory accessFactory) {
@@ -17,20 +19,26 @@ public class DescriberAccessImpl extends DescriberAccess<Describer> {
 
 	@Override
 	public Describer withId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return withDid(id);
 	}
 
 	@Override
-	public Describer withDid(Long uid) {
-		return null;
+	public Describer withDid(Long did) {
+		return withDid(did.toString());
 	}
 
+	@Override
+	public Describer withDid(String did) {
+		return withQuery(SELECTBY(DID), did);
+	}
 
+	
 	@Override
 	protected Describer map(ResultSet resultSet) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Describer describer = new Describer();
+		describer.setDid(resultSet.getLong(DID));
+		describer.setCreationDate(resultSet.getTimestamp(CREATIONDATE));
+		return describer;
 	}
 
 	@Override
@@ -38,15 +46,14 @@ public class DescriberAccessImpl extends DescriberAccess<Describer> {
 		return TABLE;
 	}
 
+	//TODO return 0 parameters .
 	@Override
 	protected String[] getCreationParameters() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	protected int getNumberOfCreationParameters() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

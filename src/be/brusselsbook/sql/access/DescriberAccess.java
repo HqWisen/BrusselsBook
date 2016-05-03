@@ -14,7 +14,7 @@ public abstract class DescriberAccess<T extends Describer > extends DataAccess<T
 	
 	public abstract T withDid(Long did);
 
-	
+	public abstract T withDid(String did);
 
 
 
