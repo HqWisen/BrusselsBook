@@ -1,9 +1,5 @@
 package be.brusselsbook.sql.access;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import be.brusselsbook.sql.data.BookUser;
 import be.brusselsbook.sql.data.Describer;
 
 public abstract class DescriberAccess<T extends Describer > extends DataAccess<T> {
@@ -16,9 +12,9 @@ public abstract class DescriberAccess<T extends Describer > extends DataAccess<T
 
 	public abstract T withDid(String did);
 
+
 	public Describer createDescriber(){
 		return create();
 	}
-
 
 }
