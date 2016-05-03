@@ -17,7 +17,7 @@ public final class AccessUtils {
 	private static final Logger LOGGER = Logger.getLogger(AccessUtils.class.getName());
 
 	static {
-		LOGGER.setLevel(Level.OFF);
+		LOGGER.setLevel(Level.INFO);
 	}
 
 	public static boolean next(ResultSet resultSet) throws DatabaseAccessException {
