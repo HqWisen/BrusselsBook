@@ -9,6 +9,13 @@ public class BookComment extends Describer {
 	private Timestamp CreationDate;
 	private Integer score;
 	private String text;
+	
+	
+	public BookComment(Describer describer) {
+		super(describer);
+	}
+
+	
 	public Long getUid() {
 		return uid;
 	}

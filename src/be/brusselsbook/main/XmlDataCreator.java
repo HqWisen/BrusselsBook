@@ -10,6 +10,7 @@ import be.brusselsbook.parser.RestaurantXml;
 import be.brusselsbook.parser.Restaurants;
 import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.AdministratorAccess;
+import be.brusselsbook.sql.access.BookCommentAccess;
 import be.brusselsbook.sql.access.CafeAccess;
 import be.brusselsbook.sql.access.DescriberAccess;
 import be.brusselsbook.sql.access.DescriberAccessImpl;
@@ -72,8 +73,6 @@ public class XmlDataCreator {
 	public void run() throws IOException {
 		parseRestaurants();
 		parseCafes();
-		//Describer desc = ;
-		//DescriberAccessImpl.createDescriber();
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -81,7 +80,11 @@ public class XmlDataCreator {
 		AccessFactory factory = AccessFactory.getInstance();
 		DescriberAccess<Describer> describerAccess = factory.getDescriberAccess();
 		describerAccess.createDescriber();
+
+		BookCommentAccess bookCommentAccess = factory.getBookCommentAccess();
+		
 		new XmlDataCreator(factory).run();
+		bookCommentAccess.createBookComment(1L,1L,4,"COOL TA VIE");
 		
 	}
 
