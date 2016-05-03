@@ -1,11 +1,11 @@
 <section id="toolbar-section">
   <div id="toolbar">
-    <ul id="tabs" class="tabs">
-      <li class="tab" id="tab0"><a id="tab0link" href="homea">HOME</a></li>
-      <li class="tab" id="tab1"><a id="tab1link" href="#">SEARCH</a></li>
+    <ul id="lefttabs">
+      <li class="tab" id="rtab0"><a id="rtab0link" href="#">HOME</a></li>
+      <li class="tab" id="rtab1"><a id="rtab1link" href="#">SEARCH</a></li>
     </ul>
-    <!--div id="tabbar">
-        <div id="bar" />
-      </div-->
+    <ul id="righttabs">
+      <li class="tab" id="ltab0"><a id="ltab0link" href="#">Login</a></li>
+    </ul>
   </div>
 </section>
