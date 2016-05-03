@@ -13,19 +13,24 @@ public abstract class DataAccess<T> implements Indexable<T>{
 
 	private static String wildCards(int n){
 		String result = "";
-		for(int i = 0; i < n - 1; i++){
-			result += "?, ";
+		if (n > 0){
+			for(int i = 0; i < n - 1; i++){
+				result += "?, ";
+			}
+			result += "?";
 		}
-		result += "?";
 		return result;
 	}
 	
 	private static String parameters(String[] array){
 		String result = "";
-		for(int i = 0; i < array.length - 1; i++){
+		int size = array.length;
+		if (size > 0){
+			for(int i = 0; i < array.length - 1; i++){
 			result += array[i]+", ";
+			}
+			result += array[array.length-1];
 		}
-		result += array[array.length-1];
 		return result;		
 	}
 	

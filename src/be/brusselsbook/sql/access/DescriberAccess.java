@@ -12,4 +12,9 @@ public abstract class DescriberAccess<T extends Describer > extends DataAccess<T
 
 	public abstract T withDid(String did);
 
+
+	public Describer createDescriber(){
+		return create();
+	}
+
 }

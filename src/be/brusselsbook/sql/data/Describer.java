@@ -1,12 +1,21 @@
 package be.brusselsbook.sql.data;
 
 import java.sql.Timestamp;
-       
+
 public class Describer {
 	
 	private Long did;
-	private Timestamp creationDate;
+	private Boolean modified;
 	
+	
+	public Describer(Describer other) {
+		this.did = other.did;
+		this.modified = other.modified;
+	}
+
+	public Describer(){
+		super();
+	}
 	public Long getDid() {
 		return did;
 	}
@@ -14,13 +23,13 @@ public class Describer {
 	public void setDid(Long did) {
 		this.did = did;
 	}
-	
-	public Timestamp getCreationDate() {
-		return creationDate;
+
+	public Boolean getModified() {
+		return modified;
 	}
-	
-	public void setCreationDate(Timestamp creationDate) {
-		this.creationDate = creationDate;
+
+	public void setModified(Boolean modified) {
+		this.modified = modified;
 	}
 	
 	

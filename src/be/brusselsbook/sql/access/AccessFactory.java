@@ -67,5 +67,8 @@ public class AccessFactory {
 		return new DescriberAccessImpl(this);
 	}
 
+	public BookCommentAccess getBookCommentAccess(){
+		return new BookCommentAccess(this);
+	}
 
 }
