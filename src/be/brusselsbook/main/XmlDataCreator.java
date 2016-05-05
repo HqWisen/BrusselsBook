@@ -15,6 +15,7 @@ import be.brusselsbook.sql.access.CafeAccess;
 import be.brusselsbook.sql.access.DescriberAccess;
 import be.brusselsbook.sql.access.DescriberAccessImpl;
 import be.brusselsbook.sql.access.RestaurantAccess;
+import be.brusselsbook.sql.access.TagAccess;
 import be.brusselsbook.sql.data.Administrator;
 import be.brusselsbook.sql.data.Describer;
 import be.brusselsbook.utils.BrusselsBookUtils;
@@ -78,14 +79,15 @@ public class XmlDataCreator {
 	public static void main(String[] args) throws IOException {
 		System.out.println("Running creator testing...");
 		AccessFactory factory = AccessFactory.getInstance();
-		DescriberAccess<Describer> describerAccess = factory.getDescriberAccess();
-		describerAccess.createDescriber();
+		//DescriberAccess<Describer> describerAccess = factory.getDescriberAccess();
+		//describerAccess.createDescriber();
 
 		BookCommentAccess bookCommentAccess = factory.getBookCommentAccess();
+		TagAccess tagAcess = factory.getTagAccess();
 		
 		new XmlDataCreator(factory).run();
 		bookCommentAccess.createBookComment(1L,1L,4,"COOL TA VIE");
-		
+		tagAcess.createTag(1L, "Merdique");
 	}
 
 }

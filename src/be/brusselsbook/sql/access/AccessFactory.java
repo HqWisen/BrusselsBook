@@ -71,4 +71,9 @@ public class AccessFactory {
 		return new BookCommentAccess(this);
 	}
 
+	public TagAccess getTagAccess(){
+		return new TagAccess(this);
+	}
+
+
 }
