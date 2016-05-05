@@ -75,5 +75,9 @@ public class AccessFactory {
 		return new TagAccess(this);
 	}
 
+	public HotelAccess getHotelAccess(){
+		return new HotelAccess(this);
+	}
+
 
 }
