@@ -83,4 +83,10 @@ public class AccessFactory {
 		return new UserSignalAccess(this);
 	}
 
+
+	public EstablishmentDeletionAccess getEstablishmentDeletionAccess(){
+		return new EstablishmentDeletionAccess(this);
+	}
+
+
 }
