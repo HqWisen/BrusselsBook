@@ -18,6 +18,7 @@ import be.brusselsbook.sql.access.DescriberAccessImpl;
 import be.brusselsbook.sql.access.HotelAccess;
 import be.brusselsbook.sql.access.RestaurantAccess;
 import be.brusselsbook.sql.access.TagAccess;
+import be.brusselsbook.sql.access.UserSignalAccess;
 import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.Administrator;
 import be.brusselsbook.sql.data.Describer;
@@ -95,11 +96,13 @@ public class XmlDataCreator {
 
 		BookCommentAccess bookCommentAccess = factory.getBookCommentAccess();
 		TagAccess tagAcess = factory.getTagAccess();
+		UserSignalAccess userSignalAccess = factory.getUserSignalAccess();
 		
 		new XmlDataCreator(factory).run();
 		
 		bookCommentAccess.createBookComment(1L,1L,4,"COOL TA VIE");
 		tagAcess.createTag(1L, "Merdique");
+		userSignalAccess.createUserSignal(1L);
 	    
 
 	

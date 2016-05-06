@@ -79,5 +79,8 @@ public class AccessFactory {
 		return new HotelAccess(this);
 	}
 
+	public UserSignalAccess getUserSignalAccess(){
+		return new UserSignalAccess(this);
+	}
 
 }
