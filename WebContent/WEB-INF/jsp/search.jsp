@@ -17,6 +17,9 @@
 	<c:import url="tabs.jsp">
 		<c:param name="search" value="true"/>
 	</c:import>
+	<div id="container">
+	</div>
+	
 	
 </body>
 

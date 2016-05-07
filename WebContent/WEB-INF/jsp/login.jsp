@@ -1,36 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-  <!DOCTYPE html>
-  <html>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <!DOCTYPE html>
+    <html>
 
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="Book of Brussels Horeca !">
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="icon" href="image/logoULB.png" />
-    <title>BrusselsBook</title>
-  </head>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="description" content="Book of Brussels Horeca !">
+      <link rel="stylesheet" type="text/css" href="css/style.css" />
+      <link rel="icon" href="image/logoULB.png" />
+      <title>BrusselsBook</title>
+    </head>
 
-  <body>
-  	<form method="post" action="login">
-    	<fieldset>
-    		<legend>Login</legend>
-    		<label>Identifier</label>
-    		<input type="text" name="identifier" value="<c:out value="${param.identifier}"/>"/>
-			<br/>
-    		<label>Password</label>
-			<input type="password" name="password" maxlength="16"/>
-    		<br/>
-    		<c:if test="${not empty requestScope.error}">
-    		<span class="error">${requestScope.error}</span><br/>
-    		</c:if>
-    		<input type="submit" value="Log in"/> <br/>
-    	</fieldset>
-    </form>
-    <c:if test="${sessionScope.connected}">
-    	<c:redirect url="home"/>
-    </c:if>
-  </body>
+    <body>
+		<c:import url="tabs.jsp">
+		</c:import>
+		
+		<div id="container">
+	       <c:if test="${not empty requestScope.error}">
+	         <div class="log-error">${requestScope.error}</div>
+	         <br />
+	       </c:if>
+	     <div class="formwrapper">
+    
+	     <form class="logform" method="post" action="login">
+	       <div>Enter your credentials</div>
+	       <input class="log-input" type="text" name="identifier" value="<c:out value="${param.identifier}"/>" />
+	       <br />
+	       <input class="log-input" type="password" name="password" maxlength="16" />
+	       <br />
+	       <input class="log-submit" type="submit" value="Log in" />
+	       <br />
+	     </form>
+	     </div>
+	     <c:if test="${sessionScope.connected}">
+	       <c:redirect url="home">
+	       </c:redirect>
+	     </c:if>
+		</div>     
+    </body>
 
-  </html>
+    </html>

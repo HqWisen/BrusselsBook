@@ -17,7 +17,8 @@
 	<c:import url="tabs.jsp">
 		<c:param name="home" value="true"/>
 	</c:import>
-	
+	<div id="container">	
+	</div>
 </body>
 
 </html>

@@ -3,20 +3,26 @@
 <section id="toolbar-section">
 	<div id="toolbar">
 		<ul id="lefttabs">
-			<li class="tab" id="rtab0"><a id="rtab0link"
+			<li class="tab"><a
 				class="<c:if test="${param.home}">active</c:if>" href="home">HOME</a></li>
-			<li class="tab" id="rtab1"><a id="rtab1link"
+			<li class="tab"><a
 				class="<c:if test="${param.search}">active</c:if>" href="search">SEARCH</a></li>
 		</ul>
 		<ul id="righttabs">
 			<c:choose>
 				<c:when test="${sessionScope.connected}">
-					<li class="tab" id="ltab0"><a id="ltab0link" href="logout">Logout</a></li>
+					<li class="tab"><a href="logout">Log Out</a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="tab" id="ltab0"><a id="ltab0link" href="login">Login</a></li>
+					<li class="tab"><a href="login">Log In</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
 	</div>
+	<div id="notif" class="notification"><div id="notifmessage" class="notif-message">This doesn't exist</div></div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+  	<script type="text/javascript" src="js/script.js"></script>
+  	<c:if test="${not empty requestScope.notif}">
+  		<script>notif("${requestScope.notif}");</script>
+  	</c:if>
 </section>

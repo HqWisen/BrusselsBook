@@ -18,6 +18,7 @@ public class Logout extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServerUtils.setDisconnectedSession(request.getSession());
+		request.setAttribute("notif", "Successfully disconnected.");
 		getServletContext().getRequestDispatcher(ServerUtils.HOMEJSPFILE).forward(request, response);
 		
 	}

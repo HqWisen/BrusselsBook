@@ -34,6 +34,7 @@ public class Login extends HttpServlet {
 		String identifier = req.getParameter("identifier");
 		String password = req.getParameter("password");
 		String error = null;
+		String redirect = ServerUtils.LOGINJSPFILE;
 		BookUser bookUser = bookUserAccess.withIdentifier(identifier);
 		if(bookUser == null){
 			error = "this identifier doesn't exist.";
@@ -41,9 +42,11 @@ public class Login extends HttpServlet {
 			error = "password doesn't match the identifier.";	
 		}else{
 			ServerUtils.setConnectedSession(bookUser, req.getSession());
+			req.setAttribute("notif", "You are connected.");
+			redirect = ServerUtils.HOMEJSPFILE;
 		}
 		req.setAttribute("error", error);
-		getServletContext().getRequestDispatcher(ServerUtils.LOGINJSPFILE).forward(req, resp);
+		getServletContext().getRequestDispatcher(redirect).forward(req, resp);
 	}
 
 }
