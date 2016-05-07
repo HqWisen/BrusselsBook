@@ -17,8 +17,7 @@ import be.brusselsbook.utils.ServerUtils;
 public class Login extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final String LOGINJSPFILE = ServerUtils.getJspPath("login.jsp");
-
+	
 	private BookUserAccess<BookUser> bookUserAccess;
 
 	public Login() {
@@ -27,7 +26,7 @@ public class Login extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher(LOGINJSPFILE).forward(req, resp);
+		getServletContext().getRequestDispatcher(ServerUtils.LOGINJSPFILE).forward(req, resp);
 	}
 
 	@Override
@@ -37,14 +36,14 @@ public class Login extends HttpServlet {
 		String error = null;
 		BookUser bookUser = bookUserAccess.withIdentifier(identifier);
 		if(bookUser == null){
-			error = "Identifier doesn't exist";
+			error = "this identifier doesn't exist.";
 		}else if(!password.equals(bookUser.getPassword())){
-			error = "Password doesn't match";	
+			error = "password doesn't match the identifier.";	
 		}else{
 			ServerUtils.setConnectedSession(bookUser, req.getSession());
 		}
 		req.setAttribute("error", error);
-		getServletContext().getRequestDispatcher(LOGINJSPFILE).forward(req, resp);
+		getServletContext().getRequestDispatcher(ServerUtils.LOGINJSPFILE).forward(req, resp);
 	}
 
 }

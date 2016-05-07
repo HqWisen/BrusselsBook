@@ -28,8 +28,9 @@
     		<input type="submit" value="Log in"/> <br/>
     	</fieldset>
     </form>
-  	<c:out value="${sessionScope.user}"/>
-  	<c:out value="${sessionScope.isadmin}"/>
+    <c:if test="${sessionScope.connected}">
+    	<c:redirect url="home"/>
+    </c:if>
   </body>
 
   </html>

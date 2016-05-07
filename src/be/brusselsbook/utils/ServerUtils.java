@@ -8,6 +8,9 @@ import be.brusselsbook.sql.data.BookUser;
 
 public final class ServerUtils {
 
+	public static final String SEARCHJSPFILE = ServerUtils.getJspPath("search.jsp");
+	public static final String LOGINJSPFILE = ServerUtils.getJspPath("login.jsp");
+	public static final String HOMEJSPFILE = ServerUtils.getJspPath("home.jsp");
 	public static final String WEBINF = "/WEB-INF/";
 	public static final String JSPDIR = "jsp/";
 	

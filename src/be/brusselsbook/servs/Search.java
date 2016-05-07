@@ -13,12 +13,11 @@ import be.brusselsbook.utils.ServerUtils;
 @WebServlet("/search")
 public class Search extends HttpServlet {
 
-	private static final String SEARCHJSPFILE = ServerUtils.getJspPath("search.jsp");
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher(SEARCHJSPFILE).forward(req, resp);
+		getServletContext().getRequestDispatcher(ServerUtils.SEARCHJSPFILE).forward(req, resp);
 	}
 
 }

@@ -25,6 +25,11 @@ server(){
     bash "$serverpath/bin/startup.sh"
 }
 
+restart(){
+    shutserver
+    server
+}
+
 shutserver(){
     bash "$serverpath/bin/shutdown.sh"
 }

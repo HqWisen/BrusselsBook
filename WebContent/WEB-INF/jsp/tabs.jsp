@@ -11,7 +11,7 @@
 		<ul id="righttabs">
 			<c:choose>
 				<c:when test="${sessionScope.connected}">
-					<li class="tab" id="ltab0"><a id="ltab0link" href="#">Disconnect</a></li>
+					<li class="tab" id="ltab0"><a id="ltab0link" href="logout">Logout</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="tab" id="ltab0"><a id="ltab0link" href="login">Login</a></li>
