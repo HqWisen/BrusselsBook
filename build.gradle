@@ -1,0 +1,50 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = "be.brusselsbook.main.BrusselsBook"
+version = ''
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+        resources {
+            srcDir 'resources'
+        }
+    }
+    test {
+        java {
+            srcDir 'tests'
+        }
+        resources {
+            srcDir 'tests/resources'
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'BrusselsBook',
+                   'Implementation-Version': version,
+                   'Main-Class': mainClassName
+    }
+}
+
+war {
+    from 'WebContent'
+}
+
+repositories{
+    mavenCentral()  
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+    compile fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
+}
+

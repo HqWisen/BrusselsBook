@@ -1,0 +1,33 @@
+#!/bin/bash
+
+warname="BrusselsBook.war"
+warfile="build/libs/$warname"
+
+app(){
+    echo "Running project"
+    gradle run
+}
+
+buildwar(){
+    echo "building war file"
+    gradle war
+}
+
+cpwar(){
+    echo "moving war file in server" 
+    cp "$warfile" "$serverpath/webapps/$warname"
+}
+
+server(){
+    buildwar
+    cpwar
+    echo "Running server"
+    bash "$serverpath/bin/startup.sh"
+}
+
+shutserver(){
+    bash "$serverpath/bin/shutdown.sh"
+}
+
+serverpath=$2
+$1
