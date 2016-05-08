@@ -17,6 +17,10 @@ public class TagXml {
 		return name;
 	}
 
+	public List<Tagger> getTaggerList() {
+		return taggerList;
+	}
+
 	@Override
 	public String toString() {
 		return "Tag: " + name + " by " + taggerList;

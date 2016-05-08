@@ -32,7 +32,10 @@ public class TagAccess extends DescriberAccess<Tag> {
 	
 	
 	
-	
+	public Tag withTagName(String tagName) {
+		return withQuery(SELECTBY(TAGNAME), tagName);
+	}
+
 	
 	
 	@Override
