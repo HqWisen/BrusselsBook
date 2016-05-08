@@ -51,7 +51,7 @@
          <c:forEach items="${requestScope.comments}" var="comment">
            <div class="estapage-comment">
              <div class="estapage-commenttext"><c:out value="${comment.text}"/></div>
-             <div class="estapage-commentauthor"><c:out value="${authors[comment.did]}"/></div>
+             <div class="estapage-commentauthor"><c:out value="${commentAuthors[comment.did]}"/></div>
              <div class="estapage-commentdate"><c:out value="${comment.creationDate}"/></div>
              <div class="estapage-commentscore">
 		       <c:forEach var="i" begin="1" end="${comment.score}" step="1">

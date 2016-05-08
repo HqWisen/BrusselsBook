@@ -15,58 +15,6 @@ import be.brusselsbook.sql.data.EstablishmentType;
 
 public abstract class EstablishmentAccess<T extends Establishment> extends DataAccess<T> {
 
-	public static Map<Long, Address> getAddressFor(List<Establishment> establishments){
-		Map<Long, Address> map = new HashMap<>();
-		for(Establishment establishment : establishments){
-			Long eid = establishment.getEid();
-			map.put(eid, getAddressFor(eid));
-		}
-		return map;
-	}
-	
-	public static Map<Long, Integer> getNumberOfCommentsFor(List<Establishment> establishments){
-		Map<Long, Integer> map = new HashMap<>();
-		for(Establishment establishment : establishments){
-			Long eid = establishment.getEid();
-			map.put(eid, getNumberOfCommentsFor(eid));
-		}
-		return map;		
-	}
-	
-	private static Integer getNumberOfCommentsFor(Long eid) {
-		BookCommentAccess bookCommentAccess = AccessFactory.getInstance().getBookCommentAccess();
-		List<BookComment> comments = bookCommentAccess.withEid(eid); 
-		return comments.size();
-}
-
-	public static Address getAddressFor(Long eid) {
-		return AccessFactory.getInstance().getAddressAccess().withEid(eid);
-	}
-
-	public static Address getAddresFor(Establishment establishment){
-		return getAddressFor(establishment.getEid());
-	}
-	
-	public static Map<Long, Integer> getAverageScoresFor(List<Establishment> establishments) {
-		Map<Long, Integer> map = new HashMap<>();
-		for(Establishment establishment : establishments){
-			Long eid = establishment.getEid();
-			map.put(eid, getAverageScoreFor(eid));
-		}
-		return map;				
-	}
-
-	
-	private static Integer getAverageScoreFor(Long eid) {
-		BookCommentAccess bookCommentAccess = AccessFactory.getInstance().getBookCommentAccess();
-		List<BookComment> comments = bookCommentAccess.withEid(eid); 
-		int total = 0;
-		for(BookComment comment : comments){
-			total += comment.getScore();
-		}
-		return comments.isEmpty() ? 0 : (int)Math.ceil(total / comments.size());
-	}
-
 	protected EstablishmentAccess(AccessFactory accessFactory) {
 		super(accessFactory);
 	}

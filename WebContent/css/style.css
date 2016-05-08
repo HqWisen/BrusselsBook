@@ -109,10 +109,64 @@ body {
   border-radius: 7px;
 }
 
+
 .tab a.active {
   background: white;
   color: #005dbf;
   border-radius: 7px;
+}
+
+.righttab {
+  display: flex;
+  height: 100%;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  margin-left: 15px;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.righttab a {
+  display: flex;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 5px;
+  color: white;
+  background:#006de0;
+  color:white;
+  font-size: 18px;
+  font-variant: normal;
+  text-decoration: none;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.righttab a:hover {
+	text-decoration: underline;	
+}
+
+.admintab a{
+	background:#910000;
+}
+
+.tab-username{
+	font-size:18px;
+	font-weight: bold;
+	color:white;
+}
+
+.tab-hello{
+	color:white;
+	font-size:18px;
+	margin-right:7px;
 }
 
 /* Notifications */

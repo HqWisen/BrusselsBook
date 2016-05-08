@@ -6,20 +6,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import be.brusselsbook.sql.access.AccessFactory;
+import be.brusselsbook.sql.access.BookCommentAccess;
+import be.brusselsbook.sql.access.BookUserAccess;
+import be.brusselsbook.sql.data.Address;
+import be.brusselsbook.sql.data.BookComment;
+import be.brusselsbook.sql.data.BookUser;
+import be.brusselsbook.sql.data.Establishment;
 import be.brusselsbook.sql.exception.DatabaseAccessException;
 
 public final class AccessUtils {
 
 	private static final Logger LOGGER = Logger.getLogger(AccessUtils.class.getName());
-
+	private static final AccessFactory aFactory;
 	static {
 		LOGGER.setLevel(Level.INFO);
+		aFactory = AccessFactory.getInstance();
 	}
 
+	
 	public static boolean next(ResultSet resultSet) throws DatabaseAccessException {
 		try {
 			return resultSet.next();
@@ -105,5 +116,72 @@ public final class AccessUtils {
 	public static void close(Statement statement, Connection connection, ResultSet resultSet) {
 		close(statement, connection);
 		close(resultSet);
+	}
+
+	public static Map<Long, Address> getAddressFor(List<Establishment> establishments){
+		Map<Long, Address> map = new HashMap<>();
+		for(Establishment establishment : establishments){
+			Long eid = establishment.getEid();
+			map.put(eid, getAddressFor(eid));
+		}
+		return map;
+	}
+	
+	public static Map<Long, Integer> getNumberOfCommentsFor(List<Establishment> establishments){
+		Map<Long, Integer> map = new HashMap<>();
+		for(Establishment establishment : establishments){
+			Long eid = establishment.getEid();
+			map.put(eid, getNumberOfCommentsFor(eid));
+		}
+		return map;		
+	}
+	
+	private static Integer getNumberOfCommentsFor(Long eid) {
+		BookCommentAccess bookCommentAccess = aFactory.getBookCommentAccess();
+		List<BookComment> comments = bookCommentAccess.withEid(eid); 
+		return comments.size();
+}
+
+	public static Address getAddressFor(Long eid) {
+		return aFactory.getAddressAccess().withEid(eid);
+	}
+
+	public static Address getAddresFor(Establishment establishment){
+		return getAddressFor(establishment.getEid());
+	}
+	
+	public static Map<Long, Integer> getAverageScoresFor(List<Establishment> establishments) {
+		Map<Long, Integer> map = new HashMap<>();
+		for(Establishment establishment : establishments){
+			Long eid = establishment.getEid();
+			map.put(eid, getAverageScoreFor(eid));
+		}
+		return map;				
+	}
+
+	
+	private static Integer getAverageScoreFor(Long eid) {
+		BookCommentAccess bookCommentAccess = AccessFactory.getInstance().getBookCommentAccess();
+		List<BookComment> comments = bookCommentAccess.withEid(eid); 
+		int total = 0;
+		for(BookComment comment : comments){
+			total += comment.getScore();
+		}
+		return comments.isEmpty() ? 0 : (int)Math.ceil(total / comments.size());
+	}
+
+	
+	public static Map<Long, String> getAuthorsFor(List<BookComment> comments) {
+		Map<Long, String> map = new HashMap<>();
+		for(BookComment comment : comments){
+			Long did = comment.getDid();
+			map.put(did, getCommentAuthorFor(comment));
+		}
+		return map;				
+	}
+
+	private static String getCommentAuthorFor(BookComment comment) {
+		BookUserAccess<BookUser> bAccess = aFactory.getBookUserAccess();
+		return bAccess.withUid(comment.getUid()).getUsername();
 	}
 }

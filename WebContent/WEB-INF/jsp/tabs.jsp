@@ -11,10 +11,15 @@
 		<ul id="righttabs">
 			<c:choose>
 				<c:when test="${sessionScope.connected}">
-					<li class="tab"><a href="logout">Log Out</a></li>
+					<div class="tab-hello">Hello</div>
+					<div class="tab-username"><c:out value="${sessionScope.user.username}"/></div>
+					<li class="righttab"><a href="logout">Log out</a></li>
+					<c:if test="${sessionScope.isadmin}">
+					  <li class="righttab admintab"><a href="admin">Admin zone</a></li>
+					</c:if>
 				</c:when>
 				<c:otherwise>
-					<li class="tab"><a href="login">Log In</a></li>
+					<li class="righttab"><a href="login">Log in</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
