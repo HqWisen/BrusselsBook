@@ -51,7 +51,11 @@ public class EstablishmentAccessImpl extends EstablishmentAccess<Establishment> 
 	public Establishment withEid(String eid) {
 		return withQuery(SELECTBY(EID), eid);
 	}
+	
 
+	public Establishment withName(String name){
+		return withQuery(SELECTBY(NAME), name);
+	}
 	@Override
 	protected Establishment map(ResultSet resultSet) throws SQLException {
 		Establishment establishment = new Establishment();
