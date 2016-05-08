@@ -9,20 +9,12 @@ import be.brusselsbook.parser.Cafes;
 import be.brusselsbook.parser.RestaurantXml;
 import be.brusselsbook.parser.Restaurants;
 import be.brusselsbook.sql.access.AccessFactory;
-import be.brusselsbook.sql.access.AddressAccess;
 import be.brusselsbook.sql.access.AdministratorAccess;
 import be.brusselsbook.sql.access.BookCommentAccess;
 import be.brusselsbook.sql.access.CafeAccess;
-import be.brusselsbook.sql.access.DescriberAccess;
-import be.brusselsbook.sql.access.DescriberAccessImpl;
-import be.brusselsbook.sql.access.EstablishmentDeletionAccess;
-import be.brusselsbook.sql.access.HotelAccess;
 import be.brusselsbook.sql.access.RestaurantAccess;
-import be.brusselsbook.sql.access.TagAccess;
-import be.brusselsbook.sql.access.UserSignalAccess;
-import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.Administrator;
-import be.brusselsbook.sql.data.Describer;
+import be.brusselsbook.sql.data.BookComment;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class XmlDataCreator {
@@ -36,16 +28,11 @@ public class XmlDataCreator {
 	private RestaurantAccess restaurantAccess;
 	private AdministratorAccess administratorAccess;
 	private CafeAccess cafeAccess;
-	private DescriberAccess describerAccess;
-	private HotelAccess hotelAccess;
-	private AddressAccess adressAccess;
-	
 	
 	public XmlDataCreator(AccessFactory factory) {
 		this.restaurantAccess = factory.getRestaurantAccess();
 		this.administratorAccess = factory.getAdminstratorAccess();
 		this.cafeAccess = factory.getCafeAccess();
-		this.adressAccess = factory.getAddressAccess();
 	}
 
 	private Administrator createAdministrator(String nickname) {
@@ -78,36 +65,20 @@ public class XmlDataCreator {
 		}
 		
 	}
-//String name , String tel ,String site , Address address,
-	//Integer noStars,Integer noRooms,Float priceForTwo)	
+
 	public void run() throws IOException {
 		parseRestaurants();
 		parseCafes();
-		//Address adress = adressAccess.createAddress(1L, "hh", "12", "o", "1111", 4.3, 4.2);
-		//Administrator admin = createAdministrator("Youcef");
-		//hotelAccess.createHotelFromAdmin(admin.getAid(),"Iblis","iblis.com","eeeee",2,123,12.43 );
-
+	
 	}
 
 	public static void main(String[] args) throws IOException {
 		System.out.println("Running creator testing...");
 		AccessFactory factory = AccessFactory.getInstance();
-		//DescriberAccess<Describer> describerAccess = factory.getDescriberAccess();
-		//describerAccess.createDescriber();
-
-		BookCommentAccess bookCommentAccess = factory.getBookCommentAccess();
-		TagAccess tagAcess = factory.getTagAccess();
-		UserSignalAccess userSignalAccess = factory.getUserSignalAccess();
-		EstablishmentDeletionAccess establishmentDeletionAccess = factory.getEstablishmentDeletionAccess();	
+	
 		
 		new XmlDataCreator(factory).run();
 		
-		bookCommentAccess.createBookComment(1L,1L,4,"COOL TA VIE");
-		tagAcess.createTag(1L, "Merdique");
-		userSignalAccess.createUserSignal(1L);
-		establishmentDeletionAccess.createEstablishmentDeletion(1L, 1L);
-	    
-
 	
 	}
 

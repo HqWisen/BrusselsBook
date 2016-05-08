@@ -2,12 +2,65 @@ package be.brusselsbook.sql.access;
 
 
 
-import be.brusselsbook.sql.data.Address;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import be.brusselsbook.parser.AddressXml;
 import be.brusselsbook.parser.EstablishmentInfos;
+import be.brusselsbook.sql.data.Address;
+import be.brusselsbook.sql.data.BookComment;
 import be.brusselsbook.sql.data.Establishment;
 
 public abstract class EstablishmentAccess<T extends Establishment> extends DataAccess<T> {
+
+	public static Map<Long, Address> getAddressFor(List<Establishment> establishments){
+		Map<Long, Address> map = new HashMap<>();
+		for(Establishment establishment : establishments){
+			Long eid = establishment.getEid();
+			map.put(eid, getAddressFor(eid));
+		}
+		return map;
+	}
+	
+	public static Map<Long, Integer> getNumberOfCommentsFor(List<Establishment> establishments){
+		Map<Long, Integer> map = new HashMap<>();
+		for(Establishment establishment : establishments){
+			Long eid = establishment.getEid();
+			map.put(eid, getNumberOfCommentsFor(eid));
+		}
+		return map;		
+	}
+	
+	private static Integer getNumberOfCommentsFor(Long eid) {
+		BookCommentAccess bookCommentAccess = AccessFactory.getInstance().getBookCommentAccess();
+		List<BookComment> comments = bookCommentAccess.withEid(eid); 
+		return comments.size();
+}
+
+	private static Address getAddressFor(Long eid) {
+		return AccessFactory.getInstance().getAddressAccess().withEid(eid);
+	}
+
+	public static Map<Long, Integer> getAverageScoresFor(List<Establishment> establishments) {
+		Map<Long, Integer> map = new HashMap<>();
+		for(Establishment establishment : establishments){
+			Long eid = establishment.getEid();
+			map.put(eid, getAverageScoreFor(eid));
+		}
+		return map;				
+	}
+
+	
+	private static Integer getAverageScoreFor(Long eid) {
+		BookCommentAccess bookCommentAccess = AccessFactory.getInstance().getBookCommentAccess();
+		List<BookComment> comments = bookCommentAccess.withEid(eid); 
+		int total = 0;
+		for(BookComment comment : comments){
+			total += comment.getScore();
+		}
+		return comments.isEmpty() ? 0 : (int)Math.ceil(total / comments.size());
+	}
 
 	protected EstablishmentAccess(AccessFactory accessFactory) {
 		super(accessFactory);

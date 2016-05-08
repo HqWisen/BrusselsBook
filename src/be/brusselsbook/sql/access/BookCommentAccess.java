@@ -2,10 +2,9 @@ package be.brusselsbook.sql.access;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
-import be.brusselsbook.sql.data.Administrator;
 import be.brusselsbook.sql.data.BookComment;
-import be.brusselsbook.sql.data.BookUser;
 import be.brusselsbook.sql.data.Describer;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
@@ -38,8 +37,9 @@ public class BookCommentAccess extends DescriberAccess<BookComment> {
 		return withDid(did.toString());
 	}
 
-	
-	
+	public List<BookComment> withEid(Long eid){
+		return severalWithQuery(SELECTBY(EID), eid);
+	}	
 	
 	public BookComment createBookComment (Long uid , Long eid,Integer score,String text){
 		Describer describer = describerAccess.create();

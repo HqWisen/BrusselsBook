@@ -249,3 +249,123 @@ body {
   color:white;
   height:70px;
 }
+
+
+
+/* Establishment */
+
+.establishment{
+  width:1000px;
+  height:120px;
+  margin:auto;
+  padding:0;
+  margin-bottom:20px;
+  background:#efefef;
+  border:1px solid #002d5d;
+  color:#002d5d;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.establishment:hover{
+  cursor:pointer;
+  border-color:#005dbf;
+  color:#005dbf;
+  
+}
+
+
+
+.establishment img{
+  float:left;
+  width:300px;
+  height:120px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+.esta-infos{
+  float:right;
+  width:700px;
+  height:120px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  
+}
+
+.esta-name{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:30%;
+  font-size:25px;
+}
+
+.esta-address{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:30%;
+  color:#717171;
+  font-size:17px;
+}
+
+.esta-number{
+  font-size:15px;
+  
+}
+
+.esta-site{
+  font-size:15px;
+  text-decoration: underline;
+  color:rgb(0, 44, 105);
+}
+.esta-site:hover{
+  cursor:pointer;
+  font-size:15px;
+  color:rgb(0, 79, 190);
+}
+
+.esta-footer{
+  height:40%;
+}
+
+.esta-contact{
+  text-align: left;
+  padding-left:20px;
+  height:100%;
+  width:60%;
+  align-items: flex-end;
+  float:left;
+  color:#454545;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+}
+
+
+.esta-score{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size:15px;
+  font-style: italic;
+  padding-top:20px;
+  float:right;
+  width:40%;
+  color:#454545;
+
+}
+
+.esta-score div{
+  float:left;
+  margin-right:20px;
+}
+
+.esta-score img{
+  width:25px;
+  height:25px;
+}
