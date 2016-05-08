@@ -73,19 +73,9 @@ public class XmlDataCreator {
 			Cafe cafe = cafeAccess.createCafeFromAdmin(admin.getAid(), cx.getCafeInfos());
 			List<TagXml> tagList = cx.getTagList();
 			createTag(tagList,cafe);
-
-			List<CommentXml> commentList = cx.getCommentList();
-			if (commentList != null){
-				for (CommentXml cox : commentList  ){
-					if (cox != null){
-						Administrator commenter = createAdministrator(cox.getNickname());
-						Long uid = commenter.getUid();
-						Long eid = cafe.getEid();
-						bookCommentAccess.createBookComment(uid, eid, cox.getScore(), cox.getContent());
-					}	
-				}
-			}
 			
+			List<CommentXml> commentList = cx.getCommentList();
+			createComment(commentList, cafe);
 		
 		}
 	}
