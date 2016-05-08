@@ -9,6 +9,16 @@ public class Establishment {
 	private Boolean modified;
 	private String webSite;
 	private String formattedUrl;
+	private EstablishmentType type;
+	
+	
+	public EstablishmentType getType() {
+		return type;
+	}
+
+	public void setType(EstablishmentType type) {
+		this.type = type;
+	}
 
 	public Establishment(){
 		super();
