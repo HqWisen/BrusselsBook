@@ -179,7 +179,7 @@ body {
   margin-top:20px;
   padding-top:20px;
   padding-bottom:30px;
-  background:#dddddd;
+  background:inherit;
   box-shadow: rgba(128, 128, 128, 0.67) 0px 0px 5px 2px;
   
 }
@@ -193,9 +193,8 @@ body {
 }
 
 .logform div{
-  color:#959595;
   margin-bottom:30px;
-  font-style: italic;
+  color:#004b9b;
   font-variant: small-caps;
 }
 
@@ -203,8 +202,7 @@ body {
   font-size: 18px;
   width: 350px;
   height: 60px;
-  border: 1px solid #607a95;
-  border-radius: 5px;
+  border: 1px solid #004b9b;
   padding: 10px;
   margin-bottom: 5px;
   color: #002d5d;
@@ -224,7 +222,7 @@ body {
   height:60px;
   font-size:25px;
   color:white;
-  background:#002d5d;
+  background:#004b9b;
   border-width:0;
   border-radius:0px;
   margin:0;
@@ -236,7 +234,7 @@ body {
 }
 
 .log-submit:hover{
-  background:#004b9b;
+  background:#002d5d;
   cursor:pointer;
 }
 
