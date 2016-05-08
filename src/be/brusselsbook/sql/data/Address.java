@@ -68,10 +68,9 @@ public class Address {
 
 	@Override
 	public String toString() {
-		String string = "(" + eid + ")";
+		String string = "";
 		string += street + " n°" + number + ", ";
 		string += locality + " " + postalCode;
-		string += " at " + latitude + ", " + longitude;
 		return string;
 	}
 

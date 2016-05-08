@@ -92,6 +92,16 @@ public abstract class DataAccess<T> implements Indexable<T>{
 		AccessUtils.close(resultSet);
 		return data;
 	}
+
+	protected List<T> severalWithQuery(String sqlQuery, Object... values) throws DatabaseAccessException {
+		List<T> list = new ArrayList<>();
+		ResultSet resultSet = AccessUtils.executeQuery(accessFactory, sqlQuery, values);
+		while(AccessUtils.next(resultSet)) {
+			list.add(safeMap(resultSet));
+		}
+		AccessUtils.close(resultSet);
+		return list;
+	}
 	
 	@Override
 	public T create(Object... values){

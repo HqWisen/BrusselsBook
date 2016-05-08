@@ -2,11 +2,13 @@ package be.brusselsbook.sql.data;
 
 public class Establishment {
 
+	private static final int MAXURLSIZE = 40;
 	private Long eid;
 	private String name;
 	private String phoneNumber;
 	private Boolean modified;
 	private String webSite;
+	private String formattedUrl;
 
 	public Establishment(){
 		super();
@@ -17,9 +19,16 @@ public class Establishment {
 		this.name = other.name;
 		this.phoneNumber = other.phoneNumber;
 		this.modified = other.modified;
-		this.webSite = other.webSite;
+		setWebSite(other.webSite);
 	}
 	
+	private String buildFormattedUrl() {
+		if(webSite != null && webSite.length() > MAXURLSIZE){
+			return webSite.substring(0, MAXURLSIZE) + "...";
+		}
+		return webSite;
+	}
+
 	public Long getEid() {
 		return eid;
 	}
@@ -52,12 +61,28 @@ public class Establishment {
 		this.modified = modified;
 	}
 
+	public String getUrl(){
+		return webSite;
+	}
+	
+	public String getFormattedUrl(){
+		return formattedUrl;
+	}
+	
 	public String getWebSite() {
 		return webSite;
 	}
 
 	public void setWebSite(String webSite) {
-		this.webSite = webSite;
+		this.webSite = addHttpPrefix(webSite);
+		this.formattedUrl = buildFormattedUrl();
+	}
+
+	private String addHttpPrefix(String webSite) {
+		if(webSite != null && !webSite.startsWith("http://")){
+			return "http://"+webSite;
+		}
+		return webSite;
 	}
 
 	public boolean hasWebsite(){
