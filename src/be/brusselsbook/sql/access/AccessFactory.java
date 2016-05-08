@@ -92,6 +92,9 @@ public class AccessFactory {
 		return new TagDescribeAccess(this);
 	}
 
+	public UserDeletionAccess getUserDeletionAccess(){
+		return new UserDeletionAccess(this);
+	}
 
 
 }

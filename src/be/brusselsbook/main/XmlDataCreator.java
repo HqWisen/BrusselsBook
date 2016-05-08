@@ -51,6 +51,7 @@ public class XmlDataCreator {
 		this.bookCommentAccess = factory.getBookCommentAccess();
 		this.tagAccess = factory.getTagAccess();
 		this.tagDescribeAccess = factory.getTagDescribeAccess();
+		//this.user = factory.getUserDeletionAccess();
 	}
 
 	private Administrator createAdministrator(String nickname) {
@@ -99,23 +100,28 @@ public class XmlDataCreator {
 			
 			List<TagXml> tagList = rx.getTagList();
 			createTag(tagList,restaurant);
-			
 			List<CommentXml> commentList = rx.getCommentList();
-			if (commentList != null){
-				for (CommentXml cx : commentList  ){
-					if (cx!=null){
-						Administrator commenter = createAdministrator(cx.getNickname());
-						Long uid = commenter.getUid();
-						Long eid = restaurant.getEid();
-						bookCommentAccess.createBookComment(uid, eid, cx.getScore(), cx.getContent());
-					}
-				}
-			}
-			
+			createComment(commentList,restaurant);
 		}
 		
 	}
 
+	
+	public void createComment (List<CommentXml>commentList,Establishment establishment){
+		if (commentList != null){
+			for (CommentXml cx : commentList  ){
+				if (cx!=null){
+					Administrator commenter = createAdministrator(cx.getNickname());
+					Long uid = commenter.getUid();
+					Long eid = establishment.getEid();
+					bookCommentAccess.createBookComment(uid, eid, cx.getScore(), cx.getContent());
+				}
+			}
+		}
+
+	
+	}
+	
 	
 	public void createTag(List<TagXml>tagList,Establishment establishment ){
 		if (tagList != null){
@@ -149,12 +155,9 @@ public class XmlDataCreator {
 	public static void main(String[] args) throws IOException {
 		System.out.println("Running creator testing...");
 		AccessFactory factory = AccessFactory.getInstance();
-
 		
 		new XmlDataCreator(factory).run();
-		
-	    
-
+	
 	
 	}
 
