@@ -20,7 +20,7 @@
 	<div id="container">
 	<c:forEach items="${requestScope.results}" var="establishment">
 	
-		<div class="establishment">
+		<div class="establishment" onclick="location.href='establishment?eid=${establishment.eid}'">
 		     <img src="image/resto.png" />
 		     <div class="esta-infos">
 		       <div class="esta-name"><c:out value="${establishment.name}"/></div>

@@ -10,11 +10,9 @@ import be.brusselsbook.parser.RestaurantXml;
 import be.brusselsbook.parser.Restaurants;
 import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.AdministratorAccess;
-import be.brusselsbook.sql.access.BookCommentAccess;
 import be.brusselsbook.sql.access.CafeAccess;
 import be.brusselsbook.sql.access.RestaurantAccess;
 import be.brusselsbook.sql.data.Administrator;
-import be.brusselsbook.sql.data.BookComment;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class XmlDataCreator {
