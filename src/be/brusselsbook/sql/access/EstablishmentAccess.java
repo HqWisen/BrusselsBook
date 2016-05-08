@@ -39,10 +39,14 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 		return comments.size();
 }
 
-	private static Address getAddressFor(Long eid) {
+	public static Address getAddressFor(Long eid) {
 		return AccessFactory.getInstance().getAddressAccess().withEid(eid);
 	}
 
+	public static Address getAddresFor(Establishment establishment){
+		return getAddressFor(establishment.getEid());
+	}
+	
 	public static Map<Long, Integer> getAverageScoresFor(List<Establishment> establishments) {
 		Map<Long, Integer> map = new HashMap<>();
 		for(Establishment establishment : establishments){

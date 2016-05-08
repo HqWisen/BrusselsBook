@@ -6,7 +6,7 @@ public class BookComment extends Describer {
 	
 	private Long uid;
 	private Long eid;
-	private Timestamp CreationDate;
+	private Timestamp creationDate;
 	private Integer score;
 	private String text;
 	
@@ -29,10 +29,10 @@ public class BookComment extends Describer {
 		this.eid = eid;
 	}
 	public Timestamp getCreationDate() {
-		return CreationDate;
+		return creationDate;
 	}
 	public void setCreationDate(Timestamp creationDate) {
-		CreationDate = creationDate;
+		this.creationDate = creationDate;
 	}
 	public Integer getScore() {
 		return score;

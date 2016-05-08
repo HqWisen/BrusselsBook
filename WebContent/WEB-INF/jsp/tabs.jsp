@@ -25,4 +25,9 @@
   	<c:if test="${not empty requestScope.notif}">
   		<script>notif("${requestScope.notif}");</script>
   	</c:if>
+	<c:if test="${not empty requestScope.error}">
+		<div class="log-error">${requestScope.error}</div>
+	 	<br />
+	</c:if>		
+		
 </section>
