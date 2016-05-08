@@ -345,8 +345,9 @@ body {
 
 .establishment:hover{
   cursor:pointer;
-  border-color:#005dbf;
+  border-color:white;
   color:#005dbf;
+  background:white;
   
 }
 

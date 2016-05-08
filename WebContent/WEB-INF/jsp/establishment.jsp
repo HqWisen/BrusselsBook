@@ -67,9 +67,11 @@
      <c:choose>
      	<c:when  test="${sessionScope.connected}">
      	<div class="estapage-commentform">
-        <form method="post">
-          <textarea class="estapage-commentformtext" type="text"></textarea>
-          <input class="estapage-commentformsubmit" type="submit" value="Leave a comment" />
+        <form id="form" method="post" action="comment">
+          <textarea name="text" class="estapage-commentformtext"></textarea>
+          <input type="hidden" name="score" id="comment-score" value="0"/>
+          <input type="hidden" name="eid" value="${establishment.eid}"/>
+          <input class="estapage-commentformsubmit" id="comment-submit" type="submit" value="Leave a comment" />
         </form>
 
         <div class="estapage-commentformscore">
@@ -103,6 +105,10 @@
       $("#score" + i).hover(hoverScore);
     }
 
+    $("#comment-submit").click(function(){
+    	$("#comment-score").val(commentScore);
+    });
+    
     function getScoreFromId(id) {
       var score = id.charAt(id.length - 1);
       return parseInt(score, 10);
