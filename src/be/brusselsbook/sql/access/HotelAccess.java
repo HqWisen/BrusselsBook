@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.Establishment;
+import be.brusselsbook.sql.data.EstablishmentType;
 import be.brusselsbook.sql.data.Hotel;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
@@ -56,7 +57,8 @@ public class HotelAccess extends EstablishmentAccess<Hotel> {
 
 	public Hotel createHotel(String name , String tel ,String site , Address address,
 			Integer noStars,Integer noRooms,Float priceForTwo){
-		Establishment establishment = establishmentAccess.createEstablishmentFromAddress(name,tel,site,address);		
+		Establishment establishment = establishmentAccess.createEstablishmentFromAddress(name,tel,site,address,
+				EstablishmentType.HOTEL.getId());		
 		return createHotel (establishment.getEid(), noStars, noRooms, priceForTwo);
 	}
 	
@@ -70,7 +72,8 @@ public class HotelAccess extends EstablishmentAccess<Hotel> {
 
 	public Hotel createHotelForAdmin(Long aid,String name , String tel ,String site , Address address,
 			Integer noStars,Integer noRooms,Float priceForTwo){
-		Establishment establishment = establishmentAccess.createEstablishmentForNoXml(aid,name,tel,site,address);
+		Establishment establishment = establishmentAccess.createEstablishmentForNoXml(aid,name,tel,site,address,
+				EstablishmentType.HOTEL.getId());
 		return createHotel (establishment.getEid(),noStars,noRooms,priceForTwo);
 	}
 	
