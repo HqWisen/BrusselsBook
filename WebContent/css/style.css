@@ -88,10 +88,6 @@ body {
   box-sizing: border-box;
 }
 
-.error {
-  color: red;
-}
-
 .tab a {
   display: flex;
   width: auto;
@@ -242,10 +238,37 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background:#910000;
+  font-size:25px;
+  padding:0;
+  margin:10px; 
+  margin-bottom:5px;
+  color:white;
+  height:70px;
+}
+
+.log-warning{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background:#c45611;
   font-size:25px;
   padding:0;
-  margin:0; 
+  margin:10px; 
+  margin-bottom:5px;
+  color:white;
+  height:70px;
+}
+
+.log-message{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:#002d5d;
+  font-size:25px;
+  padding:0;
+  margin:10px; 
+  margin-bottom:5px;
   color:white;
   height:70px;
 }
@@ -368,4 +391,333 @@ body {
 .esta-score img{
   width:25px;
   height:25px;
+}
+
+
+
+/* Establishment Page */
+
+.estapage {
+  width: 1000px;
+  height: auto;
+  border: 5px solid white;
+  margin: auto;
+  padding-bottom: 20px;
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
+  background: white;
+}
+
+.estapage-name {
+  font-variant: small-caps;
+  font-size: 40px;
+  padding: 10px;
+  margin-bottom:5px;
+  background:#e5e5e5;
+  
+}
+
+.estapage-picture {
+  width: 100%;
+  height: 200px;
+  border-width: 0;
+  box-shadow: 0px -2px 5px 0px rgb(136, 136, 136);
+}
+
+.estapage-picture img {
+  width: 100%;
+  height: 100%;
+  border-width: 0;
+}
+
+.estapage-coord {
+  display: flex;
+  width: inherit;
+  height: 300px;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.estapage-contact {
+  width: 500px;
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.map {
+  height: 300px;
+  width: 500px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-shadow: -2px 2px 7px 0px rgba(165, 165, 165, 0.44);
+}
+
+.estapage-address {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 33%;
+  font-size: 22px;
+  color: black;
+}
+
+.estapage-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 33%;
+  color: #2c2c2c;
+}
+
+.estapage-site {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 33%;
+}
+
+.estapage-site a {
+  color: #6c6c6c;
+  text-decoration: none;
+}
+
+.estapage-site a:hover {
+  text-decoration: underline;
+}
+
+.estapage-tags {
+  height: auto;
+  width: inherit;
+  margin-top: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.estapage-tags div {
+  display: inline-flex;
+}
+
+.estapage-tags form {
+  display: inline-flex;
+}
+
+.estapage-tag {
+  display: inline-flex;
+  width: auto;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  margin-right: 10px;
+  margin-bottom: 30px;
+  cursor: default;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.estapage-tagname {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #002d5d;
+  color: white;
+  height: 100%;
+  padding: 10px;
+  font-variant: small-caps;
+  border-radius: 5px 0px 0px 5px;
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
+}
+
+.estapage-tagcounter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #005dbf;
+  color: #bebebe;
+  border: 1px solid #002d5d;
+  height: 50px;
+  padding: 10px;
+  padding-left: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 0px 5px 5px 0px;
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
+}
+
+.estapage-tagcounterclick {
+  cursor: pointer;
+  border: 1px solid #002d5d;
+  background: white;
+  color: #002d5d;
+}
+
+.estapage-tagcounterclick:hover {
+  background: #005dbf;
+  color: #bebebe;
+}
+
+.estapage-tag-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  height: 30px;
+}
+
+.estapage-tag-addtext {
+  border-width: 0;
+  height: inherit;
+  width: 220px;
+  padding: 10px;
+  border: 1px solid #002d5d;
+  background: white;
+  font-size: 17px;
+  font-variant: small-caps;
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
+  border-radius: 5px 0px 0px 5px;
+}
+
+.estapage-tag-addbutton {
+  height: 52px;
+  width: 50px;
+  border-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #002d5d;
+  background: #002d5d;
+  color: white;
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
+  border-radius: 0px 5px 5px 0px;
+}
+
+.estapage-tag-addbutton:hover {
+  background: #005dbf;
+  border-color: #005dbf;
+  cursor: pointer;
+}
+
+.estapage-comments {
+  padding: 15px;
+}
+
+.estapage-comment {
+  height: auto;
+  width: 95%;
+  margin: auto;
+  margin-bottom: 40px;
+  border: 1px solid #002d5d;
+  padding: 15px;
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
+}
+
+.estapage-commenttext {
+  text-align: justify;
+  margin-bottom: 20px;
+  color: #191919;
+  font-size: 18px;
+}
+
+.estapage-commentauthor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  color: black;
+  font-size: 20px;
+}
+
+.estapage-commentdate {
+  float: left;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #9a9a9a;
+  font-size: 20px;
+}
+
+.estapage-commentscore {
+  float: right;
+  display: inline;
+}
+
+.estapage-commentscore img {
+  width: 25px;
+  height: 25px;
+}
+
+.estapage-commentform {
+  width: 95%;
+  margin: auto;
+  padding: 0;
+  margin-bottom: 50px;
+}
+
+.estapage-commentformtext {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: 1px solid #002d5d;
+  width: 100%;
+  height: 150px;
+  padding: 0;
+  padding: 15px;
+  font-size: 18px;
+  font-family: inherit;
+  resize: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.estapage-commentformscore {
+  float: right;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding: 10px;
+}
+
+.estapage-commentformscore img {
+  width: 40px;
+  height: 40px;
+}
+
+.estapage-commentformsubmit {
+  float: right;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border-width: 0;
+  font-variant: small-caps;
+  background: #002d5d;
+  color: white;
+  cursor: default;
+}
+
+.estapage-commentformsubmit:hover {
+  background: #005dbf;
+  cursor: pointer;
+}
+
+.estapage-notconnected{
+  color:#4791e0;
+  font-style: italic;
+  text-decoration: none;
+  font-size:20px;
+}
+
+.estapage-notconnected:hover{
+  text-decoration: underline;
 }

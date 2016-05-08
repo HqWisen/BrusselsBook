@@ -15,12 +15,7 @@
     <body>
 		<c:import url="tabs.jsp">
 		</c:import>
-		
-		<div id="container">
-	       <c:if test="${not empty requestScope.error}">
-	         <div class="log-error">${requestScope.error}</div>
-	         <br />
-	       </c:if>
+	    <div id="container">
 	     <div class="formwrapper">
     
 	     <form class="logform" method="post" action="login">
