@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import be.brusselsbook.sql.data.Describer;
+import be.brusselsbook.sql.data.Tag;
 import be.brusselsbook.sql.data.TagDescribe;
 import be.brusselsbook.sql.data.UserSignal;
 import be.brusselsbook.utils.BrusselsBookUtils;
@@ -14,7 +15,7 @@ public class TagDescribeAccess extends DataAccess<TagDescribe> {
 	protected static final String EID = "EID";
 	protected static final String TAGNAME = "TagName";
 	
-	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom(TAGNAME,EID,UID);
+	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom(UID,EID,TAGNAME);
 	private static final String TABLE = "TagDescribe";
 
 	
@@ -47,6 +48,13 @@ public class TagDescribeAccess extends DataAccess<TagDescribe> {
 		return tagDescribe;
 	}
 
+	public TagDescribe createTagDescribe ( Long eid, Long uid,String tagName){
+		return createNoGeneratedId(uid, uid,eid,tagName);
+		
+	}
+
+	
+	
 	@Override
 	protected String getTable() {
 		return TABLE;

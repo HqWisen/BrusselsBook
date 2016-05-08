@@ -88,5 +88,10 @@ public class AccessFactory {
 		return new EstablishmentDeletionAccess(this);
 	}
 
+	public TagDescribeAccess getTagDescribeAccess(){
+		return new TagDescribeAccess(this);
+	}
+
+
 
 }

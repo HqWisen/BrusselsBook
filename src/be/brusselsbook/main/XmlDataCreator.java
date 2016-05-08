@@ -7,11 +7,14 @@ import java.util.logging.Logger;
 
 import be.brusselsbook.sql.data.Restaurant;
 import be.brusselsbook.sql.data.Cafe;
+import be.brusselsbook.sql.data.Establishment;
 import be.brusselsbook.parser.CafeXml;
 import be.brusselsbook.parser.Cafes;
 import be.brusselsbook.parser.CommentXml;
 import be.brusselsbook.parser.RestaurantXml;
 import be.brusselsbook.parser.Restaurants;
+import be.brusselsbook.parser.TagXml;
+import be.brusselsbook.parser.Tagger;
 import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.AdministratorAccess;
 
@@ -20,6 +23,7 @@ import be.brusselsbook.sql.access.BookCommentAccess;
 import be.brusselsbook.sql.access.CafeAccess;
 import be.brusselsbook.sql.access.RestaurantAccess;
 import be.brusselsbook.sql.access.TagAccess;
+import be.brusselsbook.sql.access.TagDescribeAccess;
 import be.brusselsbook.sql.access.CafeAccess;
 import be.brusselsbook.sql.access.RestaurantAccess;
 import be.brusselsbook.sql.data.Administrator;
@@ -36,14 +40,17 @@ public class XmlDataCreator {
 	private RestaurantAccess restaurantAccess;
 	private AdministratorAccess administratorAccess;
 	private CafeAccess cafeAccess;
-
 	private BookCommentAccess bookCommentAccess;
+	private TagAccess tagAccess;
+	private TagDescribeAccess tagDescribeAccess;
 	
 	public XmlDataCreator(AccessFactory factory) {
 		this.restaurantAccess = factory.getRestaurantAccess();
 		this.administratorAccess = factory.getAdminstratorAccess();
 		this.cafeAccess = factory.getCafeAccess();
 		this.bookCommentAccess = factory.getBookCommentAccess();
+		this.tagAccess = factory.getTagAccess();
+		this.tagDescribeAccess = factory.getTagDescribeAccess();
 	}
 
 	private Administrator createAdministrator(String nickname) {
@@ -63,6 +70,9 @@ public class XmlDataCreator {
 		for (CafeXml cx : cafeList) {
 			Administrator admin = createAdministrator(cx.getNickname());
 			Cafe cafe = cafeAccess.createCafeFromAdmin(admin.getAid(), cx.getCafeInfos());
+			List<TagXml> tagList = cx.getTagList();
+			createTag(tagList,cafe);
+
 			List<CommentXml> commentList = cx.getCommentList();
 			if (commentList != null){
 				for (CommentXml cox : commentList  ){
@@ -86,6 +96,10 @@ public class XmlDataCreator {
 		for (RestaurantXml rx : restaurantList) {
 			Administrator admin = createAdministrator(rx.getNickname());
 			Restaurant restaurant = restaurantAccess.createRestaurantFromAdmin(admin.getAid(), rx.getRestoInfos());
+			
+			List<TagXml> tagList = rx.getTagList();
+			createTag(tagList,restaurant);
+			
 			List<CommentXml> commentList = rx.getCommentList();
 			if (commentList != null){
 				for (CommentXml cx : commentList  ){
@@ -102,6 +116,29 @@ public class XmlDataCreator {
 		
 	}
 
+	
+	public void createTag(List<TagXml>tagList,Establishment establishment ){
+		if (tagList != null){
+			for (TagXml tx : tagList  ){
+				if (tx!=null){
+					List<Tagger> taggerList = tx.getTaggerList();
+					for (int i = 0;i<taggerList.size();i++){
+						Administrator tagger = createAdministrator(taggerList.get(i).getNickname());
+						Long uid = tagger.getUid();
+						Long eid = establishment.getEid();
+						if ( tagAccess.withTagName(tx.getName()) == null) 
+							tagAccess.createTag(uid, tx.getName());
+						else
+							tagDescribeAccess.createTagDescribe(eid, uid, tx.getName());
+					
+					}
+				}
+			}
+		}
+
+	}
+	
+	
 	public void run() throws IOException {
 		parseRestaurants();
 		parseCafes();
