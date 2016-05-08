@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import be.brusselsbook.parser.CafeInfos;
 import be.brusselsbook.sql.data.Cafe;
 import be.brusselsbook.sql.data.Establishment;
+import be.brusselsbook.sql.data.EstablishmentType;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class CafeAccess extends EstablishmentAccess<Cafe> {
@@ -25,12 +26,14 @@ public class CafeAccess extends EstablishmentAccess<Cafe> {
 	}
 
 	public Cafe createCafeFromAdmin(Long aid, CafeInfos infos) {
-		Establishment establishment = establishmentAccess.createEstablishment(aid, infos);
+		Establishment establishment = establishmentAccess.createEstablishment(aid, infos,
+				EstablishmentType.CAFE.getId());
 		return createCafe(establishment.getEid(), infos);
 	}
 	
 	public Cafe createCafe(CafeInfos infos) {
-		Establishment establishment = establishmentAccess.createEstablishment(infos);
+		Establishment establishment = establishmentAccess.createEstablishment(infos,
+				EstablishmentType.CAFE.getId());
 		return createCafe(establishment.getEid(), infos);
 	}
 

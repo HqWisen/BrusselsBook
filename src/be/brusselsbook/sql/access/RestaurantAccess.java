@@ -7,6 +7,7 @@ import be.brusselsbook.parser.CafeInfos;
 import be.brusselsbook.parser.RestaurantInfos;
 import be.brusselsbook.sql.data.Cafe;
 import be.brusselsbook.sql.data.Establishment;
+import be.brusselsbook.sql.data.EstablishmentType;
 import be.brusselsbook.sql.data.Restaurant;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
@@ -31,12 +32,14 @@ public class RestaurantAccess extends EstablishmentAccess<Restaurant> {
 	}
 
 	public Restaurant createRestaurantFromAdmin(Long aid, RestaurantInfos infos) {
-		Establishment establishment = establishmentAccess.createEstablishment(aid, infos);
+		Establishment establishment = establishmentAccess.createEstablishment(aid, infos,
+				EstablishmentType.RESTAURANT.getId());
 		return createRestaurant(establishment.getEid(), infos);
 	}
 	
 	public Restaurant createRestaurant(RestaurantInfos infos) {
-		Establishment establishment = establishmentAccess.createEstablishment(infos);
+		Establishment establishment = establishmentAccess.createEstablishment(infos,
+				EstablishmentType.RESTAURANT.getId());
 		return createRestaurant(establishment.getEid(), infos);
 	}
 

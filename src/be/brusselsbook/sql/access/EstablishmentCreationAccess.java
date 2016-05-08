@@ -10,8 +10,9 @@ public class EstablishmentCreationAccess extends DataAccess<EstablishmentCreatio
 
 	private static final String EID = "EID";
 	private static final String AID = "AID";
+	
 	private static final String CREATIONDATE = "CreationDate";
-
+	
 	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom(EID, AID);
 	private static final String TABLE = "EstablishmentCreation";
 

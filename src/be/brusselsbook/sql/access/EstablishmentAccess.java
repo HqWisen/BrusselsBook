@@ -11,6 +11,7 @@ import be.brusselsbook.parser.EstablishmentInfos;
 import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.BookComment;
 import be.brusselsbook.sql.data.Establishment;
+import be.brusselsbook.sql.data.EstablishmentType;
 
 public abstract class EstablishmentAccess<T extends Establishment> extends DataAccess<T> {
 
@@ -66,17 +67,17 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 		super(accessFactory);
 	}
 
-	public T createEstablishment(Long aid, EstablishmentInfos infos){
+	public T createEstablishment(Long aid, EstablishmentInfos infos, int type){
 		EstablishmentCreationAccess creationAccess = accessFactory.getEstablishmentCreationAccess();
-		T establishment = createEstablishment(infos);
+		T establishment = createEstablishment(infos,type);
 		creationAccess.createEstablishmentCreation(establishment.getEid(), aid);
 		return establishment;
 	}
 	
 	public T createEstablishmentForNoXml(Long aid, String name, String phoneNumber, String website, 
-			Address address){
+			Address address, int type){
 		EstablishmentCreationAccess creationAccess = accessFactory.getEstablishmentCreationAccess();
-		T establishment = createEstablishmentFromAddress(name,  phoneNumber,  website,address);
+		T establishment = createEstablishmentFromAddress(name,  phoneNumber,  website,address,type);
 		creationAccess.createEstablishmentCreation(establishment.getEid(), aid);
 		return establishment;
 	}
@@ -85,18 +86,20 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 	
 	
 	
-	public T createEstablishment(EstablishmentInfos infos){
-		return createEstablishment(infos.getName(), infos.getTel(), infos.getSiteLink(), infos.getAddress());
+	public T createEstablishment(EstablishmentInfos infos, int type){
+		return createEstablishment(infos.getName(), infos.getTel(), infos.getSiteLink(), infos.getAddress(),type);
 	}
 	
-	public T createEstablishment(String name, String phoneNumber, String website, AddressXml addressXml){
-		T establishment = create(name, phoneNumber, website);
+	public T createEstablishment(String name, String phoneNumber, String website, AddressXml addressXml,
+			int type){
+		T establishment = create(name, phoneNumber, website,type);
 		AddressAccess addressAccess = accessFactory.getAddressAccess();
 		addressAccess.createAddress(establishment.getEid(), addressXml);
 		return establishment;
 	}
 	
-	public T createEstablishmentFromAddress(String name, String phoneNumber, String website, Address address){
+	public T createEstablishmentFromAddress(String name, String phoneNumber, String website, Address address
+			, int type){
 		T establishment = create(name, phoneNumber, website);
 		AddressAccess addressAccess = accessFactory.getAddressAccess();
 		addressAccess.createAddress(establishment.getEid(), address.getStreet(),address.getNumber(),

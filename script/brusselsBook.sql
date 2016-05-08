@@ -1,4 +1,3 @@
-
 # Create a user too access to brusselsbook database
 CREATE USER 'bbadmin'@'localhost' IDENTIFIED BY 'common';
 
@@ -20,6 +19,7 @@ CREATE TABLE Establishment(
 	PhoneNumber VARCHAR(20) NOT NULL,
 	Modified TINYINT(1) DEFAULT 0,
 	Website VARCHAR(200),
+	Type INT UNSIGNED NOT NULL,
 	PRIMARY KEY(EID)
 );
 
