@@ -30,6 +30,8 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		from = request.getParameter("from");
 		elem = request.getParameter("elem");
+		request.setAttribute("IDENTIFIERTITLE", "Email or username");
+		request.setAttribute("PASSWORDTITLE", "Your password");
 		getServletContext().getRequestDispatcher(ServerUtils.LOGINJSPFILE).forward(request, response);
 	}
 

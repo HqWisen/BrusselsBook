@@ -17,16 +17,27 @@
 		</c:import>
 	    <div id="container">
 	     <div class="formwrapper">
-    
+    	<c:if test="${empty param.identifier}">
+		  <c:set var="identifiertext" value="${requestScope.IDENTIFIERTITLE}" scope="page"/>
+		</c:if>
+		<c:if test="${not empty param.identifier}">
+		  <c:set var="identifiertext" value="${param.identifier}" scope="page"/>
+		</c:if>
+		
 	     <form class="logform" method="post" action="login">
 	       <div>Enter your credentials</div>
-	       <input class="log-input" type="text" name="identifier" value="<c:out value="${param.identifier}"/>" />
+	       <input class="log-input" id="identifier" type="text" name="identifier" value="<c:out value="${pageScope.identifiertext}"/>" />
 	       <br />
-	       <input class="log-input" type="password" name="password" maxlength="16" />
+	       <input class="log-input" id="password" type="password" name="password" maxlength="16" />
 	       <br />
 	       <input class="log-submit" type="submit" value="Log in" />
 	       <br />
 	     </form>
+	     <script>
+	 		buildInputDefault("#identifier", "<c:out value="${requestScope.IDENTIFIERTITLE}"/>");
+			//buildInputDefault("#password", "<c:out value="${requestScope.PASSWORDTITLE}"/>");
+		</script>	
+	     
 	     </div>
 	     <c:if test="${sessionScope.connected}">
 	       <c:redirect url="home">

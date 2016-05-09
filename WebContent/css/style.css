@@ -50,7 +50,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  width: 33%;
+  width: 25%;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -65,7 +65,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-  width: 33%;
+  width: 35%;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -175,7 +175,7 @@ body {
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  width:33%;
+  width:40%;
   height:100%;
   padding:0;
   margin:0;
@@ -184,6 +184,7 @@ body {
 
 .toolbar-searchtext{
 	height:45px;
+	width:80%;
 	padding-left:7px;
 	padding-right: 7px;
 	font-size:18px;
@@ -202,6 +203,7 @@ body {
 
 .toolbar-searchsubmit{
 	height:45px;
+	width:20%;
 	margin:0;
 	padding:0;
 	border-width:0;
@@ -249,6 +251,9 @@ body {
   display:none;
 }
 
+.input-default{
+  color:#a0a0a0;
+}
 
 /* container */
 
@@ -302,7 +307,7 @@ body {
   border: 1px solid #004b9b;
   padding: 10px;
   margin-bottom: 5px;
-  color: #002d5d;
+  /*color: #002d5d;*/
   background: #ffffff;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

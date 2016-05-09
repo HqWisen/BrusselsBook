@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.servlet.http.HttpSession;
+
 import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.BookCommentAccess;
 import be.brusselsbook.sql.access.BookUserAccess;
@@ -210,5 +212,9 @@ public final class AccessUtils {
 	private static String getCommentAuthorFor(BookComment comment) {
 		BookUserAccess<BookUser> bAccess = aFactory.getBookUserAccess();
 		return bAccess.withUid(comment.getUid()).getUsername();
+	}
+
+	public static void setAttribute(HttpSession session, String key, String value) {
+		session.setAttribute(key, value);
 	}
 }
