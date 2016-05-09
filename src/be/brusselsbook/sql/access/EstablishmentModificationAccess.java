@@ -25,7 +25,7 @@ public class EstablishmentModificationAccess extends DataAccess<EstablishmentMod
 
 	@Override
 	public EstablishmentModification withId(Long id) {
-		return null;
+		return withEid(id);
 	}
 
 	@Override
