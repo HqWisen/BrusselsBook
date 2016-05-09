@@ -82,7 +82,6 @@ public class AccessFactory {
 		return new UserSignalAccess(this);
 	}
 
-
 	public EstablishmentDeletionAccess getEstablishmentDeletionAccess(){
 		return new EstablishmentDeletionAccess(this);
 	}
@@ -98,4 +97,16 @@ public class AccessFactory {
 	public DescriberDeletionAccess getDescriberDeletionAccess(){
 		return new DescriberDeletionAccess(this);
 	}
+
+	public EstablishmentModificationAccess getEstablishment(){
+		return new EstablishmentModificationAccess(this);
+	}
+	
+	public DescriberModificationAccess getDescriberModification(){
+		return new DescriberModificationAccess(this);
+	}
+
+
+
+
 }
