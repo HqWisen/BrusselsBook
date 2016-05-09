@@ -33,14 +33,18 @@
         <div id="map" class="map"></div>
       </div>
       <div class="estapage-tags">
-        <div class="estapage-tag">
-          <div class="estapage-tagname">Super</div>
-          <div class="estapage-tagcounter estapage-tagcounterclick" onclick="addOneTag(this)">1</div>
-        </div>
-        <div class="estapage-tag">
+        <c:forEach items="${requestScope.tags}" var="tag">
+          <div class="estapage-tag">
+            <div class="estapage-tagname"><c:out value="${tag.tagName}"/></div>
+            <div class="estapage-tagcounter estapage-tagcounterclick" onclick="addOneTag(this)">
+              <c:out value="${tagCounters[tag.tagName]}"/>
+            </div>
+          </div>
+        </c:forEach>
+        <%-- div class="estapage-tag">
           <div class="estapage-tagname">Trop bon</div>
           <div class="estapage-tagcounter">1</div>
-        </div>
+        </div --%>
         <br/>
         <form class="estapage-tag-add" method="post">
           <input class="estapage-tag-addtext" type="text" />

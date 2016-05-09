@@ -56,6 +56,15 @@ public abstract class DataAccess<T> implements Indexable<T>{
 		return "SELECT * FROM " + getTable() + " WHERE " + by + " = ?";
 	}
 
+	public String SELECTBYSEVERALAND(String... cols) {
+		String string = "SELECT * FROM " + getTable() + " WHERE ";
+		for(int i = 0; i < cols.length - 1; i++){
+			 string +=  cols[i] + " = ? AND ";		
+		}
+		string += cols[cols.length - 1] + " = ?";
+		return string;
+	}
+
 	public String SELECTALL(){
 		return "SELECT * FROM " + getTable();
 	}

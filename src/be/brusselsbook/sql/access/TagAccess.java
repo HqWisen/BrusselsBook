@@ -12,32 +12,21 @@ public class TagAccess extends DescriberAccess<Tag> {
 	protected static final String TAGNAME = "TagName";
 	protected static final String UID = "UID";
 	private static final String CREATIONDATE = "CreationDate";
-	
-	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom(DID,UID,TAGNAME);
+
+	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom(DID, UID, TAGNAME);
 	private static final String TABLE = "Tag";
 
 	private DescriberAccess<Describer> describerAccess;
 
-	
-	
-	
-	
-	
 	protected TagAccess(AccessFactory accessFactory) {
 		super(accessFactory);
 		this.describerAccess = accessFactory.getDescriberAccess();
 	}
 
-	
-	
-	
-	
 	public Tag withTagName(String tagName) {
 		return withQuery(SELECTBY(TAGNAME), tagName);
 	}
 
-	
-	
 	@Override
 	public Tag withId(Long id) {
 		return withDid(id);
@@ -64,15 +53,13 @@ public class TagAccess extends DescriberAccess<Tag> {
 		return tag;
 	}
 
-	
-	public Tag createTag (Long uid , String tagName){
+	public Tag createTag(Long uid, String tagName) {
 		Describer describer = describerAccess.create();
 		Long did = describer.getDid();
-		return createNoGeneratedId(did, did,uid,tagName);
-		
+		return createNoGeneratedId(did, did, uid, tagName);
+
 	}
 
-	
 	@Override
 	protected String getTable() {
 		return TABLE;

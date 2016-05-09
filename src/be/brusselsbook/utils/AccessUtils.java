@@ -17,10 +17,12 @@ import javax.servlet.http.HttpSession;
 import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.BookCommentAccess;
 import be.brusselsbook.sql.access.BookUserAccess;
+import be.brusselsbook.sql.access.TagDescribeAccess;
 import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.BookComment;
 import be.brusselsbook.sql.data.BookUser;
 import be.brusselsbook.sql.data.Establishment;
+import be.brusselsbook.sql.data.Tag;
 import be.brusselsbook.sql.exception.DatabaseAccessException;
 
 public final class AccessUtils {
@@ -216,5 +218,16 @@ public final class AccessUtils {
 
 	public static void setAttribute(HttpSession session, String key, String value) {
 		session.setAttribute(key, value);
+	}
+
+	public static Map<String, Integer> getCountersFor(List<Tag> tags, Long eid) {
+		TagDescribeAccess tAccess = aFactory.getTagDescribeAccess();
+		Map<String, Integer> map = new HashMap<>();
+		for(Tag tag : tags){
+			String name = tag.getTagName();
+			Integer counter = tAccess.withEidAndTagName(eid, name).size(); 
+			map.put(name, counter);
+		}
+		return map;
 	}
 }

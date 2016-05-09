@@ -6,6 +6,7 @@ import java.util.List;
 
 import be.brusselsbook.sql.data.BookComment;
 import be.brusselsbook.sql.data.Describer;
+import be.brusselsbook.utils.AccessUtils;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class BookCommentAccess extends DescriberAccess<BookComment> {
@@ -40,6 +41,17 @@ public class BookCommentAccess extends DescriberAccess<BookComment> {
 	public List<BookComment> withEid(Long eid){
 		return severalWithQuery(SELECTBY(EID), eid);
 	}	
+	
+	public Integer avgScoreWithEid(Long eid){
+		Integer score = 0;
+		String query = "select AVG(b.Score) from " + getTable() + " b where b.EID = " + eid;
+		ResultSet resultSet = AccessUtils.executeQuery(accessFactory, query, eid);
+		if(AccessUtils.next(resultSet)){
+			Long longScore = AccessUtils.getLongFirstColumn(resultSet);
+			score = (int)Math.ceil(longScore);
+		}
+		return score;
+	}
 	
 	public BookComment createBookComment (Long uid , Long eid,Integer score,String text){
 		Describer describer = describerAccess.create();
