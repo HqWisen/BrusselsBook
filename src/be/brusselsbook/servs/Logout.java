@@ -20,7 +20,5 @@ public class Logout extends HttpServlet {
 		ServerUtils.setDisconnectedSession(request.getSession());
 		request.setAttribute("notif", "Successfully disconnected.");
 		getServletContext().getRequestDispatcher(ServerUtils.HOMEJSPFILE).forward(request, response);
-		
 	}
-
 }

@@ -85,7 +85,7 @@
      		
      	</c:when>
     	<c:otherwise>
-      <a href="login" class="estapage-notconnected">
+      <a href="login?from=establishment?eid=${establishment.eid}&elem=form" class="estapage-notconnected">
         Log in to leave a comment !
       </a>
  

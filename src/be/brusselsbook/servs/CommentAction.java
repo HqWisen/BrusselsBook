@@ -1,6 +1,7 @@
 package be.brusselsbook.servs;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.BookCommentAccess;
 import be.brusselsbook.sql.data.BookUser;
+import be.brusselsbook.utils.ServerUtils;
 
 /**
  * Servlet implementation class CommentAction
@@ -28,9 +30,8 @@ public class CommentAction extends HttpServlet {
 		Long uid = user.getUid();
 		bAccess.createBookComment(uid, eid, score, text);
 		String site = "establishment?eid=" + eid + "#form";
-		response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
-		response.setHeader("Location", site);
-
+		ServerUtils.redirectTo(response, site);
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package be.brusselsbook.utils;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import be.brusselsbook.sql.access.AccessFactory;
@@ -31,6 +32,11 @@ public final class ServerUtils {
 		session.setAttribute("user", null);
 		session.setAttribute("connected", null);
 		session.setAttribute("isadmin", null);
+	}
+
+	public static void redirectTo(HttpServletResponse response, String site) {
+		response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
+		response.setHeader("Location", site);
 	}
 	
 }
