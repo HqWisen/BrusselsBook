@@ -2,7 +2,7 @@
 CREATE USER 'bbadmin'@'localhost' IDENTIFIED BY 'common';
 
 # Create the database
-CREATE DATABASE brusselsbook;
+CREATE DATABASE brusselsbook CHARACTER SET 'utf8';
 
 # Give access to the user
 GRANT ALL PRIVILEGES ON `brusselsbook`.* TO 'bbadmin'@'localhost';
