@@ -38,12 +38,11 @@ public class EstablishmentModificationAccess extends DataAccess<EstablishmentMod
 		return establishmentModification;
 	}
 
-	/*
-	public EstablishmentModification createEstablishmentModification(Long oldEID,Long aid ){
-		
-		return createNoGeneratedId(id, values);
+
+	public EstablishmentModification createEstablishmentModification(Long oldEID,Long newEID,Long aid ){
+		return createNoGeneratedId(oldEID, newEID,aid);
 	}
-	*/
+
 	
 	@Override
 	protected String getTable() {
