@@ -339,39 +339,47 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  height:70px;
+  width:85%;
+  margin:auto; 
+  margin-top:20px;
+  margin-bottom:20px;
   background:#910000;
   font-size:25px;
   padding:0;
-  margin:10px; 
-  margin-bottom:5px;
   color:white;
-  height:70px;
+  
 }
 
 .log-warning{
   display: flex;
   align-items: center;
   justify-content: center;
+  height:70px;
+  width:85%;
+  margin:auto; 
+  margin-top:20px;
+  margin-bottom:20px;
   background:#c45611;
   font-size:25px;
   padding:0;
-  margin:10px; 
-  margin-bottom:5px;
   color:white;
-  height:70px;
+
 }
 
 .log-message{
   display: flex;
   align-items: center;
   justify-content: center;
+  height:70px;
+  width:85%;
+  margin:auto; 
+  margin-top:20px;
+  margin-bottom:20px;
   background:#002d5d;
   font-size:25px;
   padding:0;
-  margin:10px; 
-  margin-bottom:5px;
   color:white;
-  height:70px;
 }
 
 

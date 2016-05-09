@@ -5,15 +5,13 @@
 		<ul id="lefttabs">
 			<li class="tab"><a
 				class="<c:if test="${param.home}">active</c:if>" href="home">HOME</a></li>
-			<li class="tab"><a
-				class="<c:if test="${param.search}">active</c:if>" href="search">ADVANCED SEARCH</a></li>
+			<%--li class="tab"><a
+				class="<c:if test="${param.search}">active</c:if>" href="search">ADVANCED SEARCH</a></li--%>
 		</ul>
-		<c:if test="${param.home}">
-		<form class="toolbar-search">
-			<input class="toolbar-searchtext" type="text"/>
+		<form class="toolbar-search" action="search">
+			<input class="toolbar-searchtext" name="q" value="<c:out value="${param.q}"/>" type="text"/>
 			<input class="toolbar-searchsubmit" type="submit" value="SEARCH"/>
 		</form>
-		</c:if>
 		<ul id="righttabs">
 			<c:choose>
 				<c:when test="${sessionScope.connected}">
@@ -38,6 +36,14 @@
   	</c:if>
 	<c:if test="${not empty requestScope.error}">
 		<div class="log-error">${requestScope.error}</div>
+	 	<br />
+	</c:if>		
+	<c:if test="${not empty requestScope.warning}">
+		<div class="log-warning">${requestScope.warning}</div>
+	 	<br />
+	</c:if>		
+	<c:if test="${not empty requestScope.message}">
+		<div class="log-message">${requestScope.message}</div>
 	 	<br />
 	</c:if>		
 		

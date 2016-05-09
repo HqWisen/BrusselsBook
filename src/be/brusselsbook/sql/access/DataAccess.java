@@ -66,7 +66,7 @@ public abstract class DataAccess<T> implements Indexable<T>{
 		return "INSERT INTO " + getTable() + " (" + parameters + ") VALUES (" + wildCards + ")";
 	}
 	
-	protected T safeMap(ResultSet resultSet) throws DatabaseAccessException{
+	public T safeMap(ResultSet resultSet) throws DatabaseAccessException{
 		try {
 			return map(resultSet);
 		} catch (SQLException e) {

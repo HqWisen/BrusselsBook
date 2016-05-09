@@ -30,7 +30,6 @@ public final class AccessUtils {
 		aFactory = AccessFactory.getInstance();
 	}
 
-	
 	public static boolean next(ResultSet resultSet) throws DatabaseAccessException {
 		try {
 			return resultSet.next();
@@ -64,6 +63,22 @@ public final class AccessUtils {
 		return resultSet;
 	}
 
+	public static ResultSet executeLikeQuery(AccessFactory accessFactory, String sqlQuery, Object... values) {
+		LOGGER.info("executing like query " + sqlQuery + " with " + Arrays.asList(values));
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = accessFactory.getConnection();
+			preparedStatement = AccessUtils.createLikePreparedStatement(connection, sqlQuery, values);
+			resultSet = preparedStatement.executeQuery();
+			AccessUtils.close(connection);
+		} catch (SQLException e) {
+			throw new DatabaseAccessException(e);
+		}
+		return resultSet;		
+	}
+
 	public static ResultSet executeInsert(AccessFactory accessFactory, String sqlQuery, Object... values)
 			throws DatabaseAccessException {
 		LOGGER.info("executing insert " + sqlQuery + " with " + Arrays.asList(values));
@@ -90,6 +105,16 @@ public final class AccessUtils {
 		return createPreparedStatement(false, connection, sqlQuery, values);
 	}
 
+	public static PreparedStatement createLikePreparedStatement(Connection connection, String sqlQuery, Object... values)
+			throws SQLException {
+		PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+		for (int i = 0; i < values.length; i++) {
+			String value = likeSanitize((String)values[i]);
+			preparedStatement.setString(i + 1, "%" + value + "%");
+		}
+		return preparedStatement;
+	}
+
 	public static PreparedStatement createPreparedStatement(boolean returnGeneratedKeys, Connection connection,
 			String sqlQuery, Object... values) throws SQLException {
 		PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery,
@@ -98,6 +123,10 @@ public final class AccessUtils {
 			preparedStatement.setObject(i + 1, values[i]);
 		}
 		return preparedStatement;
+	}
+
+	public static String likeSanitize(String input) {
+		return input.replace("!", "!!").replace("%", "!%").replace("_", "!_").replace("[", "![");
 	}
 
 	public static void close(AutoCloseable closeable) {
@@ -118,66 +147,64 @@ public final class AccessUtils {
 		close(resultSet);
 	}
 
-	public static Map<Long, Address> getAddressFor(List<Establishment> establishments){
+	public static Map<Long, Address> getAddressFor(List<Establishment> establishments) {
 		Map<Long, Address> map = new HashMap<>();
-		for(Establishment establishment : establishments){
+		for (Establishment establishment : establishments) {
 			Long eid = establishment.getEid();
 			map.put(eid, getAddressFor(eid));
 		}
 		return map;
 	}
-	
-	public static Map<Long, Integer> getNumberOfCommentsFor(List<Establishment> establishments){
+
+	public static Map<Long, Integer> getNumberOfCommentsFor(List<Establishment> establishments) {
 		Map<Long, Integer> map = new HashMap<>();
-		for(Establishment establishment : establishments){
+		for (Establishment establishment : establishments) {
 			Long eid = establishment.getEid();
 			map.put(eid, getNumberOfCommentsFor(eid));
 		}
-		return map;		
+		return map;
 	}
-	
+
 	private static Integer getNumberOfCommentsFor(Long eid) {
 		BookCommentAccess bookCommentAccess = aFactory.getBookCommentAccess();
-		List<BookComment> comments = bookCommentAccess.withEid(eid); 
+		List<BookComment> comments = bookCommentAccess.withEid(eid);
 		return comments.size();
-}
+	}
 
 	public static Address getAddressFor(Long eid) {
 		return aFactory.getAddressAccess().withEid(eid);
 	}
 
-	public static Address getAddresFor(Establishment establishment){
+	public static Address getAddresFor(Establishment establishment) {
 		return getAddressFor(establishment.getEid());
 	}
-	
+
 	public static Map<Long, Integer> getAverageScoresFor(List<Establishment> establishments) {
 		Map<Long, Integer> map = new HashMap<>();
-		for(Establishment establishment : establishments){
+		for (Establishment establishment : establishments) {
 			Long eid = establishment.getEid();
 			map.put(eid, getAverageScoreFor(eid));
 		}
-		return map;				
+		return map;
 	}
 
-	
 	private static Integer getAverageScoreFor(Long eid) {
 		BookCommentAccess bookCommentAccess = AccessFactory.getInstance().getBookCommentAccess();
-		List<BookComment> comments = bookCommentAccess.withEid(eid); 
+		List<BookComment> comments = bookCommentAccess.withEid(eid);
 		int total = 0;
-		for(BookComment comment : comments){
+		for (BookComment comment : comments) {
 			total += comment.getScore();
 		}
-		return comments.isEmpty() ? 0 : (int)Math.ceil(total / comments.size());
+		return comments.isEmpty() ? 0 : (int) Math.ceil(total / comments.size());
 	}
 
-	
 	public static Map<Long, String> getAuthorsFor(List<BookComment> comments) {
 		Map<Long, String> map = new HashMap<>();
-		for(BookComment comment : comments){
+		for (BookComment comment : comments) {
 			Long did = comment.getDid();
 			map.put(did, getCommentAuthorFor(comment));
 		}
-		return map;				
+		return map;
 	}
 
 	private static String getCommentAuthorFor(BookComment comment) {

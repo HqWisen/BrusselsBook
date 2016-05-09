@@ -1,6 +1,8 @@
 package be.brusselsbook.servs;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,11 +23,32 @@ import be.brusselsbook.utils.ServerUtils;
 public class Search extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
+	private static final String SEARCH_SQL = 
+			"SELECT e.* FROM Establishment e, Address a WHERE (a.EID = e.EID) " +
+			"and (e.EName LIKE ? or a.Locality LIKE ? " +
+			"or a.PostalCode LIKE ? or a.Street LIKE ?)";
+	
+	private EstablishmentAccess<Establishment> eAccess;
+	
+	public Search(){
+		this.eAccess = AccessFactory.getInstance().getEstablishmentAccess();
+	}
+	
+	private List<Establishment> searchFor(String question){
+		List<Establishment> results = new ArrayList<>(); 
+		ResultSet set = AccessUtils.executeLikeQuery(AccessFactory.getInstance(), SEARCH_SQL, question, question, question, question);
+		while(AccessUtils.next(set)){
+			results.add(eAccess.safeMap(set));
+		}
+		return results;
+	}
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		EstablishmentAccess<Establishment> establishmentAccess = AccessFactory.getInstance().getEstablishmentAccess();
-		List<Establishment> results = establishmentAccess.getObjects();
+		String question = req.getParameter("q");
+		question = question == null ? "" : question;
+		question = question.trim(); // removing space in begin & end
+		List<Establishment> results = searchFor(question);
 		Map<Long, Address> addresses = AccessUtils.getAddressFor(results);
 		Map<Long, Integer> numberOfComments = AccessUtils.getNumberOfCommentsFor(results);
 		Map<Long, Integer> averageScores = AccessUtils.getAverageScoresFor(results);
@@ -33,6 +56,11 @@ public class Search extends HttpServlet {
 		req.setAttribute("addresses", addresses);
 		req.setAttribute("numberOfComments", numberOfComments);
 		req.setAttribute("averageScores", averageScores);
+		if(results.isEmpty()){
+			req.setAttribute("warning", "No results found !");
+		}else{
+			req.setAttribute("message", "Found " + results.size() + " results.");
+		}
 		getServletContext().getRequestDispatcher(ServerUtils.SEARCHJSPFILE).forward(req, resp);
 	}
 
