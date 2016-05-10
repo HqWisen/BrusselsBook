@@ -109,15 +109,15 @@ body {
 }
 
 .tab a:hover {
-  background: #0068d6;
+  /*background: #0068d6;*/
   
 }
 
 
 .tab a.active {
-  background: white;
+  /*background: white;
   color: #005dbf;
-  border-radius: 7px;
+  border-radius: 7px;*/
 }
 
 .righttab {
@@ -839,3 +839,39 @@ body {
 .notconnected:hover{
   text-decoration: underline;
 }
+
+/* Admin */
+
+.admin-zone{
+	width:70%;
+	height:auto;
+	margin:auto;
+	margin-top:30px;
+	padding-top:30px;
+	padding-bottom:30px;
+	background:#D4D3D3;
+	box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
+}
+
+.admin-zone span{
+	display:block;
+	margin-bottom:20px;
+	font-size:22px;
+	font-variant:small-caps;
+	color:#1A0202;
+}
+
+.admin-zone a{
+	background:#820D0D;
+	color:white;
+	padding:10px;
+	width:auto;
+	text-decoration:none;
+}
+
+.admin-zone a:hover{
+	background:#590808;
+	box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
+}
+
+

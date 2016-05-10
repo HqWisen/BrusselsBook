@@ -59,10 +59,6 @@
 		</script>	
 	     
 	     </div>
-	     <c:if test="${sessionScope.connected}">
-	       <c:redirect url="home">
-	       </c:redirect>
-	     </c:if>
 		</div>     
     </body>
 

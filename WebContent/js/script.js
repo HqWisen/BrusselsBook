@@ -59,4 +59,9 @@ function inputFocus(e) {
     initClass(id, defaulttext);
   }
 
+  function checkinput(id, title){
+	if($("id").val() == title){
+    	$("id").val("");
+    }				
 
+  }

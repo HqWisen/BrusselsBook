@@ -25,9 +25,7 @@
 		 <script>
 			buildInputDefault("#searchinput", "<c:out value="${sessionScope.SEARCHTITLE}"/>");
 			function checkform(){
-				if($("#searchinput").val() == "<c:out value="${sessionScope.SEARCHTITLE}"/>"){
-		    		$("#searchinput").val("");
-		    	}				
+				checkinput("#searchinput", "<c:out value="${sessionScope.SEARCHTITLE}"/>");
 			}
 	    	
 		</script>	

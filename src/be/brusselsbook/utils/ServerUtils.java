@@ -14,6 +14,7 @@ public final class ServerUtils {
 	public static final String USERCREATEJSPFILE = ServerUtils.getJspPath("usercreate.jsp");
 	public static final String HOMEJSPFILE = ServerUtils.getJspPath("home.jsp");
 	public static final String ESTABLISHMENTJSPFILE = ServerUtils.getJspPath("establishment.jsp");
+	public static final String ADMINJSPFILE = ServerUtils.getJspPath("admin.jsp");
 	public static final String WEBINF = "/WEB-INF/";
 	public static final String JSPDIR = "jsp/";
 	public static final String SEARCHTITLE = "Establishment, locality, zip, street ...";
