@@ -1,4 +1,4 @@
-R1 (sure)
+# R1 (sure)
 
 select user.UID from BookUser user where 
 (
@@ -10,7 +10,7 @@ and
 exists(select * from BookComment c where c.EID = e.EID and c.UID = user.UID and c.Score > 4)
 ) > 3;
 
-R5 (not sure)
+# R5 (not sure)
 
 select c.EID, AVG(c.Score) as AvgScore from BookComment c
 where c.EID in
@@ -21,3 +21,10 @@ select count(*) from BookComment c where eid3 = c.EID
 ) > 3
 )
 group by (c.EID) order by AvgScore;
+
+# R3 (not sure)
+
+select e.EID from Establishment e where
+(
+select count(*) from BookComment c where c.EID = e.EID
+) <= 1;
