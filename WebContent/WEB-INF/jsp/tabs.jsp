@@ -20,15 +20,21 @@
 		</c:if>
 		<form class="toolbar-search" action="search">
 			<input class="toolbar-searchtext" id="searchinput" name="q" value="<c:out value="${pageScope.searchtext}"/>" type="text"/>
-			<input class="toolbar-searchsubmit" type="submit" value="SEARCH"/>
+			<input class="toolbar-searchsubmit" type="submit" value="SEARCH" onclick ="return checkform();"/>
 		</form>
 		 <script>
 			buildInputDefault("#searchinput", "<c:out value="${sessionScope.SEARCHTITLE}"/>");
+			function checkform(){
+				if($("#searchinput").val() == "<c:out value="${sessionScope.SEARCHTITLE}"/>"){
+		    		$("#searchinput").val("");
+		    	}				
+			}
+	    	
 		</script>	
 		<ul id="righttabs">
 			<c:choose>
 				<c:when test="${sessionScope.connected}">
-					<div class="tab-hello">Hello</div>
+					<div class="tab-hello">Hello,</div>
 					<div class="tab-username"><c:out value="${sessionScope.user.username}"/></div>
 					<li class="righttab"><a href="logout">Log out</a></li>
 					<c:if test="${sessionScope.isadmin}">

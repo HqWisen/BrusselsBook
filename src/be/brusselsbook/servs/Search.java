@@ -43,10 +43,14 @@ public class Search extends HttpServlet {
 		return results;
 	}
 	
+	private boolean goodQuestion(String question){
+		return question != null && !question.equals(ServerUtils.SEARCHTITLE);
+	}
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String question = req.getParameter("q");
-		question = question == null ? "" : question;
+		question = goodQuestion(question) ? question : "";
 		question = question.trim(); // removing space in begin & end
 		List<Establishment> results = searchFor(question);
 		Map<Long, Address> addresses = AccessUtils.getAddressFor(results);

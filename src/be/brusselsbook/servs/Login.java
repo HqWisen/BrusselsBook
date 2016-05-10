@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.BookUserAccess;
 import be.brusselsbook.sql.data.BookUser;
+import be.brusselsbook.utils.AccessUtils;
 import be.brusselsbook.utils.ServerUtils;
 
 @WebServlet("/login")
@@ -30,8 +31,8 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		from = request.getParameter("from");
 		elem = request.getParameter("elem");
-		request.setAttribute("IDENTIFIERTITLE", "Email or username");
-		request.setAttribute("PASSWORDTITLE", "Your password");
+		AccessUtils.setAttribute(request.getSession(), "IDENTIFIERTITLE", "Email or username");
+		AccessUtils.setAttribute(request.getSession(), "PASSWORDTITLE", "Your password");
 		getServletContext().getRequestDispatcher(ServerUtils.LOGINJSPFILE).forward(request, response);
 	}
 

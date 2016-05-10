@@ -97,6 +97,7 @@ body {
   margin: 0;
   padding: 5px;
   color: white;
+  background: #002d5d;
   font-size: 22px;
   font-variant: normal;
   text-decoration: none;
@@ -104,11 +105,12 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border-radius: 7px;
 }
 
 .tab a:hover {
   background: #0068d6;
-  border-radius: 7px;
+  
 }
 
 
@@ -823,13 +825,17 @@ body {
   cursor: pointer;
 }
 
-.estapage-notconnected{
+.notconnected{
+  display:block;
   color:#4791e0;
   font-style: italic;
   text-decoration: none;
   font-size:20px;
+  margin:auto;
+  width:auto;
+  margin-top:15px;
 }
 
-.estapage-notconnected:hover{
+.notconnected:hover{
   text-decoration: underline;
 }

@@ -16,6 +16,10 @@ public abstract class BookUserAccess<T extends BookUser> extends DataAccess<T>{
 
 	public abstract T withUid(String uid);
 
+	public BookUser createUser(String email, String username, String password){
+		return create(email, username, password);
+	}
+	
 	public boolean isEmailUsed(String email) {
 		return withEmail(email) != null;
 	}
