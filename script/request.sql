@@ -5,9 +5,9 @@ select user.UID from BookUser user where
 select count(*) from BookUser ub, Establishment e where
 ub.Username = 'Brenda'
 and
-exists(select * from BookComment c where c.EID = e.EID and c.UID = ub.UID and c.Score > 4)
+exists(select * from BookComment c where c.EID = e.EID and c.UID = ub.UID and c.Score > 3)
 and
-exists(select * from BookComment c where c.EID = e.EID and c.UID = user.UID and c.Score > 4)
+exists(select * from BookComment c where c.EID = e.EID and c.UID = user.UID and c.Score > 3)
 ) > 3;
 
 # R5 (not sure)

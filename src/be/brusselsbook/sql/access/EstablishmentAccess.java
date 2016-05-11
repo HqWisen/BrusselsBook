@@ -1,11 +1,57 @@
 package be.brusselsbook.sql.access;
 
 import be.brusselsbook.parser.AddressXml;
+import be.brusselsbook.parser.CafeInfos;
 import be.brusselsbook.parser.EstablishmentInfos;
+import be.brusselsbook.parser.RestaurantInfos;
 import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.Establishment;
 
 public abstract class EstablishmentAccess<T extends Establishment> extends DataAccess<T> {
+
+	public static RestaurantInfos createRestaurantInfos(String name, String phoneNumber, String website, String street,
+			String streetNumber, String locality, String postalCode, Float lat, Float lng, Integer priceRange,
+			Integer banquetPlaces, Boolean takeAway, Boolean delivery) {
+		RestaurantInfos infos = new RestaurantInfos();
+		setInfos(infos, name, phoneNumber, website, street, streetNumber, locality, postalCode, lat, lng);
+		infos.setPriceRange(priceRange);
+		infos.setBanquet(banquetPlaces);
+		infos.setTakeAway(takeAway ? "" : null);
+		infos.setDelivery(delivery ? "" : null);
+		return infos;
+
+	}
+
+	public static CafeInfos createCafeInfos(String name, String phoneNumber, String website, String street,
+			String streetNumber, String locality, String postalCode, Float lat, Float lng, Boolean smoking,
+			Boolean snack) {
+		CafeInfos infos = new CafeInfos();
+		setInfos(infos, name, phoneNumber, website, street, streetNumber, locality, postalCode, lat, lng);
+		infos.setSmoking(smoking ? "" : null);
+		infos.setSnack(snack ? "" : null);
+		return infos;
+	}
+
+	private static void setInfos(EstablishmentInfos infos, String name, String phoneNumber, String website,
+			String street, String streetNumber, String locality, String postalCode, Float lat, Float lng) {
+		AddressXml address = new AddressXml();
+		infos.setAddress(address);
+		infos.setName(name);
+		infos.setTel(phoneNumber);
+		infos.setSite(website);
+		address.setStreet(street);
+		address.setNum(streetNumber);
+		address.setCity(locality);
+		address.setZip(postalCode);
+		address.setLatitude(lat);
+		address.setLongitude(lng);
+
+	}
+
+	public static Address createAddress(String street, String number, String locality, String zip, Float lat,
+			Float lng) {
+		return new Address(street, number, locality, zip, lat, lng);
+	}
 
 	protected EstablishmentAccess(AccessFactory accessFactory) {
 		super(accessFactory);
@@ -39,29 +85,24 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 
 	public T createEstablishmentFromAddress(String name, String phoneNumber, String website, Address address,
 			int type) {
-		T establishment = create(name, phoneNumber, website);
+		T establishment = create(name, phoneNumber, website, type);
 		AddressAccess addressAccess = accessFactory.getAddressAccess();
 		addressAccess.createAddress(establishment.getEid(), address.getStreet(), address.getNumber(),
 				address.getLocality(), address.getPostalCode(), address.getLatitude(), address.getLongitude());
 		return establishment;
 	}
 
-	
-	
-	public T editEstablishment(Long aid,Long oldEID, String name , String phoneNumber,String website,
-			Address address,int type){
+	public T editEstablishment(Long aid, Long oldEID, String name, String phoneNumber, String website, Address address,
+			int type) {
 		T establishment = createEstablishmentFromAddress(name, phoneNumber, website, address, type);
 		EstablishmentModificationAccess modificationAccess = accessFactory.getEstablishmentModifiacationAccess();
 		EstablishmentCreationAccess creationAccess = accessFactory.getEstablishmentCreationAccess();
-		Long newEID  = establishment.getEid();
+		Long newEID = establishment.getEid();
 		creationAccess.createEstablishmentCreation(newEID, aid);
 		modificationAccess.createEstablishmentModification(oldEID, newEID, aid);
-		return establishment;		
+		return establishment;
 	}
-	
-	
-	
-	
+
 	public abstract T withEid(Long eid);
 
 	public abstract T withEid(String eid);

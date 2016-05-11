@@ -14,6 +14,17 @@ public class CafeInfos extends EstablishmentInfos {
 		return smoking;
 	}
 
+	
+	public void setSmoking(String smoking) {
+		this.smoking = smoking;
+	}
+
+
+	public void setSnack(String snack) {
+		this.snack = snack;
+	}
+
+
 	private String getSnack() {
 		return snack;
 	}

@@ -10,6 +10,19 @@ public class Address {
 	private Float latitude;
 	private Float longitude;
 
+	public Address(String street, String number, String locality, String zip, Float lat, Float lng) {
+		this.street = street;
+		this.number = number;
+		this.locality = locality;
+		this.postalCode = zip;
+		this.latitude = lat;
+		this.longitude = latitude;
+	}
+
+	public Address() {
+		super();
+	}
+
 	public Long getEid() {
 		return eid;
 	}

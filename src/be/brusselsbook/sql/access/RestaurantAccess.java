@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import be.brusselsbook.parser.AddressXml;
+import be.brusselsbook.parser.EstablishmentInfos;
 import be.brusselsbook.parser.RestaurantInfos;
 import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.Establishment;
@@ -32,25 +33,9 @@ public class RestaurantAccess extends EstablishmentAccess<Restaurant> {
 	}
 
 	public Restaurant createRestaurantFromAdmin(Long aid, String name, String phoneNumber, String website,
-			String street, String streetNumber, String locality, String postalCode, Integer priceRange,
+			String street, String streetNumber, String locality, String postalCode, Float lat, Float lng, Integer priceRange,
 			Integer banquetPlaces, Boolean takeAway, Boolean delivery) {
-		RestaurantInfos infos = new RestaurantInfos();
-		AddressXml address = new AddressXml();
-		// FIXME latitude longitude not given
-		infos.setAddress(address);
-		infos.setName(name);
-		infos.setTel(phoneNumber);
-		infos.setSite(website);
-		infos.setPriceRange(priceRange);
-		infos.setBanquet(banquetPlaces);
-		infos.setTakeAway(takeAway ? "" : null);
-		infos.setDelivery(delivery ? "" : null);
-		address.setStreet(street);
-		address.setNum(streetNumber);
-		address.setCity(locality);
-		address.setZip(postalCode);
-		address.setLatitude(0.0f);
-		address.setLongitude(0.0f);
+		RestaurantInfos infos = EstablishmentAccess.createRestaurantInfos(name, phoneNumber, website, street, streetNumber, locality, postalCode, lat, lng, priceRange, banquetPlaces, takeAway, delivery);
 		return createRestaurantFromAdmin(aid, infos);
 	}
 
