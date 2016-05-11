@@ -12,8 +12,10 @@
 <link rel="icon" href="image/logoULB.png" />
 <title>BrusselsBook</title>
 </head>
-
 <body>
+	
+	<%@ include file="adminAccess.jsp"  %>
+	
 	<c:import url="tabs.jsp">
 		<c:param name="admin" value="true"/>
 	</c:import>

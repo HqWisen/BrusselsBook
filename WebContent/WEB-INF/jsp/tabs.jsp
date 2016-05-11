@@ -61,5 +61,23 @@
 		<div class="log-message">${requestScope.message}</div>
 	 	<br />
 	</c:if>		
+
+
+	<c:if test="${not empty sessionScope.error}">
+		<div class="log-error">${sessionScope.error}</div>
+	 	<br />
+	 	<c:remove var="error" scope="session"/>
+	</c:if>		
+	<c:if test="${not empty sessionScope.warning}">
+		<div class="log-warning">${sessionScope.warning}</div>
+	 	<br />
+	 	<c:remove var="warning" scope="session"/>
+
+	</c:if>		
+	<c:if test="${not empty sessionScope.message}">
+		<div class="log-message">${sessionScope.message}</div>
+	 	<br />
+	 	<c:remove var="message" scope="session"/>
+	</c:if>		
 		
 </section>

@@ -331,6 +331,7 @@ body {
   border-radius:0px;
   margin:0;
   padding:0;
+  margin-top:7px;
   font-variant: small-caps;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -872,6 +873,15 @@ body {
 .admin-zone a:hover{
 	background:#590808;
 	box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
+}
+
+.formlabel{
+	display:inline-block;
+	color: #777777;
+	font-variant:small-caps;
+	margin-top:7px;
+	margin-bottom:7px;
+	text-align:left;
 }
 
 
