@@ -884,4 +884,11 @@ body {
 	text-align:left;
 }
 
+.welcome{
+	color:#666666;
+	font-size:30px;
+	font-variant: small-caps;
+	margin:auto;
+	margin-top:20px;	
+}
 

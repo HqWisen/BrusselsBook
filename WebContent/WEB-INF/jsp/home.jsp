@@ -18,6 +18,7 @@
 		<c:param name="home" value="true"/>
 	</c:import>
 	<div id="container">	
+		<div class="welcome">Welcome in BrusselsBook <c:out value="${user.username}"/> !</div>
 	</div>
 </body>
 
