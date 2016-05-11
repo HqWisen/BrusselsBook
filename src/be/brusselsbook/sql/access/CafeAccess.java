@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import be.brusselsbook.parser.CafeInfos;
+import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.Cafe;
 import be.brusselsbook.sql.data.Establishment;
 import be.brusselsbook.sql.data.EstablishmentType;
@@ -41,12 +42,22 @@ public class CafeAccess extends EstablishmentAccess<Cafe> {
 		return createCafe(eid, infos.canSmoke(), infos.canSnack());
 	}
 
-	private Cafe createCafe(Long eid, Boolean canSmoke, Boolean makeRestoration) {
+	private Cafe createCafe(Long eid, Boolean canSmoke, Boolean makeRestauration) {
 		// the first EID if for getting the created Cafe
 		// because it does not generate
 		// an id, the only way to get the cafe is with the EID.
 		// The second EID will be passed as a value in the SQL query.
-		return createNoGeneratedId(eid, eid, canSmoke, makeRestoration);
+		return createNoGeneratedId(eid, eid, canSmoke, makeRestauration);
+	}
+	
+	
+	
+	public Cafe editCafer(Long aid, Long oldEID, String name, String tel, String site, Address address,
+			int type, Boolean canSmoke ,Boolean makeRestauration){
+		Establishment establishment = establishmentAccess.editEstablishment(aid, oldEID, name, tel, 
+				site, address, type);
+		return createCafe(establishment.getEid(), canSmoke, makeRestauration);
+		
 	}
 	
 	@Override

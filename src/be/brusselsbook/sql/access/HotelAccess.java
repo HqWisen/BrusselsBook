@@ -77,7 +77,13 @@ public class HotelAccess extends EstablishmentAccess<Hotel> {
 		return createHotel (establishment.getEid(),noStars,noRooms,priceForTwo);
 	}
 	
-	
+	public Hotel editHotel(Long aid, Long oldEID, String name, String tel, String site, Address address,
+			int type,Integer noStars,Integer noRooms,Float priceForTwo){
+		Establishment establishment = establishmentAccess.editEstablishment(aid, oldEID, name, tel,
+				site, address, type);
+		return createHotel (establishment.getEid(),noStars,noRooms,priceForTwo);
+		
+	}
 	
 	@Override
 	protected String getTable() {

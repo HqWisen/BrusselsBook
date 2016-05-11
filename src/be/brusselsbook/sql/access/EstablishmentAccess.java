@@ -56,10 +56,9 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 		Long newEID  = establishment.getEid();
 		creationAccess.createEstablishmentCreation(newEID, aid);
 		modificationAccess.createEstablishmentModification(oldEID, newEID, aid);
-		return establishment;
-		
-		
+		return establishment;		
 	}
+	
 	
 	
 	
