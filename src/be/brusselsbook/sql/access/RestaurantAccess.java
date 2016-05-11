@@ -3,9 +3,8 @@ package be.brusselsbook.sql.access;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import be.brusselsbook.parser.CafeInfos;
 import be.brusselsbook.parser.RestaurantInfos;
-import be.brusselsbook.sql.data.Cafe;
+import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.Establishment;
 import be.brusselsbook.sql.data.EstablishmentType;
 import be.brusselsbook.sql.data.Restaurant;
@@ -57,6 +56,12 @@ public class RestaurantAccess extends EstablishmentAccess<Restaurant> {
 		return createNoGeneratedId(eid, eid, priceRange, banquetPlaces, hasTakeAway, makeDelivery, closedDays);
 	}
 	
+	public Restaurant editRestaurant(Long aid ,Long oldEID,String name , String tel ,String site 
+			, Address address,int type ,Integer priceRange,Integer banquetPlaces, Boolean hasTakeAway,
+			Boolean makeDelivery, String closedDays){
+		Establishment establishment = establishmentAccess.editEstablishment(aid, oldEID, name, tel, site, address, type);
+		return createRestaurant(establishment.getEid(),priceRange, banquetPlaces, hasTakeAway, makeDelivery, closedDays); 
+	}
 	@Override
 	public Restaurant withId(Long id) {
 		return withEid(id);

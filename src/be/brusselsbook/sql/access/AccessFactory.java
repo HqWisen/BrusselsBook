@@ -98,7 +98,7 @@ public class AccessFactory {
 		return new DescriberDeletionAccess(this);
 	}
 
-	public EstablishmentModificationAccess getEstablishment(){
+	public EstablishmentModificationAccess getEstablishmentModifiacationAccess(){
 		return new EstablishmentModificationAccess(this);
 	}
 	
