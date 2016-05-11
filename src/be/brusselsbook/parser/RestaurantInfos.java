@@ -60,6 +60,31 @@ public class RestaurantInfos extends EstablishmentInfos {
 		return "NOT IMPLEMENT";
 	}
 	
+	public void setClosedDayList(List<ClosedDay> closedDayList) {
+		this.closedDayList = closedDayList;
+	}
+
+	public void setTakeAway(String takeAway) {
+		this.takeAway = takeAway;
+	}
+
+	public void setDelivery(String delivery) {
+		this.delivery = delivery;
+	}
+
+	public void setPriceRange(int priceRange) {
+		this.priceRange = priceRange;
+	}
+
+	public void setBanquet(Banquet banquet) {
+		this.banquet = banquet;
+	}
+
+	public void setBanquet(int banquet) {
+		this.banquet = new Banquet();
+		this.banquet.setCapacity(banquet);
+	}
+
 	@Override
 	public String toString() {
 		String string = "Name: ";

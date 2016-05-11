@@ -11,6 +11,10 @@ public class Banquet {
 		return capacity;
 	}
 	
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
 	@Override
 	public String toString() {
 		return Integer.toString(capacity);

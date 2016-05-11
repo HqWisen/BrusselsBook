@@ -60,8 +60,8 @@ function inputFocus(e) {
   }
 
   function checkinput(id, title){
-	if($("id").val() == title){
-    	$("id").val("");
+	if($(id).val() == title){
+    	$(id).val("");
     }				
 
   }

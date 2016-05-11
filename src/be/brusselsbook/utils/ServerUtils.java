@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.AdministratorAccess;
+import be.brusselsbook.sql.data.Administrator;
 import be.brusselsbook.sql.data.BookUser;
 
 public final class ServerUtils {
@@ -29,10 +30,10 @@ public final class ServerUtils {
 
 	public static void setConnectedSession(BookUser bookUser, HttpSession session) {
 		AdministratorAccess adminAccess = AccessFactory.getInstance().getAdminstratorAccess();
-		boolean isadmin = adminAccess.isAdmin(bookUser.getUid());
-		session.setAttribute("user", bookUser);
+		Administrator admin = adminAccess.withUid(bookUser.getUid());
+		session.setAttribute("user", admin != null ? admin : bookUser);
 		session.setAttribute("connected", true);
-		session.setAttribute("isadmin", isadmin);
+		session.setAttribute("isadmin", admin != null);
 	}
 
 	public static void setDisconnectedSession(HttpSession session) {

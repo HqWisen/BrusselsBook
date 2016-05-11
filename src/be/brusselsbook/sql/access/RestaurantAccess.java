@@ -3,6 +3,7 @@ package be.brusselsbook.sql.access;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import be.brusselsbook.parser.AddressXml;
 import be.brusselsbook.parser.RestaurantInfos;
 import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.Establishment;
@@ -22,7 +23,7 @@ public class RestaurantAccess extends EstablishmentAccess<Restaurant> {
 	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom(EID, PRICERANGE, BANQUETPLACES,
 			TAKEAWAY, DELIVERY, HALFDAYSOFF);
 	private static final String TABLE = "Restaurant";
-	
+
 	private EstablishmentAccess<Establishment> establishmentAccess;
 
 	protected RestaurantAccess(AccessFactory accessFactory) {
@@ -30,12 +31,35 @@ public class RestaurantAccess extends EstablishmentAccess<Restaurant> {
 		this.establishmentAccess = accessFactory.getEstablishmentAccess();
 	}
 
+	public Restaurant createRestaurantFromAdmin(Long aid, String name, String phoneNumber, String website,
+			String street, String streetNumber, String locality, String postalCode, Integer priceRange,
+			Integer banquetPlaces, Boolean takeAway, Boolean delivery) {
+		RestaurantInfos infos = new RestaurantInfos();
+		AddressXml address = new AddressXml();
+		// FIXME latitude longitude not given
+		infos.setAddress(address);
+		infos.setName(name);
+		infos.setTel(phoneNumber);
+		infos.setSite(website);
+		infos.setPriceRange(priceRange);
+		infos.setBanquet(banquetPlaces);
+		infos.setTakeAway(takeAway ? "" : null);
+		infos.setDelivery(delivery ? "" : null);
+		address.setStreet(street);
+		address.setNum(streetNumber);
+		address.setCity(locality);
+		address.setZip(postalCode);
+		address.setLatitude(0.0f);
+		address.setLongitude(0.0f);
+		return createRestaurantFromAdmin(aid, infos);
+	}
+
 	public Restaurant createRestaurantFromAdmin(Long aid, RestaurantInfos infos) {
 		Establishment establishment = establishmentAccess.createEstablishment(aid, infos,
 				EstablishmentType.RESTAURANT.getId());
 		return createRestaurant(establishment.getEid(), infos);
 	}
-	
+
 	public Restaurant createRestaurant(RestaurantInfos infos) {
 		Establishment establishment = establishmentAccess.createEstablishment(infos,
 				EstablishmentType.RESTAURANT.getId());
@@ -55,13 +79,16 @@ public class RestaurantAccess extends EstablishmentAccess<Restaurant> {
 		// The second EID will be passed as a value in the SQL query.
 		return createNoGeneratedId(eid, eid, priceRange, banquetPlaces, hasTakeAway, makeDelivery, closedDays);
 	}
-	
-	public Restaurant editRestaurant(Long aid ,Long oldEID,String name , String tel ,String site 
-			, Address address,int type ,Integer priceRange,Integer banquetPlaces, Boolean hasTakeAway,
-			Boolean makeDelivery, String closedDays){
-		Establishment establishment = establishmentAccess.editEstablishment(aid, oldEID, name, tel, site, address, type);
-		return createRestaurant(establishment.getEid(),priceRange, banquetPlaces, hasTakeAway, makeDelivery, closedDays); 
+
+	public Restaurant editRestaurant(Long aid, Long oldEID, String name, String tel, String site, Address address,
+			int type, Integer priceRange, Integer banquetPlaces, Boolean hasTakeAway, Boolean makeDelivery,
+			String closedDays) {
+		Establishment establishment = establishmentAccess.editEstablishment(aid, oldEID, name, tel, site, address,
+				type);
+		return createRestaurant(establishment.getEid(), priceRange, banquetPlaces, hasTakeAway, makeDelivery,
+				closedDays);
 	}
+
 	@Override
 	public Restaurant withId(Long id) {
 		return withEid(id);

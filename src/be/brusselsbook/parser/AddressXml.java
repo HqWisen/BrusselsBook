@@ -17,6 +17,30 @@ public class AddressXml {
 	@XmlElement(name = "Latitude")
 	private Float latitude;
 
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public void setNum(String num) {
+		this.num = num;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public void setLongitude(Float longitude) {
+		this.longitude = longitude;
+	}
+
+	public void setLatitude(Float latitude) {
+		this.latitude = latitude;
+	}
+
 	public String getStreet() {
 		return street;
 	}

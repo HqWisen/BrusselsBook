@@ -25,24 +25,30 @@ import be.brusselsbook.utils.ServerUtils;
 public class EstablishmentPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		EstablishmentAccess<Establishment> eAccess = AccessFactory.getInstance().getEstablishmentAccess();
 		BookCommentAccess bookCommentAccess = AccessFactory.getInstance().getBookCommentAccess();
 		TagAccess tAccess = AccessFactory.getInstance().getTagAccess();
-		Long eid = Long.parseLong(request.getParameter("eid"));
-		Establishment establishment = eAccess.withEid(eid);
-		Address address = AccessUtils.getAddresFor(establishment);
-		List<BookComment> comments = bookCommentAccess.withEid(eid); 
-		Map<Long, String> commentAuthors  = AccessUtils.getAuthorsFor(comments);
-		List<Tag> tags = tAccess.getObjects();
-		Map<String, Integer> tagCounters = AccessUtils.getCountersFor(tags, eid);
-		request.setAttribute("establishment", establishment);
-		request.setAttribute("establishmentAddress", address);
-		request.setAttribute("comments", comments);
-		request.setAttribute("commentAuthors", commentAuthors);
-		request.setAttribute("tags", tags);
-		request.setAttribute("tagCounters", tagCounters);
-		getServletContext().getRequestDispatcher(ServerUtils.ESTABLISHMENTJSPFILE).forward(request, response);
+		String eidParam = request.getParameter("eid");
+		if (eidParam == null) {
+			ServerUtils.redirectTo(response, "home");
+		} else {
+			Long eid = Long.parseLong(eidParam);
+			Establishment establishment = eAccess.withEid(eid);
+			Address address = AccessUtils.getAddresFor(establishment);
+			List<BookComment> comments = bookCommentAccess.withEid(eid);
+			Map<Long, String> commentAuthors = AccessUtils.getAuthorsFor(comments);
+			List<Tag> tags = tAccess.getObjects();
+			Map<String, Integer> tagCounters = AccessUtils.getCountersFor(tags, eid);
+			request.setAttribute("establishment", establishment);
+			request.setAttribute("establishmentAddress", address);
+			request.setAttribute("comments", comments);
+			request.setAttribute("commentAuthors", commentAuthors);
+			request.setAttribute("tags", tags);
+			request.setAttribute("tagCounters", tagCounters);
+			getServletContext().getRequestDispatcher(ServerUtils.ESTABLISHMENTJSPFILE).forward(request, response);
+		}
 	}
 
 }

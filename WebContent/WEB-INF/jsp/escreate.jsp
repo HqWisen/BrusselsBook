@@ -67,6 +67,7 @@
 
 	     <form class="logform" method="post" action="escreate">
 	       <div>Create <c:out value="${param.t}"/></div>
+	       <input name="t" type="hidden" value="<c:out value="${param.t}"/>"/>
 	       <input class="log-input" id="name" type="text" name="name" maxlength="50" value="<c:out value="${pageScope.nametext}"/>" />
 	       <br />
 	       <input class="log-input" id="phonenumber" type="text" name="phonenumber" maxlength="50" value="<c:out value="${pageScope.phonenumbertext}"/>" />
@@ -83,10 +84,10 @@
 	       <br />
 	       <c:if test="${param.t == 'restaurant'}">
 	         <label class="formlabel">Average price</label><br/>
-	         <input class="log-input" id="pricerange" type="number" name="pricerange"/>
+	         <input class="log-input" id="pricerange" type="number" name="pricerange" value="<c:out value="${param.pricerange}"/>"/>
 	         <br />
 	         <label class="formlabel">Number of places for banquet</label><br/>
-	         <input class="log-input" id="banquetplaces" type="number" name="banquetplaces" />
+	         <input class="log-input" id="banquetplaces" type="number" name="banquetplaces" value="<c:out value="${param.banquetplaces}"/>"/>
 	         <br />
 	         <label class="formlabel">This restaurant make takeaway</label>
 	         <input type="radio" name="takeaway" value="takeaway"/>

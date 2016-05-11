@@ -863,9 +863,12 @@ body {
 }
 
 .admin-zone a{
+	display:inline-block;
 	background:#820D0D;
 	color:white;
 	padding:10px;
+	margin-top:10px;
+	margin-bottom:10px;
 	width:auto;
 	text-decoration:none;
 }
