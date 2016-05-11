@@ -30,7 +30,7 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 		return createEstablishment(infos.getName(), infos.getTel(), infos.getSiteLink(), infos.getAddress(), type);
 	}
 
-	public T createEstablishment(String name, String phoneNumber, String website, AddressXml addressXml, int type) {
+	private T createEstablishment(String name, String phoneNumber, String website, AddressXml addressXml, int type) {
 		T establishment = create(name, phoneNumber, website, type);
 		AddressAccess addressAccess = accessFactory.getAddressAccess();
 		addressAccess.createAddress(establishment.getEid(), addressXml);
@@ -46,6 +46,23 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 		return establishment;
 	}
 
+	
+	
+	public T editEstablishment(Long aid,Long oldEID, String name , String phoneNumber,String website,
+			Address address,int type){
+		T establishment = createEstablishmentFromAddress(name, phoneNumber, website, address, type);
+		EstablishmentModificationAccess modificationAccess = accessFactory.getEstablishmentModifiacationAccess();
+		EstablishmentCreationAccess creationAccess = accessFactory.getEstablishmentCreationAccess();
+		Long newEID  = establishment.getEid();
+		creationAccess.createEstablishmentCreation(newEID, aid);
+		modificationAccess.createEstablishmentModification(oldEID, newEID, aid);
+		return establishment;
+		
+		
+	}
+	
+	
+	
 	public abstract T withEid(Long eid);
 
 	public abstract T withEid(String eid);
