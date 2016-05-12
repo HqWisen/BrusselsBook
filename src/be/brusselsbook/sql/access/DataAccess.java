@@ -61,7 +61,7 @@ public abstract class DataAccess<T> implements Indexable<T>{
 	}
 	
 	public String DELETEFROM(String by){
-		return "DELETE"  + "FROM" + getTable() + "WHERE" + by + " = ?" + "LIMIT 1";
+		return "DELETE FROM" + getTable() + " WHERE " + by + " = ? " + " LIMIT 1";
 		
 	}
 	

@@ -3,8 +3,6 @@ package be.brusselsbook.sql.access;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import be.brusselsbook.parser.AddressXml;
-import be.brusselsbook.parser.EstablishmentInfos;
 import be.brusselsbook.parser.RestaurantInfos;
 import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.Establishment;
