@@ -56,6 +56,13 @@ public abstract class DataAccess<T> implements Indexable<T>{
 		return "SELECT * FROM " + getTable() + " WHERE " + by + " = ?";
 	}
 
+	
+	public String DELETEFROM(String by){
+		return "DELETE"  + "FROM" + getTable() + "WHERE" + by + " = ?" + "LIMIT 1";
+		
+	}
+	
+	
 	public String SELECTBYSEVERALAND(String... cols) {
 		String string = "SELECT * FROM " + getTable() + " WHERE ";
 		for(int i = 0; i < cols.length - 1; i++){
