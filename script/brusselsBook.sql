@@ -12,6 +12,10 @@ USE brusselsbook;
 
 # FIXME make cascade delete (example: delete Adminstrator should delete also the BookUser)
 
+
+# The DescriberDeletion and DescriberModification are not implemented
+# This is not an important par of the project
+
 # Latitude and Longitude has been put in Address (indentation problem in the model)
 CREATE TABLE Establishment(
 	EID INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -171,23 +175,3 @@ CREATE TABLE UserDeletion(
 	FOREIGN KEY (AID) REFERENCES Administrator(AID)
 );
 
-CREATE TABLE DescriberDeletion(
-	DID INT UNSIGNED NOT NULL,
-	UID INT UNSIGNED NOT NULL,
-	DeletionDate DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (DID) REFERENCES Describer(DID)
-	 ON DELETE CASCADE,
-	FOREIGN KEY (UID) REFERENCES BookUser(UID)
-);
-
-CREATE TABLE DescriberModification(
-	OldDID INT UNSIGNED NOT NULL,
-	NewDID INT UNSIGNED NOT NULL,
-	UID INT UNSIGNED NOT NULL,
-	ModificationDate DATETIME DEFAULT CURRENT_TIMESTAMP,
-	FOREIGN KEY (OldDID) REFERENCES Describer(DID)
-	 ON DELETE CASCADE,
-	FOREIGN KEY (NewDID) REFERENCES Describer(DID),
-	FOREIGN KEY (UID) REFERENCES BookUser(UID)
-);
-	

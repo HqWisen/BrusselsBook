@@ -26,12 +26,16 @@ public class Search extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private static final String SEARCH_SQL = 
-			"SELECT e.* FROM Establishment e, Address a WHERE (a.EID = e.EID) " +
+			"SELECT e.* FROM Establishment e, Address a "
+			+ "WHERE e.EID NOT IN (SELECT OldEID from EstablishmentModification) "
+			+ "AND e.EID NOT IN (SELECT EID from EstablishmentDeletion) "
+			+ "AND (a.EID = e.EID) " +
 			"AND (e.EName LIKE ? OR a.Locality LIKE ? " +
 			"OR a.PostalCode LIKE ? OR a.Street LIKE ?)";
 	
-	private static final String SEARCH_USER_SQL = "SELECT * FROM BookUser WHERE"
-			+ " Username LIKE ? OR EmailAddress LIKE ?";
+	private static final String SEARCH_USER_SQL = "SELECT * FROM BookUser "
+			+ " WHERE UID NOT IN (SELECT UID FROM UserDeletion) "
+			+ " AND (Username LIKE ? OR EmailAddress LIKE ?)";
 	
 	private EstablishmentAccess<Establishment> eAccess;
 	private BookUserAccess<BookUser> bAccess;
