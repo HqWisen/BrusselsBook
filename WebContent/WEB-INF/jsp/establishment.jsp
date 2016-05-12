@@ -94,7 +94,7 @@
      <c:choose>
      	<c:when  test="${sessionScope.connected}">
      	<div class="estapage-commentform">
-        <form id="form" method="post" action="comment">
+        <form id="form" method="post" action="comment"  accept-charset="UTF-8">
           <textarea name="text" class="estapage-commentformtext"></textarea>
           <input type="hidden" name="score" id="comment-score" value="0"/>
           <input type="hidden" name="eid" value="${establishment.eid}"/>

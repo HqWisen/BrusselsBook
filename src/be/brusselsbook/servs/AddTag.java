@@ -25,10 +25,10 @@ public class AddTag extends HttpServlet {
 		Long eid = Long.parseLong(request.getParameter("eid"));
 		String createParam = request.getParameter("create");
 		boolean create = createParam != null && createParam.equals("true");
-		boolean success = true;
+		boolean success = tagName != null && !tagName.isEmpty();
 		String error = null;
 		String message = null;
-		if(create){
+		if(success && create){
 			if(tagAccess.withTagName(tagName) != null){
 				error = "The tag '" + tagName +"' already exist.";
 				success = false;
@@ -39,6 +39,9 @@ public class AddTag extends HttpServlet {
 		}
 		if(success && tdAccess.withEidAndUidAndTagName(eid, uid, tagName) == null){
 			tdAccess.createTagDescribe(eid, uid, tagName);			
+		}
+		if(tagName.isEmpty()){
+			error = "Cannot create an empty tag.";
 		}
 		AccessUtils.setAttribute(request.getSession(), "error", error);
 		AccessUtils.setAttribute(request.getSession(), "message", message);
