@@ -230,4 +230,14 @@ public final class AccessUtils {
 		}
 		return map;
 	}
+
+	public static Map<String, Boolean> getApposedFor(List<Tag> tags, Long eid, Long uid) {
+		TagDescribeAccess tAccess = aFactory.getTagDescribeAccess();
+		Map<String, Boolean> map = new HashMap<>();
+		for(Tag tag : tags){
+			String tagName = tag.getTagName();
+			map.put(tagName, tAccess.withEidAndUidAndTagName(eid, uid, tagName) != null);
+		}
+		return map;
+	}
 }

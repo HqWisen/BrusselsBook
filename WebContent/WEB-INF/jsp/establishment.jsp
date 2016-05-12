@@ -34,21 +34,43 @@
       </div>
       <div class="estapage-tags">
         <c:forEach items="${requestScope.tags}" var="tag">
-          <div class="estapage-tag">
-            <div class="estapage-tagname"><c:out value="${tag.tagName}"/></div>
-            <c:set var="tagvar" value='"${tag.tagName}"' scope="page"/>
-            <div class="estapage-tagcounter estapage-tagcounterclick" onclick='addOneTag(this, <c:out value="${pageScope.tagvar}"/>)'>
-              <c:out value="${tagCounters[tag.tagName]}"/>
+          <c:if test="${connected}">
+            <c:if test="${tagApposed[tag.tagName]}">
+            <div class="estapage-tag">
+              <div class="estapage-tagname"><c:out value="${tag.tagName}"/></div>
+              <c:set var="tagvar" value='"${tag.tagName}"' scope="page"/>
+              <div class="estapage-tagcounter">
+                <c:out value="${tagCounters[tag.tagName]}"/>
+              </div>
             </div>
-          </div>
+            </c:if>
+            <c:if test="${not tagApposed[tag.tagName]}">
+            <div class="estapage-tag">
+              <div class="estapage-tagname"><c:out value="${tag.tagName}"/></div>
+              <c:set var="tagvar" value='"${tag.tagName}"' scope="page"/>
+              <div class="estapage-tagcounter estapage-tagcounterclick" onclick='addOneTag(this, <c:out value="${pageScope.tagvar}"/>)'>
+                <c:out value="${tagCounters[tag.tagName]}"/>
+              </div>
+            </div>
+            </c:if>
+          </c:if>
+          <c:if test="${not connected}">
+            <div class="estapage-tag">
+              <div class="estapage-tagname"><c:out value="${tag.tagName}"/></div>
+              <c:set var="tagvar" value='"${tag.tagName}"' scope="page"/>
+              <div class="estapage-tagcounter">
+                <c:out value="${tagCounters[tag.tagName]}"/>
+              </div>
+            </div>
+          </c:if>
+          
         </c:forEach>
-        <%-- div class="estapage-tag">
-          <div class="estapage-tagname">Trop bon</div>
-          <div class="estapage-tagcounter">1</div>
-        </div --%>
         <br/>
-        <form class="estapage-tag-add" method="post">
-          <input class="estapage-tag-addtext" type="text" />
+        <form class="estapage-tag-add" method="post" action="addtag">
+          <input type="hidden" name="eid" value="${establishment.eid}"/>
+          <input type="hidden" name="uid" value="${user.uid}"/>
+          <input type="hidden" name="create" value="true"/>
+          <input class="estapage-tag-addtext" name="tagname" type="text" />
           <input class="estapage-tag-addbutton" type="submit" value="+" />
         </form>
       </div>
@@ -139,7 +161,7 @@
     	var params = "tagname="+tag+"&eid="+${establishment.eid}+"&uid="+${user.uid};
     	var xhr = new XMLHttpRequest();
     	xhr.open("POST", url, true);
-    	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
     	xhr.send(params);
     }
     
