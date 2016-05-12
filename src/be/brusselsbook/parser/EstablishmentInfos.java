@@ -14,25 +14,21 @@ public class EstablishmentInfos {
 	@XmlElement(name = "Tel")
 	private String tel;
 	
-	public void setName(String name) {
+	public void setEAddress(AddressXml address){
+		this.address = address;
+	}
+	
+	public void setEName(String name) {
 		this.name = name;
 	}
 
-	public void setAddress(AddressXml address) {
-		this.address = address;
-	}
-
-	public void setTel(String tel) {
+	public void setETel(String tel) {
 		this.tel = tel;
-	}
-
-	public void setSite(Site site) {
-		this.site = site;
 	}
 
 	public void setSiteLink(String link) {
 		this.site = new Site();
-		this.site.setLink(link);
+		this.site.setSLink(link);
 	}
 
 	@XmlElement(name = "Site")

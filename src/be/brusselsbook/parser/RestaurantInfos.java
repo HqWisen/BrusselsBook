@@ -60,29 +60,21 @@ public class RestaurantInfos extends EstablishmentInfos {
 		return "NOT IMPLEMENT";
 	}
 	
-	public void setClosedDayList(List<ClosedDay> closedDayList) {
-		this.closedDayList = closedDayList;
-	}
-
-	public void setTakeAway(String takeAway) {
+	public void setRTakeAway(String takeAway) {
 		this.takeAway = takeAway;
 	}
 
-	public void setDelivery(String delivery) {
+	public void setRDelivery(String delivery) {
 		this.delivery = delivery;
 	}
 
-	public void setPriceRange(int priceRange) {
+	public void setRPriceRange(int priceRange) {
 		this.priceRange = priceRange;
-	}
-
-	public void setBanquet(Banquet banquet) {
-		this.banquet = banquet;
 	}
 
 	public void setBanquetPlaces(int banquet) {
 		this.banquet = new Banquet();
-		this.banquet.setCapacity(banquet);
+		this.banquet.setRCapacity(banquet);
 	}
 
 	@Override

@@ -11,7 +11,7 @@ public class Site {
 		return link;
 	}
 
-	public void setLink(String link){
+	public void setSLink(String link){
 		this.link = link;
 	}
 	

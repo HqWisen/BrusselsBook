@@ -11,7 +11,7 @@ public class Banquet {
 		return capacity;
 	}
 	
-	public void setCapacity(int capacity) {
+	public void setRCapacity(int capacity) {
 		this.capacity = capacity;
 	}
 

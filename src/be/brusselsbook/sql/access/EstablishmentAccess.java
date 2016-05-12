@@ -14,10 +14,10 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 			Integer banquetPlaces, Boolean takeAway, Boolean delivery) {
 		RestaurantInfos infos = new RestaurantInfos();
 		setInfos(infos, name, phoneNumber, website, street, streetNumber, locality, postalCode, lat, lng);
-		infos.setPriceRange(priceRange);
+		infos.setRPriceRange(priceRange);
 		infos.setBanquetPlaces(banquetPlaces);
-		infos.setTakeAway(takeAway ? "" : null);
-		infos.setDelivery(delivery ? "" : null);
+		infos.setRTakeAway(takeAway ? "" : null);
+		infos.setRDelivery(delivery ? "" : null);
 		return infos;
 
 	}
@@ -35,16 +35,16 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 	private static void setInfos(EstablishmentInfos infos, String name, String phoneNumber, String website,
 			String street, String streetNumber, String locality, String postalCode, Float lat, Float lng) {
 		AddressXml address = new AddressXml();
-		infos.setAddress(address);
-		infos.setName(name);
-		infos.setTel(phoneNumber);
+		infos.setEAddress(address);
+		infos.setEName(name);
+		infos.setETel(phoneNumber);
 		infos.setSiteLink(website);
-		address.setStreet(street);
-		address.setNum(streetNumber);
-		address.setCity(locality);
-		address.setZip(postalCode);
-		address.setLatitude(lat);
-		address.setLongitude(lng);
+		address.setAStreet(street);
+		address.setANum(streetNumber);
+		address.setACity(locality);
+		address.setAZip(postalCode);
+		address.setALatitude(lat);
+		address.setALongitude(lng);
 
 	}
 
