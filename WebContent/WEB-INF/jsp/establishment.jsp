@@ -19,6 +19,7 @@
 	</c:import>
   <div id="container">
     <div class="estapage">
+      
       <div class="estapage-name"><c:out value="${establishment.name}"/></div>
       <%-- TODO Check if image picture  --%>
       <c:if test="${null}">
@@ -28,7 +29,7 @@
         <div class="estapage-contact">
           <div class="estapage-address"><c:out value="${establishmentAddress}"/></div>
           <div class="estapage-number"><c:out value="${establishment.phoneNumber}"/></div>
-          <div class="estapage-site"><a href=""><c:out value="${establishment.formattedUrl}"/></a></div>
+          <div class="estapage-site"><a href="<c:out value="${establishment.url}"/>"><c:out value="${establishment.formattedUrl}"/></a></div>
         </div>
         <div id="map" class="map"></div>
       </div>
@@ -65,6 +66,7 @@
           </c:if>
           
         </c:forEach>
+          <c:if test="${connected}">
         <br/>
         <form class="estapage-tag-add" method="post" action="addtag">
           <input type="hidden" name="eid" value="${establishment.eid}"/>
@@ -73,6 +75,7 @@
           <input class="estapage-tag-addtext" name="tagname" type="text" />
           <input class="estapage-tag-addbutton" type="submit" value="+" />
         </form>
+        </c:if>
       </div>
       <div class="estapage-comments">
          <c:forEach items="${requestScope.comments}" var="comment">

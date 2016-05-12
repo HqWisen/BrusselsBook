@@ -18,8 +18,11 @@
 		<c:param name="search" value="true"/>
 	</c:import>
 	<div id="container">
+	<c:if test="${not empty requestScope.results}">
+		<div class="container-title">Establishments</div>
+	</c:if>
 	<c:forEach items="${requestScope.results}" var="establishment">
-	
+		
 		<div class="establishment" onclick="location.href='establishment?eid=${establishment.eid}'">
 		     <img src="image/resto.png" />
 		     <div class="esta-infos">
@@ -42,6 +45,29 @@
 		          	 </c:forEach>
 		           </div>
 		
+		         </div>
+		       </div>
+		     </div>
+		   </div>
+			</c:forEach>
+	<c:if test="${not empty requestScope.userResults}">
+		<div class="container-title">Users</div>
+	</c:if>
+	
+	<c:forEach items="${requestScope.userResults}" var="user">
+		
+		<div class="establishment" onclick="location.href='user?uid=${user.uid}'">
+		      <img src="image/resto.png" />
+		     <div class="esta-infos">
+		       <div class="esta-name"><c:out value="${user.username}"/></div>
+		       <div class="esta-address"><c:out value="${user.emailAddress}"/></div>
+		       <div class="esta-footer">
+		         <div class="esta-contact">
+		           <a href="mailto:<c:out value="${user.emailAddress}"/>" class="esta-site">
+		           <c:out value="${user.emailAddress}"/></a>
+		         </div>
+		         <div class="esta-score">
+		           <div>wrote <c:out value="${userNumberOfComments[user.uid]}"/> comments</div>
 		         </div>
 		       </div>
 		     </div>

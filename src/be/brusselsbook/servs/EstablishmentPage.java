@@ -32,8 +32,6 @@ public class EstablishmentPage extends HttpServlet {
 		BookCommentAccess bookCommentAccess = AccessFactory.getInstance().getBookCommentAccess();
 		TagAccess tAccess = AccessFactory.getInstance().getTagAccess();
 		String eidParam = request.getParameter("eid");
-		BookUser user = (BookUser)request.getSession().getAttribute("user");
-		Long uid = user.getUid(); 
 		if (eidParam == null) {
 			ServerUtils.redirectTo(response, "home");
 		} else {
@@ -44,7 +42,9 @@ public class EstablishmentPage extends HttpServlet {
 			Map<Long, String> commentAuthors = AccessUtils.getAuthorsFor(comments);
 			List<Tag> tags = tAccess.getObjects();
 			Map<String, Integer> tagCounters = AccessUtils.getCountersFor(tags, eid);
-			Map<String, Boolean> tagApposed = AccessUtils.getApposedFor(tags, eid, uid);
+			BookUser user = (BookUser)request.getSession().getAttribute("user");
+			Long uid = user != null ? user.getUid() : null; 
+			Map<String, Boolean> tagApposed = user == null ? null : AccessUtils.getApposedFor(tags, eid, uid);
 			request.setAttribute("establishment", establishment);
 			request.setAttribute("establishmentAddress", address);
 			request.setAttribute("comments", comments);

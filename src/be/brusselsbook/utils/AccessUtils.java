@@ -169,9 +169,24 @@ public final class AccessUtils {
 		return map;
 	}
 
+	public static Map<Long, Integer> getNumberOfCommentsForUsers(List<BookUser> users) {
+		Map<Long, Integer> map = new HashMap<>();
+		for (BookUser user : users) {
+			Long uid =user.getUid();
+			map.put(uid, getNumberOfCommentsForUser(uid));
+		}
+		return map;
+	}
+
 	private static Integer getNumberOfCommentsFor(Long eid) {
 		BookCommentAccess bookCommentAccess = aFactory.getBookCommentAccess();
 		List<BookComment> comments = bookCommentAccess.withEid(eid);
+		return comments.size();
+	}
+
+	private static Integer getNumberOfCommentsForUser(Long uid) {
+		BookCommentAccess bookCommentAccess = aFactory.getBookCommentAccess();
+		List<BookComment> comments = bookCommentAccess.withUid(uid);
 		return comments.size();
 	}
 

@@ -41,6 +41,10 @@ public class BookCommentAccess extends DescriberAccess<BookComment> {
 	public List<BookComment> withEid(Long eid){
 		return severalWithQuery(SELECTBY(EID), eid);
 	}	
+
+	public List<BookComment> withUid(Long uid){
+		return severalWithQuery(SELECTBY(UID), uid);
+	}	
 	
 	public Integer avgScoreWithEid(Long eid){
 		Integer score = 0;
