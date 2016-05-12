@@ -937,3 +937,37 @@ body {
 .simplelink:hover{
   text-decoration: underline;
 }
+
+.estapage-more{
+	display:block;
+	margin:auto;
+	margin-top:50px;
+}
+
+.estapage-more img{
+	display:inline-block;
+	width:30px;
+	height:30px;
+}
+
+.plusyes{
+	display:inline-block;
+	margin-left:20px;
+	margin-right:20px;
+	font-variant:small-caps;
+	font-size:30px;
+	text-decoration:none;
+	color:#3B4056;
+	text-shadow: 1px 1px 1px black;
+}
+
+
+.plusno{
+	display:inline-block;
+	margin-left:20px;
+	margin-right:20px;
+	font-variant:small-caps;
+	font-size:30px;
+	text-decoration:line-through;
+	color:#9498AB;
+}

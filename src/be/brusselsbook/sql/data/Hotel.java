@@ -2,31 +2,31 @@ package be.brusselsbook.sql.data;
 
 public class Hotel extends Establishment {
 	
-	private Integer NoStars;
-	private Integer NoRooms;
-	private Float PriceForTwo;	
+	private Integer noStars;
+	private Integer noRooms;
+	private Float priceForTwo;	
 	
 	public Hotel(Establishment establishment) {
 		super(establishment);
 	}
 
 	public Integer getNoStars() {
-		return NoStars;
+		return noStars;
 	}
 	public void setNoStars(Integer noStars) {
-		NoStars = noStars;
+		this.noStars = noStars;
 	}
 	public Integer getNoRooms() {
-		return NoRooms;
+		return noRooms;
 	}
 	public void setNoRooms(Integer noRooms) {
-		NoRooms = noRooms;
+		this.noRooms = noRooms;
 	}
 	public Float getPriceForTwo() {
-		return PriceForTwo;
+		return priceForTwo;
 	}
 	public void setPriceForTwo(Float priceForTwo) {
-		PriceForTwo = priceForTwo;
+		this.priceForTwo = priceForTwo;
 	}
 	
 	

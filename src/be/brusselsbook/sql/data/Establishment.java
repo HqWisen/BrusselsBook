@@ -10,6 +10,7 @@ public class Establishment {
 	private String webSite;
 	private String formattedUrl;
 	private EstablishmentType type;
+	private Integer typeId;
 	
 	
 	public EstablishmentType getType() {
@@ -18,8 +19,13 @@ public class Establishment {
 
 	public void setType(EstablishmentType type) {
 		this.type = type;
+		this.typeId = type.getId();
 	}
 
+	public int getTypeId(){
+		return typeId;
+	}
+	
 	public Establishment(){
 		super();
 	}
@@ -29,6 +35,8 @@ public class Establishment {
 		this.name = other.name;
 		this.phoneNumber = other.phoneNumber;
 		this.modified = other.modified;
+		this.type = other.type;
+		this.typeId = other.typeId;
 		setWebSite(other.webSite);
 	}
 	

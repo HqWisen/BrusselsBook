@@ -33,6 +33,55 @@
         </div>
         <div id="map" class="map"></div>
       </div>
+      <div class="estapage-more">
+      	<c:if test="${establishment.typeId == 0}">
+      	<%-- Hotel --%>
+      		<c:forEach var="i" begin="1" end="${establishment.noStars}" step="1">
+      			<img src="image/star2.png"/>
+      		</c:forEach>
+      		<br/><br/>
+      		<div class="plusyes"><c:out value="${establishment.noRooms}"/> rooms</div>
+      		<div class="plusyes"><c:out value="${establishment.priceForTwo}"/> €</div>
+      	</c:if>
+      	<c:if test="${establishment.typeId == 1}">
+      	<%-- Restaurant --%>
+      	     <c:if test="${establishment.takeaway}">
+	     		<div class="plusyes">Takeaway</div>
+	     	</c:if>
+	     	<c:if test="${not establishment.takeaway}">
+	     		<div class="plusno">Takeaway</div>
+	     	</c:if>
+      	     <c:if test="${establishment.delivery}">
+	     		<div class="plusyes">Delivery</div>
+	     	</c:if>
+	     	<c:if test="${not establishment.delivery}">
+	     		<div class="plusno">Delivery</div>
+	     	</c:if>
+	     	<br/><br/>
+	     	<div class="plusyes"><c:out value="${establishment.priceRange}"/> €</div>
+	     	<div class="plusyes"><c:out value="${establishment.banquetPlaces}"/> places for banquet</div>
+      		
+      	
+      	
+      	
+      	</c:if>
+      	<c:if test="${establishment.typeId == 2}">
+      	<%-- Cafe --%>
+	     	<c:if test="${establishment.smoke}">
+	     		<div class="plusyes">Smoking</div>
+	     	</c:if>
+	     	<c:if test="${not establishment.smoke}">
+	     		<div class="plusno">Smoking</div>
+	     	</c:if>
+	     	<c:if test="${establishment.restoration}">
+	     		<div class="plusyes">Restoration</div>
+	     	</c:if>
+	     	<c:if test="${not establishment.restoration}">
+	     		<div class="plusno">Restoration</div>
+	     	</c:if>
+      	</c:if>
+      	
+      </div>
       <div class="estapage-tags">
         <c:forEach items="${requestScope.tags}" var="tag">
           <c:if test="${connected}">
