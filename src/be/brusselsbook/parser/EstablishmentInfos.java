@@ -30,7 +30,7 @@ public class EstablishmentInfos {
 		this.site = site;
 	}
 
-	public void setSite(String link) {
+	public void setSiteLink(String link) {
 		this.site = new Site();
 		this.site.setLink(link);
 	}

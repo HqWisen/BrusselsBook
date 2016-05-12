@@ -80,7 +80,7 @@ public class RestaurantInfos extends EstablishmentInfos {
 		this.banquet = banquet;
 	}
 
-	public void setBanquet(int banquet) {
+	public void setBanquetPlaces(int banquet) {
 		this.banquet = new Banquet();
 		this.banquet.setCapacity(banquet);
 	}

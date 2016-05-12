@@ -15,7 +15,7 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 		RestaurantInfos infos = new RestaurantInfos();
 		setInfos(infos, name, phoneNumber, website, street, streetNumber, locality, postalCode, lat, lng);
 		infos.setPriceRange(priceRange);
-		infos.setBanquet(banquetPlaces);
+		infos.setBanquetPlaces(banquetPlaces);
 		infos.setTakeAway(takeAway ? "" : null);
 		infos.setDelivery(delivery ? "" : null);
 		return infos;
@@ -38,7 +38,7 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 		infos.setAddress(address);
 		infos.setName(name);
 		infos.setTel(phoneNumber);
-		infos.setSite(website);
+		infos.setSiteLink(website);
 		address.setStreet(street);
 		address.setNum(streetNumber);
 		address.setCity(locality);

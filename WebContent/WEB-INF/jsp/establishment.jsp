@@ -36,7 +36,8 @@
         <c:forEach items="${requestScope.tags}" var="tag">
           <div class="estapage-tag">
             <div class="estapage-tagname"><c:out value="${tag.tagName}"/></div>
-            <div class="estapage-tagcounter estapage-tagcounterclick" onclick="addOneTag(this)">
+            <c:set var="tagvar" value='"${tag.tagName}"' scope="page"/>
+            <div class="estapage-tagcounter estapage-tagcounterclick" onclick='addOneTag(this, <c:out value="${pageScope.tagvar}"/>)'>
               <c:out value="${tagCounters[tag.tagName]}"/>
             </div>
           </div>
@@ -133,11 +134,21 @@
       changeScore(score);
     }
 
-    function addOneTag(element) {
+    function addTagRequest(tag) {
+    	var url = "addtag";
+    	var params = "tagname="+tag+"&eid="+${establishment.eid}+"&uid="+${user.uid};
+    	var xhr = new XMLHttpRequest();
+    	xhr.open("POST", url, true);
+    	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    	xhr.send(params);
+    }
+    
+    function addOneTag(element, tag) {
       var value = parseInt(element.innerHTML, 10);
       $(element).text(value + 1);
       element.onclick = undefined;
       $(element).removeClass("estapage-tagcounterclick");
+      addTagRequest(tag);
     }
 
     function initMap() {

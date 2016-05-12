@@ -48,6 +48,10 @@ public class TagDescribeAccess extends DataAccess<TagDescribe> {
 	public List<TagDescribe> withEidAndTagName(Long eid, String tagName){
 		return severalWithQuery(SELECTBYSEVERALAND(EID, TAGNAME), eid, tagName);
 	}
+
+	public TagDescribe withEidAndUidAndTagName(Long eid, Long uid, String tagName){
+		return withQuery(SELECTBYSEVERALAND(EID, UID, TAGNAME), eid, uid, tagName);
+	}
 	
 	@Override
 	protected TagDescribe map(ResultSet resultSet) throws SQLException {
