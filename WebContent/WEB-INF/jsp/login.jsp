@@ -26,7 +26,7 @@
 		
 	     <form class="logform" method="post" action="login">
 	       <div>Enter your credentials</div>
-	       <input class="log-input" id="identifier" type="text" name="identifier" maxlength="15" value="<c:out value="${pageScope.identifiertext}"/>" />
+	       <input class="log-input" id="identifier" type="text" name="identifier" maxlength="50" value="<c:out value="${pageScope.identifiertext}"/>" />
 	       <br />
 	       <input class="log-input" id="password" type="password" name="password" maxlength="16" />
 	       <br />

@@ -25,8 +25,9 @@
 		
 		<div class="establishment" onclick="location.href='establishment?eid=${establishment.eid}'">
 		     <img src="image/resto.png" />
+		     <div class="esta-type">${establishment.type}</div>
 		     <div class="esta-infos">
-		       <div class="esta-name"><c:out value="${establishment.name} ${establishment.type}"/></div>
+		       <div class="esta-name"><c:out value="${establishment.name}"/></div>
 		       <div class="esta-address"><c:out value="${addresses[establishment.eid]}"/></div>
 		       <div class="esta-footer">
 		         <div class="esta-contact">
@@ -57,7 +58,7 @@
 	<c:forEach items="${requestScope.userResults}" var="user">
 		
 		<div class="establishment" onclick="location.href='user?uid=${user.uid}'">
-		      <img src="image/resto.png" />
+		      <img src="image/user.png" />
 		     <div class="esta-infos">
 		       <div class="esta-name"><c:out value="${user.username}"/></div>
 		       <div class="esta-address"><c:out value="${user.emailAddress}"/></div>

@@ -395,6 +395,7 @@ body {
 /* Establishment */
 
 .establishment{
+  position:relative;
   width:1000px;
   height:120px;
   margin:auto;
@@ -508,7 +509,15 @@ body {
   height:25px;
 }
 
-
+.esta-type{
+	color:red;
+	position:absolute;
+	right:5px;
+	top:5px;
+	font-size:17px;
+	font-variant:small-caps;
+	color:#888888;
+}
 
 /* Establishment Page */
 
@@ -793,7 +802,10 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
+.estapage-commentformtext:focus {
+  border-color:#179A88;
+  box-shadow: 0px 0px 5px 0px #179A88;
+}
 .estapage-commentformscore {
   float: right;
   display: inline-flex;
@@ -816,13 +828,13 @@ body {
   height: 50px;
   border-width: 0;
   font-variant: small-caps;
-  background: #002d5d;
+  background: #179A88;
   color: white;
   cursor: default;
 }
 
 .estapage-commentformsubmit:hover {
-  background: #005dbf;
+  background: #036B5D;
   cursor: pointer;
 }
 
@@ -899,6 +911,7 @@ body {
 	display:inline-block;
 	font-size:27px;
 	color:white;
+	width:1000px;
 	background:#555555;
 	padding:15px;
 	margin:auto;
@@ -906,6 +919,9 @@ body {
 	box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
 	border-radius:10px;
 	font-variant:small-caps;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .simplelink{

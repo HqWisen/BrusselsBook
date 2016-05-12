@@ -33,8 +33,13 @@
 			<a href="">Comment moderation</a>
 		</div>
 		<div class="admin-zone">
-			<span>Describers zone</span>
-			<a href="">Edition mode</a>
+			<span>Easter egg</span>
+			<a href="egg?r=1">R1</a>
+			<a href="egg?r=2">R2</a>
+			<a href="egg?r=3">R3</a>
+			<a href="egg?r=4">R4</a>
+			<a href="egg?r=5">R5</a>
+			<a href="egg?r=6">R6</a>
 		</div>
 	</div>
 </body>

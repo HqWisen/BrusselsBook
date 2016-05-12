@@ -20,7 +20,7 @@ public final class ServerUtils {
 	public static final String USERJSPFILE = ServerUtils.getJspPath("user.jsp");
 	public static final String WEBINF = "/WEB-INF/";
 	public static final String JSPDIR = "jsp/";
-	public static final String SEARCHTITLE = "Establishment, locality, zip, street, user ...";
+	public static final String SEARCHTITLE = "Establishment, locality, zip, street, user, email";
 	public static final int MINIMUMUSERNAMESIZE = 4;
 	public static final int MINIMUMPASSWORDSIZE = 4;
 	
