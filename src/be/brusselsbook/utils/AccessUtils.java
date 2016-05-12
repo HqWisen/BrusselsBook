@@ -104,6 +104,24 @@ public final class AccessUtils {
 		return resultSet;
 	}
 
+	public static void executeUpdate(AccessFactory accessFactory, String sqlQuery, Object[] values) {
+		LOGGER.info("executing update " + sqlQuery + " with " + Arrays.asList(values));
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			connection = accessFactory.getConnection();
+			preparedStatement = AccessUtils.createPreparedStatement(connection, sqlQuery, values);
+			int statut = preparedStatement.executeUpdate();
+			if (statut == 0) {
+				throw new DatabaseAccessException("Failed to update entity in database.");
+			}
+			AccessUtils.close(connection);
+		} catch (SQLException e) {
+			throw new DatabaseAccessException(e);
+		}
+	}
+
+	
 	public static PreparedStatement createPreparedStatement(Connection connection, String sqlQuery, Object... values)
 			throws SQLException {
 		return createPreparedStatement(false, connection, sqlQuery, values);
@@ -255,4 +273,5 @@ public final class AccessUtils {
 		}
 		return map;
 	}
+
 }

@@ -99,5 +99,10 @@ public class CafeAccess extends EstablishmentAccess<Cafe> {
 	public Cafe withEid(String eid) {
 		return withQuery(SELECTBY(EID), eid);
 	}
+
+	@Override
+	public void updateModified(Boolean modified, Long eid) {
+		establishmentAccess.updateModified(modified, eid);
+	}
 	
 }

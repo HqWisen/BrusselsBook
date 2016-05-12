@@ -55,9 +55,15 @@ public class EstablishmentAccessImpl extends EstablishmentAccess<Establishment> 
 	}
 	
 
+	@Override
+	public void updateModified(Boolean modified, Long eid) {
+		update(UPDATEBY(MODIFIED, EID), modified, eid);
+	}
+	
 	public Establishment withName(String name){
 		return withQuery(SELECTBY(NAME), name);
 	}
+	
 	@Override
 	protected Establishment map(ResultSet resultSet) throws SQLException {
 		Establishment establishment = new Establishment();

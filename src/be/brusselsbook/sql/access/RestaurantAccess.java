@@ -117,4 +117,9 @@ public class RestaurantAccess extends EstablishmentAccess<Restaurant> {
 		return PARAMETERS.length;
 	}
 
+	@Override
+	public void updateModified(Boolean modified, Long eid) {
+		establishmentAccess.updateModified(modified, eid);
+	}
+
 }

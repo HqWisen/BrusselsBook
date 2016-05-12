@@ -100,11 +100,14 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 		Long newEID = establishment.getEid();
 		creationAccess.createEstablishmentCreation(newEID, aid);
 		modificationAccess.createEstablishmentModification(oldEID, newEID, aid);
+		updateModified(true, oldEID);
 		return establishment;
 	}
 
 	public abstract T withEid(Long eid);
 
 	public abstract T withEid(String eid);
+	
+	public abstract void updateModified(Boolean modified, Long eid);
 
 }

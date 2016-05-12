@@ -100,4 +100,9 @@ public class HotelAccess extends EstablishmentAccess<Hotel> {
 		return PARAMETERS.length;
 	}
 
+	@Override
+	public void updateModified(Boolean modified, Long eid) {
+		establishmentAccess.updateModified(modified, eid);
+	}
+
 }

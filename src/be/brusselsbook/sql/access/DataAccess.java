@@ -56,6 +56,9 @@ public abstract class DataAccess<T> implements Indexable<T>{
 		return "SELECT * FROM " + getTable() + " WHERE " + by + " = ?";
 	}
 
+	public String UPDATEBY(String by, String idCol) {
+		return "UPDATE " + getTable() + " SET " + by +"= ? WHERE " + idCol + "= ?";
+	}
 	
 	public String DELETEFROM(String by){
 		return "DELETE"  + "FROM" + getTable() + "WHERE" + by + " = ?" + "LIMIT 1";
@@ -117,6 +120,10 @@ public abstract class DataAccess<T> implements Indexable<T>{
 		}
 		AccessUtils.close(resultSet);
 		return list;
+	}
+
+	protected void update(String sqlQuery, Object... values) throws DatabaseAccessException {
+		AccessUtils.executeUpdate(accessFactory, sqlQuery, values);
 	}
 	
 	@Override
