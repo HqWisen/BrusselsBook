@@ -97,4 +97,8 @@ public class BookCommentAccess extends DescriberAccess<BookComment> {
 		return PARAMETERS.length;
 	}
 
+	public void hardDeleteWithDid(Long did) {
+		update(DELETEFROM(DID), did);
+	}
+
 }

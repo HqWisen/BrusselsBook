@@ -62,4 +62,8 @@ public class UserSignalAccess extends DataAccess<UserSignal> {
 		return PARAMETERS.length;
 	}
 
+	public void hardDeleteWithDid(Long did) {
+		update(DELETEFROM(DID), did);
+	}
+
 }
