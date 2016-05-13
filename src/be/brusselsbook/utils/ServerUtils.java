@@ -17,6 +17,7 @@ public final class ServerUtils {
 	public static final String ESTABLISHMENTJSPFILE = ServerUtils.getJspPath("establishment.jsp");
 	public static final String ADMINJSPFILE = ServerUtils.getJspPath("admin.jsp");
 	public static final String ESCREATEJSPFILE = ServerUtils.getJspPath("escreate.jsp");
+	public static final String ESEDITJSPFILE = ServerUtils.getJspPath("esedit.jsp");
 	public static final String USERJSPFILE = ServerUtils.getJspPath("user.jsp");
 	public static final String ESMODJSPFILE = ServerUtils.getJspPath("esmod.jsp");
 	public static final String WEBINF = "/WEB-INF/";

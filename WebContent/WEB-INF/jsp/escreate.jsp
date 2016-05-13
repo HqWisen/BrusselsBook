@@ -106,13 +106,13 @@
 	       </c:if>
 	       <c:if test="${param.t == 'hotel'}">
 	         <label class="formlabel">Number of stars</label><br/>
-	         <input class="log-input" id="stars" type="number" name="stars"/>
+	         <input class="log-input" id="stars" type="number" min="1" max="5" name="stars" value="<c:out value="${param.stars}"/>"/>
 	         <br />
 	         <label class="formlabel">Number of rooms</label><br/>
-	         <input class="log-input" id="rooms" type="number" name="rooms" />
+	         <input class="log-input" id="rooms" type="number" name="rooms" value="<c:out value="${param.rooms}"/>"/>
 	         <br />	
 	         <label class="formlabel">Price for two persons</label><br/>
-	         <input class="log-input" id="pricefortwo" type="number" name="pricefortwo" step="0.01" />
+	         <input class="log-input" id="pricefortwo" type="number" name="pricefortwo" step="0.01" value="<c:out value="${param.pricefortwo}"/>"/>
 	         <br />	
 	       </c:if>
 

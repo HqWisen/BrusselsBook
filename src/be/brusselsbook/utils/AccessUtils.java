@@ -17,6 +17,9 @@ import javax.servlet.http.HttpSession;
 import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.BookCommentAccess;
 import be.brusselsbook.sql.access.BookUserAccess;
+import be.brusselsbook.sql.access.CafeAccess;
+import be.brusselsbook.sql.access.HotelAccess;
+import be.brusselsbook.sql.access.RestaurantAccess;
 import be.brusselsbook.sql.access.TagDescribeAccess;
 import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.BookComment;
@@ -273,5 +276,30 @@ public final class AccessUtils {
 		}
 		return map;
 	}
+	
+	public static Establishment findFull(Establishment establishment) {
+		Establishment full;
+		Long eid = establishment.getEid();
+		switch (establishment.getType()) {
+		case CAFE:
+			CafeAccess cafeAccess = AccessFactory.getInstance().getCafeAccess();
+			full = cafeAccess.withEid(eid);
+			break;
+		case HOTEL:
+			HotelAccess hotelAccess = AccessFactory.getInstance().getHotelAccess();
+			full = hotelAccess.withEid(eid);
+			break;
+		case RESTAURANT:
+			RestaurantAccess rAccess = AccessFactory.getInstance().getRestaurantAccess();
+			full = rAccess.withEid(eid);
+			break;
+		default:
+			full = null;
+			break;
+
+		}
+		return full;
+	}
+
 
 }

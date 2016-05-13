@@ -52,7 +52,7 @@ public class CafeAccess extends EstablishmentAccess<Cafe> {
 	
 	
 	
-	public Cafe editCafer(Long aid, Long oldEID, String name, String tel, String site, Address address,
+	public Cafe editCafe(Long aid, Long oldEID, String name, String tel, String site, Address address,
 			int type, Boolean canSmoke ,Boolean makeRestauration){
 		Establishment establishment = establishmentAccess.editEstablishment(aid, oldEID, name, tel, 
 				site, address, type);

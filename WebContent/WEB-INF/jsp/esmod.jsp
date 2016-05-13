@@ -29,7 +29,7 @@
 		     <img src="image/resto.png" />
 		     <div class="esta-type">${establishment.type}</div>
 		     <div class="esta-infos">
-		       <div class="esta-name"><c:out value="${establishment.name}"/></div>
+		       <div class="esta-name"><c:out value="${establishment.name} #${establishment.eid}"/></div>
 		       <div class="esta-address"><c:out value="${addresses[establishment.eid]}"/></div>
 		       <div class="esta-footer">
 		         <div class="esta-contact">
@@ -54,14 +54,14 @@
 		   <div class="esta-button">
 		     <a class="esta-delete" href="esdelete?eid=${establishment.eid}&hard=true">Hard Delete</a>
 		     <a class="esta-delete" href="esdelete?eid=${establishment.eid}&hard=false">Delete</a>
-		     <a class="esta-edit" href="esedit?eid=${establishment.eid}">Edit</a>
+		     <a class="esta-edit" href="esedit?eid=${establishment.eid}&t=${establishment.type}">Edit</a>
 		   </div>
 
 		   </div>
 		   
 		   </c:forEach>
 	<c:if test="${not empty requestScope.modifEstablishments}">
-		<div class="container-title">Edited establishments (not accessible)</div>
+		<div class="container-title">Edited establishments (history)</div>
 	</c:if>
 	<c:forEach items="${requestScope.modifEstablishments}" var="establishment">
 		
@@ -91,6 +91,10 @@
 		         </div>
 		       </div>
 		     </div>
+		     		   	<div class="esta-button">
+		     	<a class="esta-delete" href="esdelete?eid=${establishment.eid}&hard=true">Hard Delete</a>
+		  	 </div>
+		     
 		   </div>
 			</c:forEach>
 	<c:if test="${not empty requestScope.delEstablishments}">

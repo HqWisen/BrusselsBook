@@ -12,10 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.BookCommentAccess;
-import be.brusselsbook.sql.access.CafeAccess;
 import be.brusselsbook.sql.access.EstablishmentAccess;
-import be.brusselsbook.sql.access.HotelAccess;
-import be.brusselsbook.sql.access.RestaurantAccess;
 import be.brusselsbook.sql.access.TagAccess;
 import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.BookComment;
@@ -40,7 +37,7 @@ public class EstablishmentPage extends HttpServlet {
 		} else {
 			Long eid = Long.parseLong(eidParam);
 			Establishment establishment = eAccess.withEid(eid);
-			Establishment fullEstablishment = findFull(establishment);
+			Establishment fullEstablishment = AccessUtils.findFull(establishment);
 			Address address = AccessUtils.getAddresFor(establishment);
 			List<BookComment> comments = bookCommentAccess.withEid(eid);
 			Map<Long, String> commentAuthors = AccessUtils.getAuthorsFor(comments);
@@ -58,30 +55,6 @@ public class EstablishmentPage extends HttpServlet {
 			request.setAttribute("tagApposed", tagApposed);
 			getServletContext().getRequestDispatcher(ServerUtils.ESTABLISHMENTJSPFILE).forward(request, response);
 		}
-	}
-
-	private Establishment findFull(Establishment establishment) {
-		Establishment full;
-		Long eid = establishment.getEid();
-		switch (establishment.getType()) {
-		case CAFE:
-			CafeAccess cafeAccess = AccessFactory.getInstance().getCafeAccess();
-			full = cafeAccess.withEid(eid);
-			break;
-		case HOTEL:
-			HotelAccess hotelAccess = AccessFactory.getInstance().getHotelAccess();
-			full = hotelAccess.withEid(eid);
-			break;
-		case RESTAURANT:
-			RestaurantAccess rAccess = AccessFactory.getInstance().getRestaurantAccess();
-			full = rAccess.withEid(eid);
-			break;
-		default:
-			full = null;
-			break;
-
-		}
-		return full;
 	}
 
 }

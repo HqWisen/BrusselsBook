@@ -7,18 +7,15 @@ import be.brusselsbook.sql.data.EstablishmentModification;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class EstablishmentModificationAccess extends DataAccess<EstablishmentModification> {
-	
+
 	private static final String OLDEID = "OldEID";
 	private static final String NEWEID = "NewEID";
 	private static final String AID = "AID";
 	private static final String MODIFICATIONDATE = "ModificationDate";
-	
 
-	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom(OLDEID,NEWEID,AID);
+	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom(OLDEID, NEWEID, AID);
 	private static final String TABLE = "EstablishmentModification";
 
-	
-	
 	protected EstablishmentModificationAccess(AccessFactory accessFactory) {
 		super(accessFactory);
 	}
@@ -38,12 +35,10 @@ public class EstablishmentModificationAccess extends DataAccess<EstablishmentMod
 		return establishmentModification;
 	}
 
-
-	public EstablishmentModification createEstablishmentModification(Long oldEID,Long newEID,Long aid ){
-		return createNoGeneratedId(oldEID, newEID,aid);
+	public EstablishmentModification createEstablishmentModification(Long oldEID, Long newEID, Long aid) {
+		return createNoGeneratedId(oldEID, oldEID, newEID, aid);
 	}
 
-	
 	@Override
 	protected String getTable() {
 		return TABLE;
@@ -62,11 +57,9 @@ public class EstablishmentModificationAccess extends DataAccess<EstablishmentMod
 	public EstablishmentModification withEid(String OldEID) {
 		return withQuery(SELECTBY(OLDEID), OldEID);
 	}
-	
+
 	public EstablishmentModification withEid(Long OldEID) {
 		return withEid(OldEID.toString());
 	}
-
-
 
 }
