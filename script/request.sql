@@ -22,9 +22,61 @@ select count(*) from BookComment c where eid3 = c.EID
 )
 group by (c.EID) order by AvgScore;
 
+
+
+#R6
+select t.DID  from TagDescribe t 
+select e.EID from Establishment e
+
+#t.TagDescribe , AVG(c.score) as AvgScore from BookComment
+
+where (select count(*) from TagDescribe t where t.EID = e.EID) 
+  
+
 # R3 (not sure)
 
 select e.EID from Establishment e where
 (
 select count(*) from BookComment c where c.EID = e.EID
 ) <= 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
