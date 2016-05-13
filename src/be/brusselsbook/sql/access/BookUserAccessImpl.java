@@ -74,4 +74,9 @@ public class BookUserAccessImpl extends BookUserAccess<BookUser> {
 		return bookUser;
 	}
 
+	@Override
+	public void hardDeleteWithUid(Long uid) {
+		update(DELETEFROM(UID), uid);
+	}
+
 }

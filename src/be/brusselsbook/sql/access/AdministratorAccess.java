@@ -96,4 +96,9 @@ public class AdministratorAccess extends BookUserAccess<Administrator> {
 	public boolean isAdmin(Long uid) {
 		return withUid(uid) != null;
 	}
+
+	@Override
+	public void hardDeleteWithUid(Long uid) {
+		bookUserAccess.hardDeleteWithUid(uid);
+	}
 }

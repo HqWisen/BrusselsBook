@@ -30,7 +30,7 @@
 		<div class="admin-zone">
 			<span>User zone</span>
 			<a href="">Comment moderation</a>
-			<a href="">Manage users</a>
+			<a href="usermod">Manage users</a>
 		</div>
 		<div class="admin-zone">
 			<span>Easter egg</span>

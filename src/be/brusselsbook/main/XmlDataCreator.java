@@ -14,14 +14,17 @@ import be.brusselsbook.parser.Tagger;
 import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.AdministratorAccess;
 import be.brusselsbook.sql.access.BookCommentAccess;
+import be.brusselsbook.sql.access.BookUserAccess;
 import be.brusselsbook.sql.access.CafeAccess;
 import be.brusselsbook.sql.access.RestaurantAccess;
 import be.brusselsbook.sql.access.TagAccess;
 import be.brusselsbook.sql.access.TagDescribeAccess;
 import be.brusselsbook.sql.data.Administrator;
+import be.brusselsbook.sql.data.BookUser;
 import be.brusselsbook.sql.data.Cafe;
 import be.brusselsbook.sql.data.Establishment;
 import be.brusselsbook.sql.data.Restaurant;
+import be.brusselsbook.utils.AccessUtils;
 import be.brusselsbook.utils.BrusselsBookUtils;
 
 public class XmlDataCreator {
@@ -37,7 +40,7 @@ public class XmlDataCreator {
 	private BookCommentAccess bookCommentAccess;
 	private TagAccess tagAccess;
 	private TagDescribeAccess tagDescribeAccess;
-
+	private BookUserAccess<BookUser> bookUserAccess;
 	public XmlDataCreator(AccessFactory factory) {
 		this.restaurantAccess = factory.getRestaurantAccess();
 		this.administratorAccess = factory.getAdminstratorAccess();
@@ -45,17 +48,33 @@ public class XmlDataCreator {
 		this.bookCommentAccess = factory.getBookCommentAccess();
 		this.tagAccess = factory.getTagAccess();
 		this.tagDescribeAccess = factory.getTagDescribeAccess();
-		// this.user = factory.getUserDeletionAccess();
+		this.bookUserAccess = factory.getBookUserAccess();
 	}
 
-	private Administrator createAdministrator(String nickname) {
+	public Administrator createAdministrator(String nickname) {
 		LOGGER.info("xml creator: create admin: " + nickname);
 		String email = BrusselsBookUtils.generateEmail(nickname);
-		Administrator admin = administratorAccess.withEmail(email);
-		if (admin == null) {
-			return administratorAccess.createAdministrator(email, nickname, "azerty");
+		BookUser user = bookUserAccess.withEmail(email);
+		if (user == null) {
+			return administratorAccess.createAdministrator(email, nickname, "common");
+		}else{
+			Administrator admin = administratorAccess.withEmail(email);
+			if(admin == null){
+				AccessUtils.executeInsert(AccessFactory.getInstance(), "INSERT INTO Administrator (UID) VALUES(?)", user.getUid());
+			}
+			return administratorAccess.withEmail(email);
 		}
-		return admin;
+		
+	}
+
+	public BookUser createUser(String nickname) {
+		LOGGER.info("xml creator: create user: " + nickname);
+		String email = BrusselsBookUtils.generateEmail(nickname);
+		BookUser user = bookUserAccess.withEmail(email);
+		if (user == null) {
+			return bookUserAccess.createUser(email, nickname, "common");
+		}
+		return user;
 	}
 
 	private void parseCafes() throws IOException {
@@ -94,7 +113,7 @@ public class XmlDataCreator {
 		if (commentList != null) {
 			for (CommentXml cx : commentList) {
 				if (cx != null) {
-					Administrator commenter = createAdministrator(cx.getNickname());
+					BookUser commenter = createUser(cx.getNickname());
 					Long uid = commenter.getUid();
 					Long eid = establishment.getEid();
 					bookCommentAccess.createBookComment(uid, eid, cx.getScore(), cx.getContent());
@@ -110,7 +129,7 @@ public class XmlDataCreator {
 				if (tx != null) {
 					List<Tagger> taggerList = tx.getTaggerList();
 					for (int i = 0; i < taggerList.size(); i++) {
-						Administrator tagger = createAdministrator(taggerList.get(i).getNickname());
+						BookUser tagger = createUser(taggerList.get(i).getNickname());
 						Long uid = tagger.getUid();
 						Long eid = establishment.getEid();
 						if (tagAccess.withTagName(tx.getName()) == null){
@@ -134,8 +153,9 @@ public class XmlDataCreator {
 	public static void main(String[] args) throws IOException {
 		System.out.println("Running creator testing...");
 		AccessFactory factory = AccessFactory.getInstance();
-
-		new XmlDataCreator(factory).run();
+		
+		XmlDataCreator creator = new XmlDataCreator(factory);
+		creator.run();
 
 	}
 

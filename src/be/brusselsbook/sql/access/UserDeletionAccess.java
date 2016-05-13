@@ -50,7 +50,7 @@ public class UserDeletionAccess extends DataAccess<UserDeletion> {
 		return PARAMETERS.length;
 	}
 
-	public UserDeletion create(Long uid,Long aid){
+	public UserDeletion createUserDeletion(Long uid,Long aid){
 		return createNoGeneratedId(uid,uid, aid);
 	}
 	
@@ -62,6 +62,9 @@ public class UserDeletionAccess extends DataAccess<UserDeletion> {
 		return withQuery(SELECTBY(UID), uid);
 	}
 
+	public void hardDeleteWithUid(Long uid){
+		update(DELETEFROM(UID), uid);
+	}
 
 
 }

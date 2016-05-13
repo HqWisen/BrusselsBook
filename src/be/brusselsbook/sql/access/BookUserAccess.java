@@ -42,4 +42,6 @@ public abstract class BookUserAccess<T extends BookUser> extends DataAccess<T>{
 		return user;
 	}
 
+	public abstract void hardDeleteWithUid(Long uid);
+
 }

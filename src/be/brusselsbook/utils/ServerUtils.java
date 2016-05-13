@@ -20,6 +20,7 @@ public final class ServerUtils {
 	public static final String ESEDITJSPFILE = ServerUtils.getJspPath("esedit.jsp");
 	public static final String USERJSPFILE = ServerUtils.getJspPath("user.jsp");
 	public static final String ESMODJSPFILE = ServerUtils.getJspPath("esmod.jsp");
+	public static final String USERMODJSPFILE = ServerUtils.getJspPath("usermod.jsp");
 	public static final String WEBINF = "/WEB-INF/";
 	public static final String JSPDIR = "jsp/";
 	public static final String SEARCHTITLE = "Establishment, locality, zip, street, user, email";
@@ -47,6 +48,18 @@ public final class ServerUtils {
 	public static final String SELECT_ES = "SELECT * FROM Establishment e "
 			+ "WHERE e.EID NOT IN (SELECT OldEID from EstablishmentModification) "
 			+ "AND e.EID NOT IN (SELECT EID from EstablishmentDeletion)";
+	
+	public static final String SELECT_USERS = "SELECT * FROM BookUser u "
+			+ "WHERE u.UID NOT IN (SELECT UID FROM UserDeletion) "
+			+ "AND u.UID NOT IN(SELECT UID FROM Administrator)";
+
+	public static final String SELECT_ADMINS = "SELECT u.* FROM BookUser u, "
+			+ "Administrator a WHERE u.UID = a.UID " 
+			+ "AND a.UID NOT IN (SELECT UID FROM UserDeletion)";
+
+	public static final String SELECT_USERS_DEL = "SELECT u.* from UserDeletion d "
+			+ ", BookUser u WHERE u.UID = d.UID";
+
 	
 	public static String getJspPath(String jspname) {
 		return WEBINF+JSPDIR+jspname;
