@@ -21,6 +21,8 @@ public final class ServerUtils {
 	public static final String USERJSPFILE = ServerUtils.getJspPath("user.jsp");
 	public static final String ESMODJSPFILE = ServerUtils.getJspPath("esmod.jsp");
 	public static final String USERMODJSPFILE = ServerUtils.getJspPath("usermod.jsp");
+	public static final String COMMENTMODJSPFILE = ServerUtils.getJspPath("commentmod.jsp");
+	public static final String EGGJSPFILE = ServerUtils.getJspPath("egg.jsp");
 	public static final String WEBINF = "/WEB-INF/";
 	public static final String JSPDIR = "jsp/";
 	public static final String SEARCHTITLE = "Establishment, locality, zip, street, user, email";
@@ -59,6 +61,10 @@ public final class ServerUtils {
 
 	public static final String SELECT_USERS_DEL = "SELECT u.* from UserDeletion d "
 			+ ", BookUser u WHERE u.UID = d.UID";
+	
+	public static final String SELECT_SIGNALED_COMMENT = "SELECT b.* FROM UserSignal s, "
+			+ "BookComment b WHERE "
+			+ "b.DID = s.DID";
 
 	
 	public static String getJspPath(String jspname) {

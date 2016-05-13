@@ -212,12 +212,14 @@
     }
 
     function addTagRequest(tag) {
-    	var url = "addtag";
+    	<c:if test="${sessionScope.connected}">
+       	var url = "addtag";
     	var params = "tagname="+tag+"&eid="+${establishment.eid}+"&uid="+${user.uid};
     	var xhr = new XMLHttpRequest();
     	xhr.open("POST", url, true);
     	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
     	xhr.send(params);
+ 		</c:if>
     }
     
     function addOneTag(element, tag) {

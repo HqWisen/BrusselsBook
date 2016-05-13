@@ -1,26 +1,10 @@
 # R1 (sure)
 
-select user.UID from BookUser user where 
-(
-select count(*) from BookUser ub, Establishment e where
-ub.Username = 'Brenda'
-and
-exists(select * from BookComment c where c.EID = e.EID and c.UID = ub.UID and c.Score > 3)
-and
-exists(select * from BookComment c where c.EID = e.EID and c.UID = user.UID and c.Score > 3)
-) > 3;
+SELECT u.* FROM BookComment c, BookUser u WHERE (c.UID = u.UID) AND  (c.Score > 3) AND EXISTS(SELECT c2.* FROM BookComment c2 WHERE (c2.UID = 7) AND (c.EID = c2.EID) AND (c2.Score > 3)) GROUP BY c.UID HAVING COUNT(DISTINCT c.EID) > 2;
 
-# R5 (not sure)
+# R5 (sure)
 
-select c.EID, AVG(c.Score) as AvgScore from BookComment c
-where c.EID in
-(
-select eid as eid3 from Establishment e where
-(
-select count(*) from BookComment c where eid3 = c.EID
-) > 3
-)
-group by (c.EID) order by AvgScore;
+select c.EID, AVG(c.Score) as AvgScore from BookComment c where c.EID in ( select e.EID from Establishment e where ( select count(*) from BookComment c where e.EID = c.EID ) >= 3 ) group by (c.EID) order by AvgScore;
 
 
 
@@ -33,50 +17,15 @@ select e.EID from Establishment e
 where (select count(*) from TagDescribe t where t.EID = e.EID) 
   
 
-# R3 (not sure)
+# R3 (sure)
 
 select e.EID from Establishment e where
 (
 select count(*) from BookComment c where c.EID = e.EID
 ) <= 1;
 
+# R4 (sure)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SELECT a.* FROM Administrator a, EstablishmentCreation ec WHERE ec.AID = a.AID AND NOT EXISTS(SELECT * FROM BookComment c WHERE c.UID = a.UID AND c.EID = ec.EID) GROUP BY(ec.AID);
 
 

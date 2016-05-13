@@ -43,18 +43,18 @@
 	         <input class="log-input" id="banquetplaces" type="number" name="banquetplaces" value="<c:out value="${establishment.banquetPlaces}"/>"/>
 	         <br />
 	         <label class="formlabel">This restaurant make takeaway</label>
-	         <input type="radio" name="takeaway" value="takeaway" <c:if test="${establishment.takeaway}">checked</c:if>/>
+	         <input type="radio" name="takeaway" value="takeaway"/>
 	         <br />	
 	         <label class="formlabel">This restaurant make delivery</label>
-	         <input type="radio" name="delivery" value="delivery" <c:if test="${establishment.delivery}">checked</c:if>/>
+	         <input type="radio" name="delivery" value="delivery"/>
 	         <br />	
 	       </c:if>
 	      <c:if test="${requestScope.t == 'cafe'}">
 	         <label class="formlabel">Allow smoking</label>
-	         <input type="radio" name="smoking" value="smoking" <c:if test="${establishment.smoke}">checked</c:if>/>
+	         <input type="radio" name="smoking" value="smoking"/>
 	         <br />	
 	         <label class="formlabel">Make restoration</label>
-	         <input type="radio" name="restoration" value="restoration" <c:if test="${establishment.restoration}">checked</c:if>/>
+	         <input type="radio" name="restoration" value="restoration"/>
 	         <br />	
 	       </c:if>
 	       <c:if test="${requestScope.t == 'hotel'}">
