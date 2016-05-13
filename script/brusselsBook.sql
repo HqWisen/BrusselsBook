@@ -10,13 +10,6 @@ GRANT ALL PRIVILEGES ON `brusselsbook`.* TO 'bbadmin'@'localhost';
 # Use the new created database
 USE brusselsbook;
 
-# FIXME make cascade delete (example: delete Adminstrator should delete also the BookUser)
-
-
-# The DescriberDeletion and DescriberModification are not implemented
-# This is not an important par of the project
-
-# Latitude and Longitude has been put in Address (indentation problem in the model)
 CREATE TABLE Establishment(
 	EID INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	EName VARCHAR(50) NOT NULL,
@@ -27,7 +20,6 @@ CREATE TABLE Establishment(
 	PRIMARY KEY(EID)
 );
 
-# NOTE: Remove of PriceMinimum and PriceMaximum to avoid using useless space on the database (always the same)
 CREATE TABLE Restaurant(
 	EID INT UNSIGNED NOT NULL,
 	PriceRange INT UNSIGNED NOT NULL,
@@ -91,7 +83,6 @@ CREATE TABLE Administrator(
 # we choose to create this table (less difficult to manage the modifications)
 CREATE TABLE Describer(
 	DID INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Modified TINYINT(1) DEFAULT 0,
     PRIMARY KEY(DID)
 );
 

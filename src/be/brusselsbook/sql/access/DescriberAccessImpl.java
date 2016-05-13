@@ -9,7 +9,6 @@ import be.brusselsbook.utils.BrusselsBookUtils;
 public class DescriberAccessImpl extends DescriberAccess<Describer> {
 
 	protected static final String DID = "DID";
-	private static final String MODIFIED = "Modified";
 	
 	private static final String[] PARAMETERS = BrusselsBookUtils.createArrayFrom();
 	private static final String TABLE = "Describer";
@@ -37,7 +36,6 @@ public class DescriberAccessImpl extends DescriberAccess<Describer> {
 	@Override
 	protected Describer map(ResultSet resultSet) throws SQLException {
 		Describer describer = new Describer();
-		describer.setModified(resultSet.getBoolean(MODIFIED));
 		describer.setDid(resultSet.getLong(DID));
 		return describer;
 	}

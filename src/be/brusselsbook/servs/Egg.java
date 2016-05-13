@@ -27,9 +27,10 @@ import be.brusselsbook.utils.ServerUtils;
 public class Egg extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final String R1 = "SELECT u.* FROM BookComment c, BookUser u "
+	private static final String R1 = "SELECT u.* FROM BookComment c, BookUser u, BookUser ub "
 			+ "WHERE (c.UID = u.UID) AND  (c.Score > 3) "
-			+ "AND EXISTS(SELECT c2.* FROM BookComment c2 WHERE (c2.UID = 7) "
+			+ "AND (u.Username <> 'Brenda') AND (ub.Username = 'Brenda') "
+			+ "AND EXISTS(SELECT c2.* FROM BookComment c2 WHERE (c2.UID = ub.UID) "
 			+ "AND (c.EID = c2.EID) AND (c2.Score > 3)) GROUP BY c.UID HAVING COUNT(DISTINCT c.EID) > 2";
 
 	private static final String R3 = "SELECT * FROM Establishment e WHERE "
