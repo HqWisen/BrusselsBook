@@ -104,5 +104,10 @@ public class CafeAccess extends EstablishmentAccess<Cafe> {
 	public void updateModified(Boolean modified, Long eid) {
 		establishmentAccess.updateModified(modified, eid);
 	}
+
+	@Override
+	public void hardDeleteWithEid(Long eid) {
+		establishmentAccess.hardDeleteWithEid(eid);
+	}
 	
 }

@@ -971,3 +971,47 @@ body {
 	text-decoration:line-through;
 	color:#9498AB;
 }
+
+.esta-button{
+	display:block;
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	margin:0;
+	padding:0;
+	height:auto;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	font-variant:small-caps;
+	font-size:20px;
+	
+}
+
+.esta-delete{
+	display:inline;
+	margin:0;
+	padding:7px;
+	color:white;
+	background:#910e0e;
+	float:right;
+	text-decoration:none;
+
+}
+
+.esta-delete:hover{
+	background:#550909;
+}
+
+.esta-edit{
+	display:inline;
+	margin:0;
+	padding:7px;
+	color:white;
+	background:#555753;
+	float:right;
+	text-decoration:none;
+	
+}
+
+.esta-edit:hover{
+	background:#2e3436;
+}

@@ -59,6 +59,11 @@ public class EstablishmentAccessImpl extends EstablishmentAccess<Establishment> 
 	public void updateModified(Boolean modified, Long eid) {
 		update(UPDATEBY(MODIFIED, EID), modified, eid);
 	}
+
+	@Override
+	public void hardDeleteWithEid(Long eid) {
+		update(DELETEFROM(EID), eid);
+	}
 	
 	public Establishment withName(String name){
 		return withQuery(SELECTBY(NAME), name);
@@ -76,5 +81,6 @@ public class EstablishmentAccessImpl extends EstablishmentAccess<Establishment> 
 		establishment.setType(EstablishmentType.parseType(typeId));
 		return establishment;
 	}
+
 
 }

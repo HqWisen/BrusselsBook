@@ -3,7 +3,7 @@
 warname="BrusselsBook.war"
 warfile="build/libs/$warname"
 
-app(){
+generate(){
     echo "Running project"
     gradle run
 }

@@ -103,7 +103,9 @@ public abstract class EstablishmentAccess<T extends Establishment> extends DataA
 		updateModified(true, oldEID);
 		return establishment;
 	}
-
+	
+	public abstract void hardDeleteWithEid(Long eid);
+	
 	public abstract T withEid(Long eid);
 
 	public abstract T withEid(String eid);

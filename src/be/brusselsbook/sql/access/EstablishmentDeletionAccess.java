@@ -68,5 +68,8 @@ public class EstablishmentDeletionAccess extends DataAccess<EstablishmentDeletio
 		return withQuery(SELECTBY(EID), eid);
 	}
 
+	public void hardDeleteWithEid(Long eid){
+		update(DELETEFROM(EID), eid);
+	}
 
 }

@@ -120,4 +120,9 @@ public class RestaurantAccess extends EstablishmentAccess<Restaurant> {
 		establishmentAccess.updateModified(modified, eid);
 	}
 
+	@Override
+	public void hardDeleteWithEid(Long eid) {
+		establishmentAccess.hardDeleteWithEid(eid);
+	}
+
 }

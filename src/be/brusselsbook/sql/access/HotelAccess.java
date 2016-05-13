@@ -105,4 +105,9 @@ public class HotelAccess extends EstablishmentAccess<Hotel> {
 		establishmentAccess.updateModified(modified, eid);
 	}
 
+	@Override
+	public void hardDeleteWithEid(Long eid) {
+		establishmentAccess.hardDeleteWithEid(eid);
+	}
+
 }

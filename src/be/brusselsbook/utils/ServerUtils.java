@@ -18,12 +18,34 @@ public final class ServerUtils {
 	public static final String ADMINJSPFILE = ServerUtils.getJspPath("admin.jsp");
 	public static final String ESCREATEJSPFILE = ServerUtils.getJspPath("escreate.jsp");
 	public static final String USERJSPFILE = ServerUtils.getJspPath("user.jsp");
+	public static final String ESMODJSPFILE = ServerUtils.getJspPath("esmod.jsp");
 	public static final String WEBINF = "/WEB-INF/";
 	public static final String JSPDIR = "jsp/";
 	public static final String SEARCHTITLE = "Establishment, locality, zip, street, user, email";
 	public static final int MINIMUMUSERNAMESIZE = 4;
 	public static final int MINIMUMPASSWORDSIZE = 4;
 	
+	public static final String SEARCH_SQL = 
+			"SELECT e.* FROM Establishment e, Address a "
+			+ "WHERE e.EID NOT IN (SELECT OldEID from EstablishmentModification) "
+			+ "AND e.EID NOT IN (SELECT EID from EstablishmentDeletion) "
+			+ "AND (a.EID = e.EID) " +
+			"AND (e.EName LIKE ? OR a.Locality LIKE ? " +
+			"OR a.PostalCode LIKE ? OR a.Street LIKE ?)";
+	
+	public static final String SEARCH_USER_SQL = "SELECT * FROM BookUser "
+			+ " WHERE UID NOT IN (SELECT UID FROM UserDeletion) "
+			+ " AND (Username LIKE ? OR EmailAddress LIKE ?)";
+
+	public static final String SELECT_ES_DEL = "SELECT e.* from EstablishmentDeletion d "
+			+ ", Establishment e WHERE e.EID = d.EID";
+	
+	public static final String SELECT_ES_MODIF = "SELECT e.* from EstablishmentModification m "
+			+ ", Establishment e WHERE e.EID = m.OldEID";
+	
+	public static final String SELECT_ES = "SELECT * FROM Establishment e "
+			+ "WHERE e.EID NOT IN (SELECT OldEID from EstablishmentModification) "
+			+ "AND e.EID NOT IN (SELECT EID from EstablishmentDeletion)";
 	
 	public static String getJspPath(String jspname) {
 		return WEBINF+JSPDIR+jspname;

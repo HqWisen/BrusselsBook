@@ -25,7 +25,7 @@
 			<a href="escreate?t=restaurant">Create a restaurant</a>
 			<a href="escreate?t=cafe">Create a café</a>
 			<a href="escreate?t=hotel">Create an hotel</a>
-			<a href="search?amode=true">Edition mode</a>
+			<a href="esmod">Edition mode</a>
 		</div>
 		<div class="admin-zone">
 			<span>User zone</span>
