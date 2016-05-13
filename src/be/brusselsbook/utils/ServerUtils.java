@@ -22,6 +22,7 @@ public final class ServerUtils {
 	public static final String ESMODJSPFILE = ServerUtils.getJspPath("esmod.jsp");
 	public static final String USERMODJSPFILE = ServerUtils.getJspPath("usermod.jsp");
 	public static final String COMMENTMODJSPFILE = ServerUtils.getJspPath("commentmod.jsp");
+	public static final String EGGJSPFILE = ServerUtils.getJspPath("egg.jsp");
 	public static final String WEBINF = "/WEB-INF/";
 	public static final String JSPDIR = "jsp/";
 	public static final String SEARCHTITLE = "Establishment, locality, zip, street, user, email";
