@@ -18,10 +18,9 @@ SELECT e.*, AVG(c.Score) AS AvgScore FROM BookComment c, Establishment e WHERE e
 
 
 
+#R6 (sure)
 
-
-
-
+SELECT td.TagName, (SELECT AVG(c.Score) FROM BookComment c, TagDescribe td2 WHERE (td.TagName = td2.TagName) AND (c.EID = td2.EID) as AvgScore FROM BookComment c, TagDescribe td GROUP BY td.TagName HAVING COUNT(DISTINCT td.EID) > 4 ORDER BY AvgScore
 
 
 #R6

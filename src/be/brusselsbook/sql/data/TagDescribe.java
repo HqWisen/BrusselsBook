@@ -5,6 +5,7 @@ public class TagDescribe {
 	private String tagName;
 	private Long eid;
 	private Long uid;
+	private Float number;
 	
 	public String getTagName() {
 		return tagName;
@@ -23,6 +24,13 @@ public class TagDescribe {
 	}
 	public void setUid(Long uid) {
 		this.uid = uid;
+	}
+	public Float getNumber(){
+		return number;
+	}
+	
+	public void setNumber(float number) {
+		this.number = number;
 	}
 	
 	

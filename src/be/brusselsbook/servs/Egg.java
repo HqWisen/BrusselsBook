@@ -2,6 +2,7 @@ package be.brusselsbook.servs;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import be.brusselsbook.sql.access.EstablishmentAccess;
 import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.BookUser;
 import be.brusselsbook.sql.data.Establishment;
+import be.brusselsbook.sql.data.TagDescribe;
 import be.brusselsbook.utils.AccessUtils;
 import be.brusselsbook.utils.ServerUtils;
 
@@ -45,6 +47,12 @@ public class Egg extends HttpServlet {
 			+ "(SELECT COUNT(*) FROM BookComment c WHERE e.EID = c.EID ) >= 3 ) "
 			+ "GROUP BY (c.EID) ORDER BY AvgScore";
 
+
+	private static final String R6 = "SELECT td.TagName, (SELECT AVG(c.Score) "
+			+ "FROM BookComment c, TagDescribe td2 "
+			+ "WHERE (td.TagName = td2.TagName) AND (c.EID = td2.EID)) as AvgScore "
+			+ "FROM BookComment c, TagDescribe td "
+			+ "GROUP BY td.TagName HAVING COUNT(DISTINCT td.EID) > 4 ORDER BY AvgScore";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -65,6 +73,10 @@ public class Egg extends HttpServlet {
 		case 5:
 			doR5(request, response);
 			request.setAttribute("message", R5);
+			break;
+		case 6:
+			doR6(request, response);
+			request.setAttribute("message", R6);
 			break;
 		}
 		getServletContext().getRequestDispatcher(ServerUtils.EGGJSPFILE).forward(request, response);
@@ -91,6 +103,24 @@ public class Egg extends HttpServlet {
 		return results;
 	}
 
+	private List<TagDescribe> selectTagDescrive(String query) {
+		List<TagDescribe> results = new ArrayList<>();
+		ResultSet set = AccessUtils.executeQuery(AccessFactory.getInstance(), query);
+		while (AccessUtils.next(set)) {
+			TagDescribe td = new TagDescribe();
+			try {
+				td.setTagName(set.getString("TagName"));
+				// NOTE score is in uid (la flemme)
+				td.setNumber(Float.parseFloat(set.getString("AvgScore")));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			results.add(td);
+		}
+		return results;
+	}
+
+	
 	private void doR1(HttpServletRequest request, HttpServletResponse response) {
 		List<BookUser> users = selectUsers(R1);
 		Map<Long, Integer> userNumberOfComments = AccessUtils.getNumberOfCommentsForUsers(users);
@@ -140,6 +170,14 @@ public class Egg extends HttpServlet {
 		request.setAttribute("userNumberOfComments", userNumberOfComments);
 		if (users.isEmpty()) {
 			request.setAttribute("warning", "No results found !");
+		}
+	}
+
+	private void doR6(HttpServletRequest request, HttpServletResponse response) {
+		List<TagDescribe> describers = selectTagDescrive(R6);
+		request.setAttribute("tags", describers);
+		if(describers.isEmpty()){
+			request.setAttribute("warning", "No results found !");			
 		}
 	}
 

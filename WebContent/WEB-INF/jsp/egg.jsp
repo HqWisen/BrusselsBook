@@ -79,7 +79,24 @@
 		     </div>
 		     
 		   </div>
-			</c:forEach>		
+			</c:forEach>
+			
+	<c:if test="${not empty requestScope.tags}">
+		<div class="container-title">Tags</div>
+	</c:if>
+			
+	<div class="estapage-tags">
+        <c:forEach items="${requestScope.tags}" var="tag">
+            <div class="estapage-tag">
+              <div class="estapage-tagname"><c:out value="${tag.tagName}"/></div>
+              <c:set var="tagvar" value='"${tag.tagName}"' scope="page"/>
+              <div class="estapage-tagcounter">
+                <c:out value="${tag.number}"/>
+              </div>
+            </div>
+        </c:forEach>
+      </div>
+					
 	</div>
 	
 	
