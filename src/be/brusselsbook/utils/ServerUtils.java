@@ -35,7 +35,7 @@ public final class ServerUtils {
 			+ "AND e.EID NOT IN (SELECT EID from EstablishmentDeletion) "
 			+ "AND (a.EID = e.EID) " +
 			"AND (e.EName LIKE ? OR a.Locality LIKE ? " +
-			"OR a.PostalCode LIKE ? OR a.Street LIKE ?)";
+			"OR a.PostalCode LIKE ? OR a.Street LIKE ?) ORDER BY e.EName";
 	
 	public static final String SEARCH_USER_SQL = "SELECT * FROM BookUser "
 			+ " WHERE UID NOT IN (SELECT UID FROM UserDeletion) "
