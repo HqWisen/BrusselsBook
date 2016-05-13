@@ -347,14 +347,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height:70px;
+  height:auto;
   width:85%;
   margin:auto; 
   margin-top:5px;
   margin-bottom:5px;
   background:#910000;
   font-size:25px;
-  padding:0;
+  padding:30px;
   color:white;
   
 }
@@ -363,14 +363,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height:70px;
+  height:auto;
   width:85%;
   margin:auto; 
   margin-top:5px;
   margin-bottom:5px;
   background:#c45611;
   font-size:25px;
-  padding:0;
+  padding:30px;
   color:white;
 
 }
@@ -392,14 +392,13 @@ body {
   align-items: center;
   justify-content: center;
   height:auto;
-  padding:30px;
   width:85%;
   margin:auto; 
   margin-top:5px;
   margin-bottom:5px;
   background:#002d5d;
   font-size:25px;
-  padding:0;
+  padding:30px;
   color:white;
 }
 
