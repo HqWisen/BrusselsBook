@@ -129,6 +129,9 @@
       <div class="estapage-comments">
          <c:forEach items="${requestScope.comments}" var="comment">
            <div class="estapage-comment">
+             <c:if test="${connected}">
+             <a class="comment-signal" href="signal?did=${comment.did}">Signal</a>
+             </c:if>
              <div class="estapage-commenttext"><c:out value="${comment.text}"/></div>
              <div class="estapage-commentauthor"><c:out value="${commentAuthors[comment.did]}"/></div>
              <div class="estapage-commentdate"><c:out value="${comment.creationDate}"/></div>

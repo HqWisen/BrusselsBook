@@ -759,12 +759,14 @@ body {
 }
 
 .estapage-comment {
+  position:relative;
   height: auto;
   width: 95%;
   margin: auto;
   margin-bottom: 40px;
   border: 1px solid #002d5d;
   padding: 15px;
+  padding-bottom:40px;
   box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
 }
 
@@ -1038,4 +1040,25 @@ body {
 
 .esta-edit:hover{
 	background:#2e3436;
+}
+
+
+.comment-signal{
+	display:block;
+	position:absolute;
+	bottom:0px;
+	right:0px;
+	margin:0;
+	padding:0;
+	padding:5px;
+	height:auto;
+	font-variant:small-caps;
+	font-size:20px;
+	color:white;
+	background:#002d5d;
+	text-decoration:none;
+}
+
+.comment-signal:hover{
+	background:#333333;
 }

@@ -6,11 +6,6 @@ public class UserSignal extends Describer {
 	private Long signalerUid;
 	
 	
-	public UserSignal(Describer describer) {
-		super(describer);
-	}
-
-	
 	public Long getDid() {
 		return did;
 	}
