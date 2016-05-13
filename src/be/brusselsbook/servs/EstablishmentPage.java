@@ -43,7 +43,8 @@ public class EstablishmentPage extends HttpServlet {
 		} else {
 			Long eid = Long.parseLong(eidParam);
 			Establishment establishment = eAccess.withEid(eid);
-			EstablishmentModification modif = emAccess.withOldEid(eid);
+			EstablishmentModification oldModif = emAccess.withOldEid(eid);
+			EstablishmentModification newModif = emAccess.withNewEid(eid);
 			EstablishmentDeletion deletion = edAccess.withEid(eid);
 			Establishment fullEstablishment = AccessUtils.findFull(establishment);
 			Address address = AccessUtils.getAddresFor(establishment);
@@ -65,10 +66,14 @@ public class EstablishmentPage extends HttpServlet {
 				String error = "This establishment has been deleted and is not visible on the site.";
 				request.setAttribute("error", error);
 			}
-			if(modif != null){
+			if(oldModif != null){
 				String warning = "Edited establishment (not visible on site)"
-						+ " see  <a href='establishment?eid="+modif.getNewEID()+"'>#"+modif.getNewEID()+"</a>.";
+						+ " see  <a href='establishment?eid="+oldModif.getNewEID()+"'>#"+oldModif.getNewEID()+"</a>.";
 				request.setAttribute("warning", warning);
+			}
+			if(newModif != null){
+				String message = "This establishment was previously here <a href='establishment?eid="+newModif.getOldEID()+"'>#"+newModif.getOldEID()+"</a>.";
+				request.setAttribute("message", message);
 			}
 			getServletContext().getRequestDispatcher(ServerUtils.ESTABLISHMENTJSPFILE).forward(request, response);
 		}

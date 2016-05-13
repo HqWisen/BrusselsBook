@@ -402,6 +402,18 @@ body {
   color:white;
 }
 
+.log-message a{
+	display:inline;
+	padding:0;
+	margin:0;
+	color:white;
+	text-decoration:underline;
+}
+
+.log-message a:hover{
+	color:#eeeeee;
+	text-decoration:none;	
+}
 
 
 /* Establishment */

@@ -25,12 +25,12 @@
 			<a href="escreate?t=restaurant">Create a restaurant</a>
 			<a href="escreate?t=cafe">Create a café</a>
 			<a href="escreate?t=hotel">Create an hotel</a>
-			<a href="esmod">Edition mode</a>
+			<a href="esmod">Manage establishment</a>
 		</div>
 		<div class="admin-zone">
 			<span>User zone</span>
-			<a href="">Edition mode</a>
 			<a href="">Comment moderation</a>
+			<a href="">Manage users</a>
 		</div>
 		<div class="admin-zone">
 			<span>Easter egg</span>
