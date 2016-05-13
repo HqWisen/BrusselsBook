@@ -13,11 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import be.brusselsbook.sql.access.AccessFactory;
 import be.brusselsbook.sql.access.BookCommentAccess;
 import be.brusselsbook.sql.access.EstablishmentAccess;
+import be.brusselsbook.sql.access.EstablishmentDeletionAccess;
+import be.brusselsbook.sql.access.EstablishmentModificationAccess;
 import be.brusselsbook.sql.access.TagAccess;
 import be.brusselsbook.sql.data.Address;
 import be.brusselsbook.sql.data.BookComment;
 import be.brusselsbook.sql.data.BookUser;
 import be.brusselsbook.sql.data.Establishment;
+import be.brusselsbook.sql.data.EstablishmentDeletion;
+import be.brusselsbook.sql.data.EstablishmentModification;
 import be.brusselsbook.sql.data.Tag;
 import be.brusselsbook.utils.AccessUtils;
 import be.brusselsbook.utils.ServerUtils;
@@ -29,6 +33,8 @@ public class EstablishmentPage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		EstablishmentAccess<Establishment> eAccess = AccessFactory.getInstance().getEstablishmentAccess();
+		EstablishmentModificationAccess emAccess = AccessFactory.getInstance().getEstablishmentModifiacationAccess();
+		EstablishmentDeletionAccess edAccess = AccessFactory.getInstance().getEstablishmentDeletionAccess();
 		BookCommentAccess bookCommentAccess = AccessFactory.getInstance().getBookCommentAccess();
 		TagAccess tAccess = AccessFactory.getInstance().getTagAccess();
 		String eidParam = request.getParameter("eid");
@@ -37,6 +43,8 @@ public class EstablishmentPage extends HttpServlet {
 		} else {
 			Long eid = Long.parseLong(eidParam);
 			Establishment establishment = eAccess.withEid(eid);
+			EstablishmentModification modif = emAccess.withOldEid(eid);
+			EstablishmentDeletion deletion = edAccess.withEid(eid);
 			Establishment fullEstablishment = AccessUtils.findFull(establishment);
 			Address address = AccessUtils.getAddresFor(establishment);
 			List<BookComment> comments = bookCommentAccess.withEid(eid);
@@ -53,6 +61,15 @@ public class EstablishmentPage extends HttpServlet {
 			request.setAttribute("tags", tags);
 			request.setAttribute("tagCounters", tagCounters);
 			request.setAttribute("tagApposed", tagApposed);
+			if(deletion != null){
+				String error = "This establishment has been deleted and is not visible on the site.";
+				request.setAttribute("error", error);
+			}
+			if(modif != null){
+				String warning = "Edited establishment (not visible on site)"
+						+ " see  <a href='establishment?eid="+modif.getNewEID()+"'>#"+modif.getNewEID()+"</a>.";
+				request.setAttribute("warning", warning);
+			}
 			getServletContext().getRequestDispatcher(ServerUtils.ESTABLISHMENTJSPFILE).forward(request, response);
 		}
 	}

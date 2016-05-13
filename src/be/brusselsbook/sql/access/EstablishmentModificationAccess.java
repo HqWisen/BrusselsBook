@@ -22,7 +22,7 @@ public class EstablishmentModificationAccess extends DataAccess<EstablishmentMod
 
 	@Override
 	public EstablishmentModification withId(Long id) {
-		return withEid(id);
+		return withOldEid(id);
 	}
 
 	@Override
@@ -54,12 +54,20 @@ public class EstablishmentModificationAccess extends DataAccess<EstablishmentMod
 		return PARAMETERS.length;
 	}
 
-	public EstablishmentModification withEid(String OldEID) {
-		return withQuery(SELECTBY(OLDEID), OldEID);
+	public EstablishmentModification withOldEid(String oldEID) {
+		return withQuery(SELECTBY(OLDEID), oldEID);
 	}
 
-	public EstablishmentModification withEid(Long OldEID) {
-		return withEid(OldEID.toString());
+	public EstablishmentModification withOldEid(Long oldEID) {
+		return withOldEid(oldEID.toString());
+	}
+
+	public EstablishmentModification withNewEid(String newEID) {
+		return withQuery(SELECTBY(NEWEID), newEID);
+	}
+
+	public EstablishmentModification withNewEid(Long newEID) {
+		return withNewEid(newEID.toString());
 	}
 
 }

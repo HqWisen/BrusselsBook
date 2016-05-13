@@ -94,19 +94,9 @@ public class AccessFactory {
 		return new UserDeletionAccess(this);
 	}
 
-	public DescriberDeletionAccess getDescriberDeletionAccess(){
-		return new DescriberDeletionAccess(this);
-	}
-
 	public EstablishmentModificationAccess getEstablishmentModifiacationAccess(){
 		return new EstablishmentModificationAccess(this);
 	}
 	
-	public DescriberModificationAccess getDescriberModification(){
-		return new DescriberModificationAccess(this);
-	}
-
-
-
 
 }

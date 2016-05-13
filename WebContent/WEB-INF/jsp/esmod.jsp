@@ -69,7 +69,7 @@
 		     <img src="image/resto.png" />
 		     <div class="esta-type">${establishment.type}</div>
 		     <div class="esta-infos">
-		       <div class="esta-name"><c:out value="${establishment.name}"/></div>
+		       <div class="esta-name"><c:out value="${establishment.name} #${establishment.eid}"/></div>
 		       <div class="esta-address"><c:out value="${addresses[establishment.eid]}"/></div>
 		       <div class="esta-footer">
 		         <div class="esta-contact">
@@ -106,7 +106,7 @@
 		     <img src="image/resto.png" />
 		     <div class="esta-type">${establishment.type}</div>
 		     <div class="esta-infos">
-		       <div class="esta-name"><c:out value="${establishment.name}"/></div>
+		       <div class="esta-name"><c:out value="${establishment.name} #${establishment.eid}"/></div>
 		       <div class="esta-address"><c:out value="${addresses[establishment.eid]}"/></div>
 		       <div class="esta-footer">
 		         <div class="esta-contact">
